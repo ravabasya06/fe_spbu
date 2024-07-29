@@ -2,6 +2,7 @@ import "./bootstrap";
 
 import { createApp, h } from "vue";
 import { createInertiaApp, Head, Link } from "@inertiajs/vue3";
+import { FontAwesomeIcon } from "./font-awesome";
 
 createInertiaApp({
     resolve: (name) => {
@@ -13,6 +14,7 @@ createInertiaApp({
             .use(plugin)
             .component("Link", Link)
             .component("Head", Head)
+            .component("font-awesome-icon", FontAwesomeIcon)
             .mount(el);
     },
 });

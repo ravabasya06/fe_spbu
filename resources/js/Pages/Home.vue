@@ -1,22 +1,87 @@
-<script>
-import Layout from "../Shared/Layout.vue";
-
-export default {
-    components: {
-        Layout,
-    },
-    props: {
-        title: String,
-        name: String,
-    },
-};
+<script setup>
+import navbar from "../Shared/nav.vue";
 </script>
 
 <template>
-    <Layout :title="`${title}`">
-        <h1>Hello, {{ name }}!</h1>
-        <Link href="/about" as="button">About</Link>
-    </Layout>
+    <nav>
+        <navbar />
+    </nav>
+    <div class="contents">
+        <div class="card-container">
+            <Link href="/dashboard">
+                <div class="card">
+                    <img
+                        src="../../../public/images/earth.png"
+                        alt="Earth image"
+                        id="earth"
+                    />
+                    <p>DASHBOARD</p>
+                </div>
+            </Link>
+            <Link href="/analysis">
+                <div class="card">
+                    <img
+                        src="../../../public/images/cctv.png"
+                        alt="CCTV image"
+                        id="cctv"
+                    />
+                    <p>VIDEO CONTENT ANALYSIS</p>
+                </div>
+            </Link>
+        </div>
+    </div>
 </template>
 
-<style></style>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap");
+body {
+    margin: 0;
+    font-family: "Lexend Deca", "sans-serif";
+    background-color: #000000;
+    background-image: linear-gradient(to right, #ed1b3042, black, #006bb84b);
+}
+
+nav {
+    text-align: center;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+#cctv {
+    width: 135px;
+    height: 105px;
+}
+#earth {
+    width: 180px;
+}
+#nav {
+    width: 100%;
+}
+.contents {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-container {
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    color: rgb(89, 88, 88);
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    background: transparent;
+}
+.card img {
+    width: 200px;
+}
+</style>
