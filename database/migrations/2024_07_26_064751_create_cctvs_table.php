@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cctvs', function (Blueprint $table) {
             $table->uuid('cctv_id')->primary();
-            $table->string('spbu_id')->unsigned();
+            $table->string('spbu_id');
             $table->boolean('status');
             $table->bigInteger('man');
             $table->bigInteger('woman');

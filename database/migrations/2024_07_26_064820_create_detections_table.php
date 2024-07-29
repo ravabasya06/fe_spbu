@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('detections', function (Blueprint $table) {
-            $table->string('spbu_id')->unsigned();
-            $table->string('cctv_id')->unsigned();
+            $table->string('spbu_id');
+            $table->string('cctv_id');
             $table->bigInteger('type_detection_id')->unsigned();
             $table->timestamps();
 

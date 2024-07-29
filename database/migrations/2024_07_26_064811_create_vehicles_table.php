@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->uuid('vehicle_id')->primary();
-            $table->string('spbu_id')->unsigned();
+            $table->string('spbu_id');
             $table->bigInteger('type_vehicle_id')->unsigned();
             $table->timestamps();
 
