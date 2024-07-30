@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Spbu;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Dispenser>
@@ -17,7 +18,8 @@ class DispenserFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'spbu_id' => Spbu::inRandomOrder()->first()->spbu_id,
+            'queue' => fake()->numberBetween(1, 15),
         ];
     }
 }

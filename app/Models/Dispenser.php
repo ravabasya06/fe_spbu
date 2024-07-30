@@ -23,7 +23,7 @@ class Dispenser extends Model
 
     public function spbu()
     {
-        return $this->belongsTo(SPBU::class, 'spbu_id', 'spbu_id');
+        return $this->belongsTo(Spbu::class, 'spbu_id', 'spbu_id');
     }
 }
 

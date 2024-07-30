@@ -23,4 +23,14 @@ class Spbu extends Model
         'province',
         'island',
     ];
+
+    public function dispensers()
+    {
+        return $this->hasMany(Dispenser::class, 'spbu_id', 'spbu_id');
+    }
+
+    public function detections()
+    {
+        return $this->hasMany(Detection::class, 'spbu_id', 'spbu_id');
+    }
 }
