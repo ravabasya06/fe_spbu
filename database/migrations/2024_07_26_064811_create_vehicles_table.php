@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->uuid('vehicle_id')->primary();
             $table->string('spbu_id');
-            $table->bigInteger('type_vehicle_id')->unsigned();
+            $table->unsignedBigInteger('type_vehicle_id');
             $table->timestamps();
 
             $table->foreign('spbu_id')->references('spbu_id')->on('spbus');

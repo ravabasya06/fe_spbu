@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('detections', function (Blueprint $table) {
+            $table->uuid('detection_id');
             $table->string('spbu_id');
             $table->string('cctv_id');
-            $table->bigInteger('type_detection_id')->unsigned();
+            $table->unsignedBigInteger('type_detection_id');
             $table->timestamps();
 
             $table->foreign('spbu_id')->references('spbu_id')->on('spbus');

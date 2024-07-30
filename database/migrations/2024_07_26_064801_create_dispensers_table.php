@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dispensers', function (Blueprint $table) {
             $table->uuid('dispenser_id')->primary();
-            $table->string('spbu_id')->unsigned();
+            $table->string('spbu_id');
             $table->bigInteger('queue');
             $table->timestamps();
 
