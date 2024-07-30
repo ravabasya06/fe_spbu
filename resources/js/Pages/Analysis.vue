@@ -20,9 +20,6 @@ export default {
         <div class="search-wrapper">
             <Search />
         </div>
-        <div class="navigation">
-            <BackButton href="/" />
-        </div>
         <div class="list">
             <div class="container-cards">
                 <Link v-for="spbu in spbus" :href="`/spbu/${spbu.spbu_id}`">
@@ -31,6 +28,9 @@ export default {
                         <p>{{ spbu.road }}</p>
                     </div>
                 </Link>
+            </div>
+            <div class="navigation">
+                <BackButton href="/" />
             </div>
         </div>
     </Layout>
@@ -41,13 +41,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(50vh - 50px);
 }
 .navigation {
     position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-40%, -50%);
     padding: 10px;
     border-radius: 5px;
     z-index: 10;
@@ -68,6 +64,9 @@ export default {
     background-color: #121212;
     color: white;
     font-family: "Lexend Deca", "sans-serif";
+}
+.card h3,
+.card p {
     text-decoration: none;
 }
 </style>

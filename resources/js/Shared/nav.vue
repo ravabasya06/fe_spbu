@@ -48,17 +48,11 @@ export default {
 
 <style scoped>
 .navbar {
-    display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: black;
     border-bottom: 2px solid red;
     padding: 10px;
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
     width: 100%;
     z-index: 1;
 }

@@ -24,7 +24,6 @@ export default {
     font-size: 16px;
     cursor: pointer;
     border-radius: 7px;
-    margin-bottom: 15px;
     z-index: 1;
 }
 </style>

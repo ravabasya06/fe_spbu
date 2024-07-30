@@ -1,5 +1,34 @@
-/* main global css */
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap");
+:root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 body {
-    font-family: sans-serif;
-    margin: 15%;
+    font-family: "Lexend Deca", "sans-serif";
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light dark;
+    margin: 0;
+    color: white;
+    background-color: #000000;
+    background-image: linear-gradient(to right, #ed1b3042, black, #006bb84b);
+}
+#app {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+    a:hover {
+        color: #747bff;
+    }
+    button {
+        background-color: #f9f9f9;
+    }
 }

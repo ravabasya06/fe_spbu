@@ -32,3 +32,13 @@ export default {
         </footer>
     </main>
 </template>
+
+<style scoped>
+footer {
+    background-color: black;
+}
+footer p {
+    margin: 0;
+    text-align: center;
+}
+</style>

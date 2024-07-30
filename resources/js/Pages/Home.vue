@@ -31,18 +31,7 @@ import Layout from "../Shared/Layout.vue";
     </Layout>
 </template>
 
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap");
-body {
-    margin: 0;
-    font-family: "Lexend Deca", "sans-serif";
-    background-color: #000000;
-    background-image: linear-gradient(to right, #ed1b3042, black, #006bb84b);
-}
-
-nav {
-    text-align: center;
-}
+<style scoped>
 a {
     color: white;
     text-decoration: none;
@@ -54,11 +43,8 @@ a {
 #earth {
     width: 180px;
 }
-#nav {
-    width: 100%;
-}
 .contents {
-    height: 100vh;
+    height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;

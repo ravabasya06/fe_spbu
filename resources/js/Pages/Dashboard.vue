@@ -21,18 +21,11 @@ import BackButton from "../Shared/BackButton.vue";
 </template>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-body {
-    font-family: "Lexend Deca", "sans-serif";
-    background-color: #212121;
-    color: #fff;
-    margin: 0;
-}
 .navigation {
     position: absolute;
-    top: 80%;
+    top: 90%;
     left: 50%;
-    transform: translate(-40%, -50%);
+    transform: translate(-50%, -50%);
     padding: 10px;
     border-radius: 5px;
     z-index: 10;
@@ -48,7 +41,6 @@ body {
     position: relative;
     width: 100%;
     overflow: hidden;
-    margin-top: 40px;
 }
 
 .map {
