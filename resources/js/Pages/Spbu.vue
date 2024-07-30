@@ -3,32 +3,31 @@
 import BackButton from "../Shared/BackButton.vue";
 import SpbuData from "../Shared/spbudata1.vue";
 import SidebarRight from "../Shared/spbudata2.vue";
-import Navbar from "../Shared/nav.vue";
+import Layout from "../Shared/Layout.vue";
 </script>
 
 <template>
-    <!-- <nav>
-    <Navbar />
-  </nav> -->
-    <main>
-        <div class="sidebar sidebar-left">
-            <SpbuData />
-        </div>
-        <div class="main-content">
-            <h1>Nama SPBU</h1>
-            <img
-                src="../../../public/images/spbu.png"
-                alt="SPBU Image"
-                class="station-image"
-            />
-            <div class="button">
-                <BackButton to="/Analysis" />
+    <Layout title="SPBU">
+        <main>
+            <div class="sidebar sidebar-left">
+                <SpbuData />
             </div>
-        </div>
-        <div class="sidebar sidebar-right">
-            <SidebarRight />
-        </div>
-    </main>
+            <div class="main-content">
+                <h1>Nama SPBU</h1>
+                <img
+                    src="../../../public/images/spbu.png"
+                    alt="SPBU Image"
+                    class="station-image"
+                />
+                <div class="button">
+                    <BackButton href="/analysis" />
+                </div>
+            </div>
+            <div class="sidebar sidebar-right">
+                <SidebarRight />
+            </div>
+        </main>
+    </Layout>
 </template>
 
 <style scoped>

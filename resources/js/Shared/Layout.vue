@@ -1,5 +1,10 @@
 <script>
+import navbar from "./nav.vue";
+
 export default {
+    components: {
+        navbar,
+    },
     props: {
         title: String,
     },
@@ -17,9 +22,7 @@ export default {
 <template>
     <main>
         <header>
-            <Link href="/home">Home</Link>
-            <Link href="/about">About</Link>
-            <Link href="/users">User</Link>
+            <navbar />
         </header>
         <article>
             <slot />

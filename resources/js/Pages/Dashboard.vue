@@ -1,24 +1,23 @@
 <script setup>
-import navView from "../Shared/nav.vue";
+import Layout from "../Shared/Layout.vue";
 import dashboardData from "../Shared/DashboardData.vue";
 import BackButton from "../Shared/BackButton.vue";
 </script>
 
 <template>
-    <nav>
-        <navView />
-    </nav>
-    <div class="map-container">
-        <img
-            src="../../../public/images/map.jpg"
-            alt="Map of Indonesia"
-            class="map"
-        />
-    </div>
-    <div class="navigation">
-        <BackButton to="/" />
-    </div>
-    <dashboardData />
+    <Layout title="Dashboard">
+        <div class="map-container">
+            <img
+                src="../../../public/images/map.jpg"
+                alt="Map of Indonesia"
+                class="map"
+            />
+        </div>
+        <div class="navigation">
+            <BackButton href="/" />
+        </div>
+        <dashboardData />
+    </Layout>
 </template>
 
 <style scoped>

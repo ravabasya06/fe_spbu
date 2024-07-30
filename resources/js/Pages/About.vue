@@ -1,15 +1,15 @@
 <script>
-import Layout from "../Shared/Layout.vue";
+// import Layout from "../Shared/Layout.vue";
 
-export default {
-    components: {
-        Layout,
-    },
-    props: {
-        title: String,
-        name: String,
-    },
-};
+// export default {
+//     components: {
+//         Layout,
+//     },
+//     props: {
+//         title: String,
+//         name: String,
+//     },
+// };
 </script>
 
 <template>

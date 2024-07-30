@@ -1,35 +1,34 @@
 <script setup>
-import navbar from "../Shared/nav.vue";
+import Layout from "../Shared/Layout.vue";
 </script>
 
 <template>
-    <nav>
-        <navbar />
-    </nav>
-    <div class="contents">
-        <div class="card-container">
-            <Link href="/dashboard">
-                <div class="card">
-                    <img
-                        src="../../../public/images/earth.png"
-                        alt="Earth image"
-                        id="earth"
-                    />
-                    <p>DASHBOARD</p>
-                </div>
-            </Link>
-            <Link href="/analysis">
-                <div class="card">
-                    <img
-                        src="../../../public/images/cctv.png"
-                        alt="CCTV image"
-                        id="cctv"
-                    />
-                    <p>VIDEO CONTENT ANALYSIS</p>
-                </div>
-            </Link>
+    <Layout title="Home">
+        <div class="contents">
+            <div class="card-container">
+                <Link href="/dashboard">
+                    <div class="card">
+                        <img
+                            src="../../../public/images/earth.png"
+                            alt="Earth image"
+                            id="earth"
+                        />
+                        <p>DASHBOARD</p>
+                    </div>
+                </Link>
+                <Link href="/analysis">
+                    <div class="card">
+                        <img
+                            src="../../../public/images/cctv.png"
+                            alt="CCTV image"
+                            id="cctv"
+                        />
+                        <p>VIDEO CONTENT ANALYSIS</p>
+                    </div>
+                </Link>
+            </div>
         </div>
-    </div>
+    </Layout>
 </template>
 
 <style>
