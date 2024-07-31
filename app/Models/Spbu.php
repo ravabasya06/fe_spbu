@@ -14,7 +14,7 @@ class Spbu extends Model
     protected $primaryKey = 'spbu_id';
     public $incrementing = false;
     protected $keyType = 'string';
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'name',
