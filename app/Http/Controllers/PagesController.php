@@ -23,10 +23,4 @@ class PagesController extends Controller
             'name' => $name
         ]);
     }
-    public function dashboard(){
-        $title = 'Dashboard';
-        return Inertia::render('Dashboard', [
-            'title' => $title,
-        ]);
-    }
 }

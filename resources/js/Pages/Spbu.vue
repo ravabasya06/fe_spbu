@@ -13,9 +13,31 @@ const showPopup = () => {
     myModal.show();
 };
 </script>
+<script>
+export default {
+    components: {
+        Layout,
+    },
+    props: {
+        spbu: Object,
+        cctvs: Object,
+        dispensers: Object,
+
+        totalWoman: Number,
+        totalMan: Number,
+        grandTotal: Number,
+
+        totalFire: Number,
+        totalFraud: Number,
+        totalObject: Number,
+
+        totalVehicle: Number,
+    },
+};
+</script>
 
 <template>
-    <Layout title="SPBU">
+    <Layout title="Profile SPBU">
         <main class="spbu">
             <div class="sidebar-queue">
                 <div class="queue">
@@ -28,17 +50,11 @@ const showPopup = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>DISPENSER 1</td>
-                                <td class="jumlah-antrian">10</td>
-                            </tr>
-                            <tr>
-                                <td>DISPENSER 2</td>
-                                <td class="jumlah-antrian">10</td>
-                            </tr>
-                            <tr>
-                                <td>DISPENSER 3</td>
-                                <td class="jumlah-antrian">1</td>
+                            <tr v-for="(dispenser, index) in dispensers">
+                                <td>DISPENSER {{ index + 1 }}</td>
+                                <td class="jumlah-antrian">
+                                    {{ dispenser.queue }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -51,17 +67,7 @@ const showPopup = () => {
                         />
                         <div class="detection-text">
                             <p>FIRE DETECTION</p>
-                            <p>1</p>
-                        </div>
-                    </div>
-                    <div class="detection-item" @click="showPopup">
-                        <img
-                            src="../../../public/images/object.png"
-                            alt="Object Detection"
-                        />
-                        <div class="detection-text">
-                            <p>OBJECT DETECTION</p>
-                            <p>0</p>
+                            <p>{{ totalFire }}</p>
                         </div>
                     </div>
                     <div class="detection-item" @click="showPopup">
@@ -71,21 +77,31 @@ const showPopup = () => {
                         />
                         <div class="detection-text">
                             <p>FRAUD DETECTION</p>
-                            <p>0</p>
+                            <p>{{ totalFraud }}</p>
+                        </div>
+                    </div>
+                    <div class="detection-item" @click="showPopup">
+                        <img
+                            src="../../../public/images/object.png"
+                            alt="Object Detection"
+                        />
+                        <div class="detection-text">
+                            <p>OBJECT DETECTION</p>
+                            <p>{{ totalObject }}</p>
                         </div>
                     </div>
                     <div class="detection-item" @click="showPopup">
                         <img src="../../../public/images/car.png" alt="Mobil" />
                         <div class="detection-text">
                             <p>TOTAL KENDARAAN</p>
-                            <p>40</p>
+                            <p>{{ totalVehicle }}</p>
                         </div>
                     </div>
                 </div>
             </div>
             <Alert />
             <div class="main-content">
-                <h1>Nama SPBU</h1>
+                <h1>{{ spbu.name }}</h1>
                 <img
                     src="../../../public/images/spbu.png"
                     alt="SPBU Image"
@@ -97,13 +113,13 @@ const showPopup = () => {
             </div>
             <div class="sidebar-right">
                 <div class="face-recognition">
-                    <h2>Face recognition</h2>
-                    <h2>1.500</h2>
+                    <h2>Face Recognition</h2>
+                    <h2>{{ grandTotal }}</h2>
                     <div class="gender">
                         <img src="../../../public/images/pria.png" alt="pria" />
                         <div class="gender-text">
-                            <h1>pria</h1>
-                            <h1>750</h1>
+                            <h1>Pria</h1>
+                            <h1>{{ totalMan }}</h1>
                         </div>
                     </div>
                     <div class="gender">
@@ -112,8 +128,8 @@ const showPopup = () => {
                             alt="wanita"
                         />
                         <div class="gender-text">
-                            <h1>wanita</h1>
-                            <h1>650</h1>
+                            <h1>Wanita</h1>
+                            <h1>{{ totalWoman }}</h1>
                         </div>
                     </div>
                 </div>
@@ -133,14 +149,17 @@ const showPopup = () => {
                             <div class="table-body-wrapper">
                                 <table>
                                     <tbody>
-                                        <tr>
+                                        <tr v-for="(cctv, index) in cctvs">
                                             <td @click="showPopup" class="show">
-                                                CCTV A
+                                                CCTV {{ index + 1 }}
                                             </td>
-                                            <td class="pria-col">1</td>
-                                            <td class="wanita-col">1</td>
+                                            <td class="pria-col">
+                                                {{ cctv.man }}
+                                            </td>
+                                            <td class="wanita-col">
+                                                {{ cctv.woman }}
+                                            </td>
                                         </tr>
-                                        <!-- tambahin row -->
                                     </tbody>
                                 </table>
                             </div>
