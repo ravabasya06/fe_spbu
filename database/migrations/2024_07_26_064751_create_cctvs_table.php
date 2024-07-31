@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('status');
             $table->bigInteger('man');
             $table->bigInteger('woman');
+            $table->string('link');
             $table->timestamps();
 
             $table->foreign('spbu_id')->references('spbu_id')->on('spbus');
