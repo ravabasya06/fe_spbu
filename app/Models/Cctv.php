@@ -21,6 +21,7 @@ class Cctv extends Model
         'status',
         'man',
         'woman',
+        'link',
     ];
 
     public function spbu()
