@@ -25,7 +25,7 @@ import BackButton from "../Shared/BackButton.vue";
     position: absolute;
     top: 90%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-40%, -50%);
     padding: 10px;
     border-radius: 5px;
     z-index: 10;

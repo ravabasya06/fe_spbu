@@ -49,12 +49,14 @@ export default {
 <style scoped>
 .navbar {
     justify-content: space-between;
-    align-items: center;
+    position: sticky;
     background-color: black;
     border-bottom: 2px solid red;
     padding: 10px;
     width: 100%;
     z-index: 1;
+    left: 0;
+    right: 0;
 }
 
 .logo {
@@ -76,12 +78,12 @@ export default {
 
 .sidebar {
     height: 100%;
-    width: 0;
     position: fixed;
+    width: 0;
     top: 0;
     left: 0;
     background-color: #000000;
-    z-index: 3;
+    z-index: 10;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;

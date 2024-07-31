@@ -29,9 +29,6 @@ export default {
                     </div>
                 </Link>
             </div>
-            <div class="navigation">
-                <BackButton href="/" />
-            </div>
         </div>
     </Layout>
 </template>
@@ -40,7 +37,6 @@ export default {
 .search-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 .navigation {
     position: absolute;
@@ -51,7 +47,9 @@ export default {
     text-decoration: none;
 }
 .container-cards {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    flex-wrap: wrap;
     gap: 15px;
     margin: 30px;
 }
@@ -64,9 +62,9 @@ export default {
     background-color: #121212;
     color: white;
     font-family: "Lexend Deca", "sans-serif";
+    text-decoration: none;
 }
-.card h3,
-.card p {
+a {
     text-decoration: none;
 }
 </style>

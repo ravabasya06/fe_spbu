@@ -36,6 +36,8 @@ export default {
 <style scoped>
 footer {
     background-color: black;
+    bottom: 0;
+    width: 100%;
 }
 footer p {
     margin: 0;

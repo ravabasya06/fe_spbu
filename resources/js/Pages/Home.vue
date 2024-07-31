@@ -44,7 +44,7 @@ a {
     width: 180px;
 }
 .contents {
-    height: 75vh;
+    height: 95vh;
     display: flex;
     align-items: center;
     justify-content: center;

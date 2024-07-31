@@ -14,10 +14,9 @@ body {
     color: white;
     background-color: #000000;
     background-image: linear-gradient(to right, #ed1b3042, black, #006bb84b);
-}
-#app {
-    max-width: 1280px;
-    margin: 0 auto;
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 1fr auto;
 }
 
 @media (prefers-color-scheme: light) {
