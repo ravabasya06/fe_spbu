@@ -4,13 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+
 
 class Detection extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     protected $table = 'detections';
+    protected $primaryKey = 'detection_id';
     public $incrementing = false;
+    protected $keyType = 'string';
     public $timestamps = true;
 
     protected $fillable = [

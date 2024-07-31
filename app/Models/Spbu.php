@@ -33,4 +33,14 @@ class Spbu extends Model
     {
         return $this->hasMany(Detection::class, 'spbu_id', 'spbu_id');
     }
+
+    public function cctvs()
+    {
+        return $this->hasMany(Cctv::class, 'spbu_id', 'spbu_id');
+    }
+
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicles::class, 'spbu_id', 'spbu_id');
+    }
 }
