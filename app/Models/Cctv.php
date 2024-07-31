@@ -27,4 +27,9 @@ class Cctv extends Model
     {
         return $this->belongsTo(Spbu::class, 'spbu_id', 'spbu_id');
     }
+
+    public function detections()
+    {
+        return $this->hasMany(Detection::class, 'cctv_id', 'cctv_id');
+    }
 }

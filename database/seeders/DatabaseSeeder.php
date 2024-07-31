@@ -5,7 +5,9 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Spbu;
 use App\Models\Dispenser;
-use App\Models\TypeDetection;
+use App\Models\Cctv;
+use App\Models\Vehicle;
+use App\Models\Detection;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,8 +22,10 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeVehicleSeeder::class);
 
         Spbu::factory(5)->create();
-
-        Dispenser::factory(5)->create();
+        Dispenser::factory(10)->create();
+        Cctv::factory(10)->create();
+        Vehicle::factory(20)->create();
+        Detection::factory(20)->create();
 
         // TypeVehicle::create(['type' => 'Motor']);
 
