@@ -22,7 +22,7 @@ class CctvFactory extends Factory
             'status' => fake()->boolean(), 
             'man' => fake()->numberBetween(1, 19),
             'woman' => fake()->numberBetween(1, 19),
-            'link' => fake()->imageUrl(640, 480, 'animals', true),
+            'link' => fake()->imageUrl(640, 480, 'CCTV', true),
         ];
     }
 }

@@ -12,6 +12,20 @@ const showPopup = () => {
 };
 </script>
 
+<script>
+export default {
+    props: {
+        dispensers: Object,
+
+        totalFire: Number,
+        totalFraud: Number,
+        totalObject: Number,
+
+        totalVehicle: Number,
+    },
+};
+</script>
+
 <template>
     <div class="sidebar-left">
         <div class="queue">
@@ -29,10 +43,7 @@ const showPopup = () => {
                     <div class="table-body-wrapper">
                         <table>
                             <tbody>
-                                <tr
-                                    v-for="(dispenser, index) in dispensers"
-                                    :key="index"
-                                >
+                                <tr v-for="(dispenser, index) in dispensers">
                                     <td>DISPENSER {{ index + 1 }}</td>
                                     <td class="jumlah-antrian">
                                         {{ dispenser.queue }}

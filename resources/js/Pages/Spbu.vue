@@ -2,8 +2,6 @@
 import BackButton from "../Components/Main/BackButton.vue";
 import Layout from "../Components/Main/Layout.vue";
 import { onMounted } from "vue";
-import Alert from "../Components/alert.vue";
-import CCTVModal from "../Components/Spbu/CCTVModal.vue";
 import SpbuSidebar1 from "../Components/Spbu/SpbuSidebar1.vue";
 import SpbuSidebar2 from "../Components/Spbu/SpbuSidebar2.vue";
 
@@ -14,18 +12,12 @@ onMounted(() => {
     myModal = new bootstrap.Modal(document.getElementById("alertpopup"));
     ModalCCTV = new bootstrap.Modal(document.getElementById("cctvpopup"));
 });
-
-const showPopup = () => {
-    myModal.show();
-};
-const showcctv = () => {
-    ModalCCTV.show();
-};
 </script>
 <script>
 export default {
     components: {
         Layout,
+        BackButton,
     },
     props: {
         spbu: Object,
@@ -48,7 +40,13 @@ export default {
 <template>
     <Layout title="Profile SPBU">
         <main class="spbu">
-            <SpbuSidebar1 :spbus="spbus" />
+            <SpbuSidebar1
+                :dispensers="dispensers"
+                :totalFire="totalFire"
+                :totalFraud="totalFraud"
+                :totalObject="totalObject"
+                :totalVehicle="totalVehicle"
+            />
             <div class="main-content">
                 <h1>{{ spbu.name }}</h1>
                 <img
@@ -60,7 +58,12 @@ export default {
                     <BackButton href="/analysis" />
                 </div>
             </div>
-            <SpbuSidebar2 />
+            <SpbuSidebar2
+                :cctvs="cctvs"
+                :totalWoman="totalWoman"
+                :totalMan="totalMan"
+                :grandTotal="grandTotal"
+            />
         </main>
     </Layout>
 </template>

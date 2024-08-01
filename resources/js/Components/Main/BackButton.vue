@@ -1,13 +1,13 @@
 <script>
 export default {
     props: {
-        href: String,
+        link: String,
     },
 };
 </script>
 
 <template>
-    <Link :href="`${href}`">
+    <Link :href="`${link}`">
         <button class="back-button">Back</button>
     </Link>
 </template>

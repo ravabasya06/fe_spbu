@@ -1,14 +1,28 @@
 <script setup>
 import CCTVModal from "./CCTVModal.vue";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 let myModal;
+const selectedLink = ref("");
 
 onMounted(() => {
     myModal = new bootstrap.Modal(document.getElementById("cctvpopup"));
 });
 
-const showcctv = () => {
+const showcctv = (link) => {
+    selectedLink.value = link;
     myModal.show();
+};
+</script>
+
+<script>
+export default {
+    props: {
+        cctvs: Object,
+
+        totalWoman: Number,
+        totalMan: Number,
+        grandTotal: Number,
+    },
 };
 </script>
 <template>
@@ -47,8 +61,12 @@ const showcctv = () => {
                     <div class="table-body-wrapper">
                         <table>
                             <tbody>
-                                <tr v-for="(cctv, index) in cctvs" :key="index">
-                                    <td @click="showcctv" class="show">
+                                <tr v-for="(cctv, index) in cctvs">
+                                    <td
+                                        @click="showcctv(cctv.link)"
+                                        class="showcctv"
+                                        :link="`${cctv.link}`"
+                                    >
                                         CCTV {{ index + 1 }}
                                     </td>
                                     <td class="pria-col">
@@ -57,6 +75,7 @@ const showcctv = () => {
                                     <td class="wanita-col">
                                         {{ cctv.woman }}
                                     </td>
+                                    <CCTVModal :link="selectedLink" />
                                 </tr>
                             </tbody>
                         </table>
@@ -65,7 +84,6 @@ const showcctv = () => {
             </div>
         </div>
     </div>
-    <CCTVModal />
 </template>
 
 <style scoped>
@@ -120,10 +138,10 @@ td {
     border: none;
 }
 
-td.show {
+td.showcctv {
     cursor: pointer;
 }
-td.show:hover {
+td.showcctv:hover {
     text-decoration: underline;
 }
 .table-container {
