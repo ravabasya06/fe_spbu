@@ -47,7 +47,7 @@ const showPopup = () => {
         <div class="detection">
             <div class="detection-item" @click="showPopup">
                 <img
-                    src="../../../public/images/fire.png"
+                    src="../../../../public/images/fire.png"
                     alt="Fire Detection"
                 />
                 <div class="detection-text">
@@ -57,7 +57,7 @@ const showPopup = () => {
             </div>
             <div class="detection-item" @click="showPopup">
                 <img
-                    src="../../../public/images/fraud.png"
+                    src="../../../../public/images/fraud.png"
                     alt="Fraud Detection"
                 />
                 <div class="detection-text">
@@ -67,7 +67,7 @@ const showPopup = () => {
             </div>
             <div class="detection-item" @click="showPopup">
                 <img
-                    src="../../../public/images/object.png"
+                    src="../../../../public/images/object.png"
                     alt="Object Detection"
                 />
                 <div class="detection-text">
@@ -76,7 +76,7 @@ const showPopup = () => {
                 </div>
             </div>
             <div class="detection-item" @click="showPopup">
-                <img src="../../../public/images/car.png" alt="Mobil" />
+                <img src="../../../../public/images/car.png" alt="Mobil" />
                 <div class="detection-text">
                     <p>TOTAL KENDARAAN</p>
                     <p>{{ totalVehicle }}</p>
@@ -135,5 +135,44 @@ const showPopup = () => {
 }
 .table-container td.jumlah-antrian {
     text-align: center; /* Center align the text in jumlah-antrian column */
+}
+.sidebar-left,
+table {
+    border-collapse: collapse;
+    font-size: 15px;
+}
+tr {
+    text-align: left;
+}
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border: none;
+}
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-container th,
+.table-container td {
+    padding: 10px;
+}
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+.table-body-wrapper {
+    max-height: 200px; /* Adjust the height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+.table-body-wrapper table {
+    width: 100%;
 }
 </style>
