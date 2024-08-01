@@ -3,14 +3,20 @@ import BackButton from "../Shared/BackButton.vue";
 import Layout from "../Shared/Layout.vue";
 import { onMounted } from "vue";
 import Alert from "../Shared/alert.vue";
+import CCTVModal from "../Shared/CCTVModal.vue";
 let myModal;
+let ModalCCTV;
 
 onMounted(() => {
     myModal = new bootstrap.Modal(document.getElementById("alertpopup"));
+    ModalCCTV = new bootstrap.Modal(document.getElementById("cctvpopup"));
 });
 
 const showPopup = () => {
     myModal.show();
+};
+const showcctv = () => {
+    ModalCCTV.show();
 };
 </script>
 <script>
@@ -42,22 +48,35 @@ export default {
             <div class="sidebar-queue">
                 <div class="queue">
                     <h2>ANTRIAN SPBU</h2>
-                    <table class="dispenser-table">
-                        <thead>
-                            <tr>
-                                <th>Jenis Dispenser</th>
-                                <th>Jumlah Antrian</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(dispenser, index) in dispensers">
-                                <td>DISPENSER {{ index + 1 }}</td>
-                                <td class="jumlah-antrian">
-                                    {{ dispenser.queue }}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="dispenser-item">
+                        <div class="table-container">
+                            <table class="dispenser-table">
+                                <thead>
+                                    <tr>
+                                        <th>Jenis Dispenser</th>
+                                        <th>Jumlah Antrian</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <div class="table-body-wrapper">
+                                <table>
+                                    <tbody>
+                                        <tr
+                                            v-for="(
+                                                dispenser, index
+                                            ) in dispensers"
+                                            :key="index"
+                                        >
+                                            <td>DISPENSER {{ index + 1 }}</td>
+                                            <td class="jumlah-antrian">
+                                                {{ dispenser.queue }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="detection">
                     <div class="detection-item" @click="showPopup">
@@ -149,8 +168,11 @@ export default {
                             <div class="table-body-wrapper">
                                 <table>
                                     <tbody>
-                                        <tr v-for="(cctv, index) in cctvs">
-                                            <td @click="showPopup" class="show">
+                                        <tr
+                                            v-for="(cctv, index) in cctvs"
+                                            :key="index"
+                                        >
+                                            <td @click="showcctv" class="show">
                                                 CCTV {{ index + 1 }}
                                             </td>
                                             <td class="pria-col">
@@ -167,6 +189,7 @@ export default {
                     </div>
                 </div>
             </div>
+            <CCTVModal />
         </main>
     </Layout>
 </template>
@@ -242,11 +265,11 @@ a {
 .dispenser-table {
     width: 100%;
 }
-.dispenser-table th,
-.dispenser-table td {
+.dispenser-table th {
+    background-color: transparent;
     text-align: left; /* Default text alignment for header and data cells */
 }
-.dispenser-table td.jumlah-antrian {
+.table-container td.jumlah-antrian {
     text-align: center; /* Center align the text in jumlah-antrian column */
 }
 table {
@@ -302,7 +325,7 @@ h2 {
     width: 100%;
     border-collapse: collapse;
 }
-.table-container thead {
+.cctv-item thead {
     background-color: #2b2b2b;
     color: white;
 }
@@ -315,7 +338,8 @@ h2 {
     text-align: center;
 }
 .table-container td.pria-col,
-.table-container td.wanita-col {
+.table-container td.wanita-col,
+.table container td.jumlah-antrian {
     text-align: center;
 }
 .table-container td:first-child {
@@ -325,8 +349,8 @@ h2 {
     width: 35%;
 }
 .table-body-wrapper {
-    max-height: 200px;
-    overflow-y: auto;
+    max-height: 200px; /* Adjust the height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 .table-body-wrapper table {
     width: 100%;
