@@ -23,7 +23,7 @@ export default {
         </div>
         <img
             class="logo"
-            src="../../../public/images/pertamina.png"
+            src="../../../../public/images/pertamina.png"
             alt="logo"
         />
         <div class="user-icon">

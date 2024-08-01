@@ -1,7 +1,7 @@
 <script setup>
-import Layout from "../Shared/Layout.vue";
-import dashboardData from "../Shared/DashboardData.vue";
-import BackButton from "../Shared/BackButton.vue";
+import Layout from "../Components/Main/Layout.vue";
+import DashboardData from "../Components/Dashboard/DashboardData.vue";
+import BackButton from "../Components/Main/BackButton.vue";
 </script>
 
 <template>
@@ -16,7 +16,7 @@ import BackButton from "../Shared/BackButton.vue";
         <div class="navigation">
             <BackButton href="/" />
         </div>
-        <dashboardData />
+        <DashboardData />
     </Layout>
 </template>
 

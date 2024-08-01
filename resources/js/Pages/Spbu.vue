@@ -1,9 +1,12 @@
 <script setup>
-import BackButton from "../Shared/BackButton.vue";
-import Layout from "../Shared/Layout.vue";
+import BackButton from "../Components/Main/BackButton.vue";
+import Layout from "../Components/Main/Layout.vue";
 import { onMounted } from "vue";
-import Alert from "../Shared/alert.vue";
-import CCTVModal from "../Shared/CCTVModal.vue";
+import Alert from "../Components/alert.vue";
+import CCTVModal from "../Components/Spbu/CCTVModal.vue";
+import SpbuSidebar1 from "../Components/Spbu/SpbuSidebar1.vue";
+import SpbuSidebar2 from "../Components/Spbu/SpbuSidebar2.vue";
+
 let myModal;
 let ModalCCTV;
 

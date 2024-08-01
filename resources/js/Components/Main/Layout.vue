@@ -1,9 +1,9 @@
 <script>
-import navbar from "./nav.vue";
+import Nav from "./Nav.vue";
 
 export default {
     components: {
-        navbar,
+        Nav,
     },
     props: {
         title: String,
@@ -22,7 +22,7 @@ export default {
 <template>
     <main>
         <header>
-            <navbar />
+            <Nav />
         </header>
         <article>
             <slot />

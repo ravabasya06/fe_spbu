@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from "vue";
-import Alert from "./alert.vue";
+import Alert from "../alert.vue";
 let myModal;
 
 onMounted(() => {

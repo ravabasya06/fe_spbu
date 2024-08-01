@@ -1,5 +1,5 @@
 <script setup>
-import CCTVModal from "../Shared/CCTVModal.vue";
+import CCTVModal from "./CCTVModal.vue";
 import { onMounted } from "vue";
 let myModal;
 

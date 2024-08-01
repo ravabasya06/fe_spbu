@@ -1,5 +1,5 @@
 <script>
-import Layout from "../../Shared/Layout.vue";
+import Layout from "../../Components/Main/Layout.vue";
 export default {
     components: {
         Layout,
