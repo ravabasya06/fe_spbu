@@ -1,17 +1,8 @@
 <script setup>
 import BackButton from "../Components/Main/BackButton.vue";
 import Layout from "../Components/Main/Layout.vue";
-import { onMounted } from "vue";
 import SpbuSidebar1 from "../Components/Spbu/SpbuSidebar1.vue";
 import SpbuSidebar2 from "../Components/Spbu/SpbuSidebar2.vue";
-
-let myModal;
-let ModalCCTV;
-
-onMounted(() => {
-    myModal = new bootstrap.Modal(document.getElementById("alertpopup"));
-    ModalCCTV = new bootstrap.Modal(document.getElementById("cctvpopup"));
-});
 </script>
 <script>
 export default {
@@ -23,6 +14,10 @@ export default {
         spbu: Object,
         cctvs: Object,
         dispensers: Object,
+        fireDetections: Object,
+        fraudDetections: Object,
+        objectDetections: Object,
+        vehicles: Object,
 
         totalWoman: Number,
         totalMan: Number,
@@ -46,6 +41,9 @@ export default {
                 :totalFraud="totalFraud"
                 :totalObject="totalObject"
                 :totalVehicle="totalVehicle"
+                :fireDetections="fireDetections"
+                :fraudDetections="fraudDetections"
+                :objectDetections="objectDetections"
             />
             <div class="main-content">
                 <h1>{{ spbu.name }}</h1>

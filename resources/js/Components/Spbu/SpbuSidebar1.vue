@@ -16,6 +16,9 @@ const showPopup = () => {
 export default {
     props: {
         dispensers: Object,
+        fireDetections: Object,
+        fraudDetections: Object,
+        objectDetections: Object,
 
         totalFire: Number,
         totalFraud: Number,

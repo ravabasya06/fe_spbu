@@ -12,68 +12,59 @@ use App\Models\Vehicle;
 
 class SpbuController extends Controller
 {
-    public function index($spbu_id){
-        $spbu = $this->fetchspbu($spbu_id);
-        $dispensers = $this->fetchdispensers($spbu_id);
-        $cctvs = $this->fetchcctvs($spbu_id);
-        $detections = $this->fetchdetections($spbu_id);
-        $vehicles = $this->fetchvehicles($spbu_id);
+    public function index($spbu_id)
+    {
+        $spbu = $this->fetchSpbu($spbu_id);
+        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id);
+        $cctvs = $this->fetchModel(Cctv::class, $spbu_id);
+        $detections = $this->fetchModel(Detection::class, $spbu_id);
+        $vehicles = $this->fetchModel(Vehicle::class, $spbu_id);
+        
+        // $fireDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 1); cek isinya nih ada apa engga
+        $fraudDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 2);
+        $objectDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 3);
 
         $totalWoman = $cctvs->sum('woman');
         $totalMan = $cctvs->sum('man');
-        $totalMan = $cctvs->sum('man');
-        $totalMan = $cctvs->sum('man');
         $grandTotal = $totalWoman + $totalMan;
 
-        $totalFire = $detections->where('type_detection_id', '=', '1')->count('detection_id');
-        $totalFraud = $detections->where('type_detection_id', '=', '2')->count('detection_id');
-        $totalObject = $detections->where('type_detection_id', '=', '3')->count('detection_id');
-        
-        $totalVehicle = $vehicles->count('vehicle_id');
+        $totalFire = $detections->where('type_detection_id', 1)->count();
+        $totalFraud = $detections->where('type_detection_id', 2)->count();
+        $totalObject = $detections->where('type_detection_id', 3)->count();
+        $totalVehicle = $vehicles->count();
 
         return Inertia::render('Spbu', [
             'spbu' => $spbu,
             'dispensers' => $dispensers,
             'cctvs' => $cctvs,
+            'detections' => $detections,
+            'vehicles' => $vehicles,
 
             'totalWoman' => $totalWoman,
             'totalMan' => $totalMan,
             'grandTotal' => $grandTotal,
-
+            
             'totalFire' => $totalFire,
             'totalFraud' => $totalFraud,
             'totalObject' => $totalObject,
-
             'totalVehicle' => $totalVehicle,
         ]);
     }
 
-    public function fetchspbu($spbu_id){
+    public function fetchSpbu($spbu_id){
         $spbu = Spbu::find($spbu_id);
         return $spbu;
     }
-
-    public function fetchdispensers($spbu_id){
-        $dispensers = Dispenser::orderByRaw('updated_at - created_at ASC')
-        ->where('spbu_id', '=', $spbu_id)->get();
-        return $dispensers;
+    
+    public function fetchModel($model, $spbu_id)
+    {
+        return $model::where('spbu_id', $spbu_id)->orderByRaw('updated_at - created_at ASC')->get();
     }
 
-    public function fetchcctvs($spbu_id){
-        $cctvs = Cctv::orderByRaw('updated_at - created_at ASC')
-        ->where('spbu_id', '=', $spbu_id)->get();
-        return $cctvs;
-    }
-
-    public function fetchdetections($spbu_id){
-        $detections = Detection::orderByRaw('updated_at - created_at ASC')
-        ->where('spbu_id', '=', $spbu_id)->get();
-        return $detections;
-    }
-
-    public function fetchvehicles($spbu_id){
-        $vehicles = Vehicle::orderByRaw('updated_at - created_at ASC')
-        ->where('spbu_id', '=', $spbu_id)->get();
-        return $vehicles;
-    }
+    public function fetchDetectionsByType($spbu_id, $type_id)
+{
+    return Detection::where('spbu_id', $spbu_id)
+        ->where('type_detection_id', $type_id)
+        ->count();
+}
 }
