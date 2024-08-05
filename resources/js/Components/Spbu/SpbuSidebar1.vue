@@ -118,8 +118,10 @@ export default {
             </div>
             <div class="custom-modal-body">
                 <div v-if="modalType === 'fire'">
-                    <h2>Fire Detection Details</h2>
-                    <p>Total Fire Detections: {{ totalFire }}</p>
+                    <div class="body-title">
+                        <h2>Fire Detection Details</h2>
+                        <p>Total Fire Detections: {{ totalFire }}</p>
+                    </div>
                     <div class="detection">
                         <div class="table-container">
                             <table>
@@ -155,8 +157,10 @@ export default {
                     </div>
                 </div>
                 <div v-if="modalType === 'fraud'">
-                    <h2>Fraud Detection Details</h2>
-                    <p>Total Fraud Detections: {{ totalFraud }}</p>
+                    <div class="body-title">
+                        <h2>Fraud Detection Details</h2>
+                        <p>Total Fraud Detections: {{ totalFraud }}</p>
+                    </div>
                     <div class="detection">
                         <div class="table-container">
                             <table>
@@ -192,8 +196,10 @@ export default {
                     </div>
                 </div>
                 <div v-if="modalType === 'object'">
-                    <h2>Object Detection Details</h2>
-                    <p>Total Object Detections: {{ totalObject }}</p>
+                    <div class="body-title">
+                        <h2>Object Detection Details</h2>
+                        <p>Total Object Detections: {{ totalObject }}</p>
+                    </div>
                     <div class="detection">
                         <div class="table-container">
                             <table>
@@ -229,8 +235,10 @@ export default {
                     </div>
                 </div>
                 <div v-if="modalType === 'vehicle'">
-                    <h2>Vehicle Detection Details</h2>
-                    <p>Total Vehicle Detections: {{ totalVehicle }}</p>
+                    <div class="body-title">
+                        <h2>Vehicle Detection Details</h2>
+                        <p>Total Vehicle Detections: {{ totalVehicle }}</p>
+                    </div>
                     <div class="detection-modal">
                         <div class="vehicle-item">
                             <font-awesome-icon
@@ -401,8 +409,8 @@ td {
 .custom-modal-body {
     margin-top: 20px;
 }
-.custom-modal-body h2,
-.custom-modal-body p {
+.body-title p,
+.body-title h2 {
     padding-left: 10px;
 }
 
