@@ -19,9 +19,12 @@ class DetectionFactory extends Factory
      */
     public function definition(): array
     {
+        $spbu = Spbu::inRandomOrder()->first();
+        $cctv = Cctv::where('spbu_id', $spbu->spbu_id)->inRandomOrder()->first();
+
         return [
-            'spbu_id' => Spbu::inRandomOrder()->first()->spbu_id,
-            'cctv_id' => Cctv::inRandomOrder()->first()->cctv_id,
+            'spbu_id' => $spbu->spbu_id,
+            'cctv_id' => $cctv->cctv_id,
             'type_detection_id' => TypeDetection::inRandomOrder()->first()->type_detection_id,
         ];
     }
