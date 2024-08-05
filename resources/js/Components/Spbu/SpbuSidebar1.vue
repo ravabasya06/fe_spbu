@@ -13,26 +13,22 @@ const closeModal = () => {
     showModal.value = false;
     modalType.value = "";
 };
-</script>
 
-<script>
-export default {
-    props: {
-        spbu: Object,
-        dispensers: Array,
-        fireDetections: Object,
-        fraudDetections: Object,
-        objectDetections: Object,
-        totalFire: Number,
-        totalFraud: Number,
-        totalObject: Number,
-        totalMotor: Number,
-        totalCar: Number,
-        totalBus: Number,
-        totalTruck: Number,
-        totalVehicle: Number,
-    },
-};
+defineProps([
+    "spbu",
+    "dispensers",
+    "fireDetections",
+    "fraudDetections",
+    "objectDetections",
+    "totalFire",
+    "totalFraud",
+    "totalObject",
+    "totalMotor",
+    "totalCar",
+    "totalBus",
+    "totalTruck",
+    "totalVehicle",
+]);
 </script>
 
 <template>

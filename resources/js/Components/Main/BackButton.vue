@@ -1,9 +1,5 @@
-<script>
-export default {
-    props: {
-        link: String,
-    },
-};
+<script setup>
+defineProps(["link"]);
 </script>
 
 <template>

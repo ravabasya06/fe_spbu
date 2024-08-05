@@ -2,28 +2,18 @@
 import CCTVModal from "./CCTVModal.vue";
 import { onMounted, ref } from "vue";
 let myModal;
-const selectedLink = ref("");
+const selectedCctv = ref("");
 
 onMounted(() => {
     myModal = new bootstrap.Modal(document.getElementById("cctvpopup"));
 });
 
-const showcctv = (link) => {
-    selectedLink.value = link;
+const showcctv = (Cctv) => {
+    selectedCctv.value = Cctv;
     myModal.show();
 };
-</script>
 
-<script>
-export default {
-    props: {
-        cctvs: Object,
-
-        totalWoman: Number,
-        totalMan: Number,
-        grandTotal: Number,
-    },
-};
+defineProps(["cctvs", "totalWoman", "totalMan", "grandTotal"]);
 </script>
 <template>
     <div class="sidebar-right">
@@ -63,9 +53,8 @@ export default {
                             <tbody>
                                 <tr v-for="(cctv, index) in cctvs">
                                     <td
-                                        @click="showcctv(cctv.link)"
+                                        @click="showcctv(cctv)"
                                         class="showcctv"
-                                        :link="`${cctv.link}`"
                                     >
                                         CCTV {{ index + 1 }}
                                     </td>
@@ -75,7 +64,7 @@ export default {
                                     <td class="wanita-col">
                                         {{ cctv.woman }}
                                     </td>
-                                    <CCTVModal :link="selectedLink" />
+                                    <CCTVModal :cctv="selectedCctv" />
                                 </tr>
                             </tbody>
                         </table>

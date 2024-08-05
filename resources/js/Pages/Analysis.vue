@@ -1,20 +1,9 @@
-<script>
+<script setup>
 import Search from "../Components/Analysis/Search.vue";
-import BackButton from "../Components/Main/BackButton.vue";
 import Layout from "../Components/Main/Layout.vue";
 import AnalysisCard from "../Components/Analysis/AnalysisCard.vue";
 
-export default {
-    components: {
-        Search,
-        BackButton,
-        Layout,
-        AnalysisCard,
-    },
-    props: {
-        spbus: Array,
-    },
-};
+defineProps(["spbus"]);
 </script>
 
 <template>

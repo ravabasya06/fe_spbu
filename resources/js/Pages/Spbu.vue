@@ -3,37 +3,27 @@ import BackButton from "../Components/Main/BackButton.vue";
 import Layout from "../Components/Main/Layout.vue";
 import SpbuSidebar1 from "../Components/Spbu/SpbuSidebar1.vue";
 import SpbuSidebar2 from "../Components/Spbu/SpbuSidebar2.vue";
-</script>
-<script>
-export default {
-    components: {
-        Layout,
-        BackButton,
-    },
-    props: {
-        spbu: Object,
-        cctvs: Object,
-        dispensers: Object,
-        fireDetections: Object,
-        fraudDetections: Object,
-        objectDetections: Object,
-        vehicles: Object,
 
-        totalWoman: Number,
-        totalMan: Number,
-        grandTotal: Number,
-
-        totalFire: Number,
-        totalFraud: Number,
-        totalObject: Number,
-
-        totalMotor: Number,
-        totalCar: Number,
-        totalBus: Number,
-        totalTruck: Number,
-        totalVehicle: Number,
-    },
-};
+defineProps([
+    "spbu",
+    "cctvs",
+    "dispensers",
+    "fireDetections",
+    "fraudDetections",
+    "objectDetections",
+    "vehicles",
+    "totalWoman",
+    "totalMan",
+    "grandTotal",
+    "totalFire",
+    "totalFraud",
+    "totalObject",
+    "totalMotor",
+    "totalCar",
+    "totalBus",
+    "totalTruck",
+    "totalVehicle",
+]);
 </script>
 
 <template>

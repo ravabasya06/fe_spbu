@@ -1,9 +1,5 @@
-<script>
-export default {
-    props: {
-        link: String,
-    },
-};
+<script setup>
+defineProps(["cctv"]);
 </script>
 
 <template>
@@ -19,7 +15,7 @@ export default {
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        CCTV
+                        CCTV {{ cctv.cctv_id }}
                     </h1>
                     <button
                         type="button"
@@ -29,7 +25,7 @@ export default {
                     ></button>
                 </div>
                 <div class="modal-body">
-                    <img :src="`${link}`" alt="" class="placeholder-img" />
+                    <img :src="`${cctv.link}`" alt="" class="placeholder-img" />
                 </div>
             </div>
         </div>

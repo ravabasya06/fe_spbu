@@ -1,9 +1,5 @@
-<script>
-export default {
-    props: {
-        spbus: Array,
-    },
-};
+<script setup>
+defineProps(["spbus"]);
 </script>
 <template>
     <div class="container-cards">

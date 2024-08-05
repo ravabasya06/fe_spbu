@@ -1,22 +1,16 @@
-<script>
+<script setup>
+import { watch } from "vue";
 import Nav from "./Nav.vue";
 
-export default {
-    components: {
-        Nav,
+const props = defineProps(["title"]);
+
+watch(
+    () => props.title,
+    (newTitle) => {
+        document.title = newTitle;
     },
-    props: {
-        title: String,
-    },
-    watch: {
-        title: {
-            immediate: true,
-            handler(page) {
-                document.title = page;
-            },
-        },
-    },
-};
+    { immediate: true },
+);
 </script>
 
 <template>

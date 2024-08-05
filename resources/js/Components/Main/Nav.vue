@@ -1,21 +1,18 @@
-<script>
-export default {
-    methods: {
-        toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            if (sidebar.style.width === "250px") {
-                sidebar.style.width = "0";
-            } else {
-                sidebar.style.width = "250px";
-            }
-        },
-        closeSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.style.width = "0";
-        },
-    },
-};
+<script setup>
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    if (sidebar.style.width === "250px") {
+        sidebar.style.width = "0";
+    } else {
+        sidebar.style.width = "250px";
+    }
+}
+function closeSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.style.width = "0";
+}
 </script>
+
 <template>
     <nav class="navbar">
         <div class="menu-icon" @click="toggleSidebar">
