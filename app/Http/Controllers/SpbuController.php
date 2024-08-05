@@ -20,9 +20,9 @@ class SpbuController extends Controller
         $detections = $this->fetchModel(Detection::class, $spbu_id);
         $vehicles = $this->fetchModel(Vehicle::class, $spbu_id);
         
-        $fireDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 1);
-        $fraudDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 2);
-        $objectDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 3);
+        $fireDetections = $detections->where('type_detection_id', 1);
+        $fraudDetections = $detections->where('type_detection_id', 2);
+        $objectDetections = $detections->where('type_detection_id', 3);
 
         $totalWoman = $cctvs->sum('woman');
         $totalMan = $cctvs->sum('man');
