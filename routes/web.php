@@ -11,7 +11,6 @@ use App\Http\Controllers\AnalysisController;
 //     return view('welcome');
 // });
 Route::get('/', [PagesController::class, 'index']);
-Route::get('/about', [PagesController::class, 'about']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/analysis', [AnalysisController::class, 'index']);
 Route::get('/spbu/{id}', [SpbuController::class, 'index']);
