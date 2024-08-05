@@ -26,6 +26,10 @@ export default {
         totalFire: Number,
         totalFraud: Number,
         totalObject: Number,
+        totalMotor: Number,
+        totalCar: Number,
+        totalBus: Number,
+        totalTruck: Number,
         totalVehicle: Number,
     },
 };
@@ -123,11 +127,19 @@ export default {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Add your fire detection rows here -->
-                                    <tr>
-                                        <td class="no">1</td>
-                                        <td class="date-time">01:20</td>
-                                        <td class="cctv">CCTV 1</td>
+                                    <tr
+                                        v-for="(
+                                            fireDetection, index
+                                        ) in fireDetections"
+                                        :key="index"
+                                    >
+                                        <td class="no">{{ index + 1 }}</td>
+                                        <td class="date-time">
+                                            {{ fireDetection.created_at }}
+                                        </td>
+                                        <td class="cctv">
+                                            {{ fireDetection.cctv_id }}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -148,11 +160,19 @@ export default {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Add your fraud detection rows here -->
-                                    <tr>
-                                        <td class="no">1</td>
-                                        <td class="date-time">01:30</td>
-                                        <td class="cctv">CCTV 2</td>
+                                    <tr
+                                        v-for="(
+                                            fraudDetection, index
+                                        ) in fraudDetections"
+                                        :key="index"
+                                    >
+                                        <td class="no">{{ index + 1 }}</td>
+                                        <td class="date-time">
+                                            {{ fraudDetection.created_at }}
+                                        </td>
+                                        <td class="cctv">
+                                            {{ fraudDetection.cctv_id }}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -173,11 +193,19 @@ export default {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Add your object detection rows here -->
-                                    <tr>
-                                        <td class="no">1</td>
-                                        <td class="date-time">01:40</td>
-                                        <td class="cctv">CCTV 3</td>
+                                    <tr
+                                        v-for="(
+                                            objectDetection, index
+                                        ) in objectDetections"
+                                        :key="index"
+                                    >
+                                        <td class="no">{{ index + 1 }}</td>
+                                        <td class="date-time">
+                                            {{ objectDetection.created_at }}
+                                        </td>
+                                        <td class="cctv">
+                                            {{ objectDetection.cctv_id }}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -190,19 +218,19 @@ export default {
                     <div class="detection-modal">
                         <div class="vehicle-item">
                             <font-awesome-icon
-                                icon="car"
-                                class="fa-2xl"
-                                style="color: #000"
-                            />
-                            <p>0</p>
-                        </div>
-                        <div class="vehicle-item">
-                            <font-awesome-icon
                                 icon="motorcycle"
                                 class="fa-2xl"
                                 style="color: #000"
                             />
-                            <p>0</p>
+                            <p>{{ totalMotor }}</p>
+                        </div>
+                        <div class="vehicle-item">
+                            <font-awesome-icon
+                                icon="car"
+                                class="fa-2xl"
+                                style="color: #000"
+                            />
+                            <p>{{ totalCar }}</p>
                         </div>
                         <div class="vehicle-item">
                             <font-awesome-icon
@@ -210,7 +238,7 @@ export default {
                                 class="fa-2xl"
                                 style="color: #000"
                             />
-                            <p>0</p>
+                            <p>{{ totalBus }}</p>
                         </div>
                         <div class="vehicle-item">
                             <font-awesome-icon
@@ -218,7 +246,7 @@ export default {
                                 class="fa-2xl"
                                 style="color: #000"
                             />
-                            <p>0</p>
+                            <p>{{ totalTruck }}</p>
                         </div>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ class SpbuController extends Controller
         $detections = $this->fetchModel(Detection::class, $spbu_id);
         $vehicles = $this->fetchModel(Vehicle::class, $spbu_id);
         
-        // $fireDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 1); cek isinya nih ada apa engga
+        $fireDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 1);
         $fraudDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 2);
         $objectDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 3);
 
@@ -31,6 +31,10 @@ class SpbuController extends Controller
         $totalFire = $detections->where('type_detection_id', 1)->count();
         $totalFraud = $detections->where('type_detection_id', 2)->count();
         $totalObject = $detections->where('type_detection_id', 3)->count();
+        $totalMotor = $vehicles->where('type_vehicle_id', 1)->count();
+        $totalCar = $vehicles->where('type_vehicle_id', 2)->count();
+        $totalBus = $vehicles->where('type_vehicle_id', 3)->count();
+        $totalTruck = $vehicles->where('type_vehicle_id', 4)->count();
         $totalVehicle = $vehicles->count();
 
         return Inertia::render('Spbu', [
@@ -47,7 +51,15 @@ class SpbuController extends Controller
             'totalFire' => $totalFire,
             'totalFraud' => $totalFraud,
             'totalObject' => $totalObject,
+            'totalMotor' => $totalMotor,
+            'totalCar' => $totalCar,
+            'totalBus' => $totalBus,
+            'totalTruck' => $totalTruck,
             'totalVehicle' => $totalVehicle,
+
+            'fireDetections' => $fireDetections,
+            'fraudDetections' => $fraudDetections,
+            'objectDetections' => $objectDetections,
         ]);
     }
 

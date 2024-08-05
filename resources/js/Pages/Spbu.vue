@@ -27,6 +27,10 @@ export default {
         totalFraud: Number,
         totalObject: Number,
 
+        totalMotor: Number,
+        totalCar: Number,
+        totalBus: Number,
+        totalTruck: Number,
         totalVehicle: Number,
     },
 };
@@ -40,6 +44,10 @@ export default {
                 :totalFire="totalFire"
                 :totalFraud="totalFraud"
                 :totalObject="totalObject"
+                :totalMotor="totalMotor"
+                :totalCar="totalCar"
+                :totalBus="totalBus"
+                :totalTruck="totalTruck"
                 :totalVehicle="totalVehicle"
                 :fireDetections="fireDetections"
                 :fraudDetections="fraudDetections"
