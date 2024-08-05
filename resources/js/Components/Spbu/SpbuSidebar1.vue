@@ -48,18 +48,22 @@ export default {
                                 <th>Jumlah Antrian</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr
-                                v-for="(dispenser, index) in dispensers"
-                                :key="index"
-                            >
-                                <td>DISPENSER {{ index + 1 }}</td>
-                                <td class="jumlah-antrian">
-                                    {{ dispenser.queue }}
-                                </td>
-                            </tr>
-                        </tbody>
                     </table>
+                    <div class="table-body-wrapper">
+                        <table>
+                            <tbody>
+                                <tr
+                                    v-for="(dispenser, index) in dispensers"
+                                    :key="index"
+                                >
+                                    <td>DISPENSER {{ index + 1 }}</td>
+                                    <td class="jumlah-antrian">
+                                        {{ dispenser.queue }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -104,7 +108,7 @@ export default {
         </div>
     </div>
 
-    <div v-if="showModal" class="custom-modal" @click="closeModal">
+    <div v-if="showModal" class="custom-modal">
         <div class="custom-modal-content">
             <div class="custom-modal-header">
                 <h5>DETECTION DETAILS</h5>
@@ -126,23 +130,27 @@ export default {
                                         <th class="cctv">CCTV</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr
-                                        v-for="(
-                                            fireDetection, index
-                                        ) in fireDetections"
-                                        :key="index"
-                                    >
-                                        <td class="no">{{ index + 1 }}</td>
-                                        <td class="date-time">
-                                            {{ fireDetection.created_at }}
-                                        </td>
-                                        <td class="cctv">
-                                            {{ fireDetection.cctv_id }}
-                                        </td>
-                                    </tr>
-                                </tbody>
                             </table>
+                            <div class="table-body-wrapper">
+                                <table>
+                                    <tbody>
+                                        <tr
+                                            v-for="(
+                                                fireDetection, index
+                                            ) in fireDetections"
+                                            :key="index"
+                                        >
+                                            <td class="no">{{ index + 1 }}</td>
+                                            <td class="date-time">
+                                                {{ fireDetection.created_at }}
+                                            </td>
+                                            <td class="cctv">
+                                                {{ fireDetection.cctv_id }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -159,23 +167,27 @@ export default {
                                         <th class="cctv">CCTV</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr
-                                        v-for="(
-                                            fraudDetection, index
-                                        ) in fraudDetections"
-                                        :key="index"
-                                    >
-                                        <td class="no">{{ index + 1 }}</td>
-                                        <td class="date-time">
-                                            {{ fraudDetection.created_at }}
-                                        </td>
-                                        <td class="cctv">
-                                            {{ fraudDetection.cctv_id }}
-                                        </td>
-                                    </tr>
-                                </tbody>
                             </table>
+                            <div class="table-body-wrapper">
+                                <table>
+                                    <tbody>
+                                        <tr
+                                            v-for="(
+                                                fraudDetection, index
+                                            ) in fraudDetections"
+                                            :key="index"
+                                        >
+                                            <td class="no">{{ index + 1 }}</td>
+                                            <td class="date-time">
+                                                {{ fraudDetection.created_at }}
+                                            </td>
+                                            <td class="cctv">
+                                                {{ fraudDetection.cctv_id }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -192,23 +204,27 @@ export default {
                                         <th class="cctv">CCTV</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr
-                                        v-for="(
-                                            objectDetection, index
-                                        ) in objectDetections"
-                                        :key="index"
-                                    >
-                                        <td class="no">{{ index + 1 }}</td>
-                                        <td class="date-time">
-                                            {{ objectDetection.created_at }}
-                                        </td>
-                                        <td class="cctv">
-                                            {{ objectDetection.cctv_id }}
-                                        </td>
-                                    </tr>
-                                </tbody>
                             </table>
+                            <div class="table-body-wrapper">
+                                <table>
+                                    <tbody>
+                                        <tr
+                                            v-for="(
+                                                objectDetection, index
+                                            ) in objectDetections"
+                                            :key="index"
+                                        >
+                                            <td class="no">{{ index + 1 }}</td>
+                                            <td class="date-time">
+                                                {{ objectDetection.created_at }}
+                                            </td>
+                                            <td class="cctv">
+                                                {{ objectDetection.cctv_id }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -379,11 +395,15 @@ td {
     align-items: center;
     border-radius: 5px 5px 0 0;
     background-color: #c32130;
-    padding-bottom: 10px;
+    padding-left: 10px;
 }
 
 .custom-modal-body {
     margin-top: 20px;
+}
+.custom-modal-body h2,
+.custom-modal-body p {
+    padding-left: 10px;
 }
 
 .close-button {
