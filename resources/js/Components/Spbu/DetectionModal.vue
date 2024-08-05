@@ -1,7 +1,52 @@
+<script setup>
+import { ref, watch } from "vue";
+const props = defineProps(["detections", "spbu"]);
+const totalDetection = ref(0);
+const detectionTitle = ref("???");
+
+// watch(
+//     () => props.detections?.[0]?.type_detection_id,
+//     (newVal) => {
+//         switch (newVal) {
+//             case 1:
+//                 detectionTitle.value = "Fire";
+//                 break;
+//             case 2:
+//                 detectionTitle.value = "Fraud";
+//                 break;
+//             case 3:
+//                 detectionTitle.value = "Object";
+//                 break;
+//             default:
+//                 detectionTitle.value = "???";
+//         }
+//     },
+//     { immediate: true },
+// );
+
+watch(
+    () => props.detections,
+    (newValue) => {
+        totalDetection.value = newValue
+            ? Object.keys(props.detections).length
+            : 0;
+    },
+    { immediate: true },
+);
+
+// watch(
+//     () => props.detections?.[0]?.type_detection_id,
+//     (newValue) => {
+//         console.log("Detections updated:", newValue);
+//     },
+//     { immediate: true },
+// );
+</script>
+
 <template>
     <div
         class="modal fade"
-        id="alertpopup"
+        id="detectionpopup"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -10,7 +55,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        ??? DETECTION
+                        <!-- {{ detectionTitle }} Detection -->
                     </h1>
                     <button
                         type="button"
@@ -20,8 +65,8 @@
                     ></button>
                 </div>
                 <div class="modal-body">
-                    <h2>Nama cabang pertamina</h2>
-                    <p>Total Detection: 1</p>
+                    <h2>{{ spbu.name }}</h2>
+                    <p>Total Detection: {{ totalDetection }}</p>
                     <div class="detection">
                         <div class="table-container">
                             <table>
@@ -36,17 +81,20 @@
                             <div class="table-body-wrapper">
                                 <table>
                                     <tbody>
-                                        <tr>
-                                            <td class="no">1</td>
-                                            <td class="date-time">01:20</td>
-                                            <td class="cctv">CCTV 1</td>
+                                        <tr
+                                            v-for="(
+                                                detection, index
+                                            ) in detections"
+                                            :key="index"
+                                        >
+                                            <td class="no">{{ index + 1 }}</td>
+                                            <td class="date-time">
+                                                {{ detection.created_at }}
+                                            </td>
+                                            <td class="cctv">
+                                                {{ detection.cctv_id }}
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td class="no">2</td>
-                                            <td class="date-time">01:30</td>
-                                            <td class="cctv">CCTV 2</td>
-                                        </tr>
-                                        <!-- Add more rows as needed -->
                                     </tbody>
                                 </table>
                             </div>

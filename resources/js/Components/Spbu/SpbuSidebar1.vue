@@ -1,17 +1,16 @@
 <script setup>
-import { ref } from "vue";
+import DetectionModal from "./DetectionModal.vue";
+import { onMounted, ref } from "vue";
+let myModal;
+const selectedType = ref("");
 
-const showModal = ref(false);
-const modalType = ref(""); // To track which modal to show
+onMounted(() => {
+    myModal = new bootstrap.Modal(document.getElementById("detectionpopup"));
+});
 
-const showPopup = (type) => {
-    modalType.value = type;
-    showModal.value = true;
-};
-
-const closeModal = () => {
-    showModal.value = false;
-    modalType.value = "";
+const showdetection = (type) => {
+    selectedType.value = type;
+    myModal.show();
 };
 
 defineProps([
@@ -64,7 +63,7 @@ defineProps([
             </div>
         </div>
         <div class="detection">
-            <div class="detection-item" @click="showPopup('fire')">
+            <div class="detection-item" @click="showdetection(fireDetections)">
                 <img
                     src="../../../../public/images/fire.png"
                     alt="Fire Detection"
@@ -74,7 +73,7 @@ defineProps([
                     <p>{{ totalFire }}</p>
                 </div>
             </div>
-            <div class="detection-item" @click="showPopup('fraud')">
+            <div class="detection-item" @click="showdetection(fraudDetections)">
                 <img
                     src="../../../../public/images/fraud.png"
                     alt="Fraud Detection"
@@ -84,7 +83,10 @@ defineProps([
                     <p>{{ totalFraud }}</p>
                 </div>
             </div>
-            <div class="detection-item" @click="showPopup('object')">
+            <div
+                class="detection-item"
+                @click="showdetection(objectDetections)"
+            >
                 <img
                     src="../../../../public/images/object.png"
                     alt="Object Detection"
@@ -94,7 +96,7 @@ defineProps([
                     <p>{{ totalObject }}</p>
                 </div>
             </div>
-            <div class="detection-item" @click="showPopup('vehicle')">
+            <div class="detection-item" @click="showdetection(vehicles)">
                 <img src="../../../../public/images/car.png" alt="Vehicle" />
                 <div class="detection-text">
                     <p>TOTAL KENDARAAN</p>
@@ -102,177 +104,48 @@ defineProps([
                 </div>
             </div>
         </div>
+        <DetectionModal :detections="selectedType" :spbu="spbu" />
     </div>
-
-    <div v-if="showModal" class="custom-modal">
-        <div class="custom-modal-content">
-            <div class="custom-modal-header">
-                <h5>DETECTION DETAILS</h5>
-                <button @click="closeModal" class="close-button">
-                    &times;
-                </button>
+    <!-- <div v-if="modalType === 'vehicle'">
+        <div class="body-title">
+            <h2>Vehicle Detection Details</h2>
+            <p>Total Vehicle Detections: {{ totalVehicle }}</p>
+        </div>
+        <div class="detection-modal">
+            <div class="vehicle-item">
+                <font-awesome-icon
+                    icon="motorcycle"
+                    class="fa-2xl"
+                    style="color: #000"
+                />
+                <p>{{ totalMotor }}</p>
             </div>
-            <div class="custom-modal-body">
-                <div v-if="modalType === 'fire'">
-                    <div class="body-title">
-                        <h2>Fire Detection Details</h2>
-                        <p>Total Fire Detections: {{ totalFire }}</p>
-                    </div>
-                    <div class="detection">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th class="no">NO</th>
-                                        <th class="date-time">DATE TIME</th>
-                                        <th class="cctv">CCTV</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <div class="table-body-wrapper">
-                                <table>
-                                    <tbody>
-                                        <tr
-                                            v-for="(
-                                                fireDetection, index
-                                            ) in fireDetections"
-                                            :key="index"
-                                        >
-                                            <td class="no">{{ index + 1 }}</td>
-                                            <td class="date-time">
-                                                {{ fireDetection.created_at }}
-                                            </td>
-                                            <td class="cctv">
-                                                {{ fireDetection.cctv_id }}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div v-if="modalType === 'fraud'">
-                    <div class="body-title">
-                        <h2>Fraud Detection Details</h2>
-                        <p>Total Fraud Detections: {{ totalFraud }}</p>
-                    </div>
-                    <div class="detection">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th class="no">NO</th>
-                                        <th class="date-time">DATE TIME</th>
-                                        <th class="cctv">CCTV</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <div class="table-body-wrapper">
-                                <table>
-                                    <tbody>
-                                        <tr
-                                            v-for="(
-                                                fraudDetection, index
-                                            ) in fraudDetections"
-                                            :key="index"
-                                        >
-                                            <td class="no">{{ index + 1 }}</td>
-                                            <td class="date-time">
-                                                {{ fraudDetection.created_at }}
-                                            </td>
-                                            <td class="cctv">
-                                                {{ fraudDetection.cctv_id }}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div v-if="modalType === 'object'">
-                    <div class="body-title">
-                        <h2>Object Detection Details</h2>
-                        <p>Total Object Detections: {{ totalObject }}</p>
-                    </div>
-                    <div class="detection">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th class="no">NO</th>
-                                        <th class="date-time">DATE TIME</th>
-                                        <th class="cctv">CCTV</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <div class="table-body-wrapper">
-                                <table>
-                                    <tbody>
-                                        <tr
-                                            v-for="(
-                                                objectDetection, index
-                                            ) in objectDetections"
-                                            :key="index"
-                                        >
-                                            <td class="no">{{ index + 1 }}</td>
-                                            <td class="date-time">
-                                                {{ objectDetection.created_at }}
-                                            </td>
-                                            <td class="cctv">
-                                                {{ objectDetection.cctv_id }}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div v-if="modalType === 'vehicle'">
-                    <div class="body-title">
-                        <h2>Vehicle Detection Details</h2>
-                        <p>Total Vehicle Detections: {{ totalVehicle }}</p>
-                    </div>
-                    <div class="detection-modal">
-                        <div class="vehicle-item">
-                            <font-awesome-icon
-                                icon="motorcycle"
-                                class="fa-2xl"
-                                style="color: #000"
-                            />
-                            <p>{{ totalMotor }}</p>
-                        </div>
-                        <div class="vehicle-item">
-                            <font-awesome-icon
-                                icon="car"
-                                class="fa-2xl"
-                                style="color: #000"
-                            />
-                            <p>{{ totalCar }}</p>
-                        </div>
-                        <div class="vehicle-item">
-                            <font-awesome-icon
-                                icon="bus"
-                                class="fa-2xl"
-                                style="color: #000"
-                            />
-                            <p>{{ totalBus }}</p>
-                        </div>
-                        <div class="vehicle-item">
-                            <font-awesome-icon
-                                icon="truck"
-                                class="fa-2xl"
-                                style="color: #000"
-                            />
-                            <p>{{ totalTruck }}</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="vehicle-item">
+                <font-awesome-icon
+                    icon="car"
+                    class="fa-2xl"
+                    style="color: #000"
+                />
+                <p>{{ totalCar }}</p>
+            </div>
+            <div class="vehicle-item">
+                <font-awesome-icon
+                    icon="bus"
+                    class="fa-2xl"
+                    style="color: #000"
+                />
+                <p>{{ totalBus }}</p>
+            </div>
+            <div class="vehicle-item">
+                <font-awesome-icon
+                    icon="truck"
+                    class="fa-2xl"
+                    style="color: #000"
+                />
+                <p>{{ totalTruck }}</p>
             </div>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <style scoped>

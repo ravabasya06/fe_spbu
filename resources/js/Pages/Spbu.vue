@@ -30,6 +30,7 @@ defineProps([
     <Layout title="Profile SPBU">
         <main class="spbu">
             <SpbuSidebar1
+                :spbu="spbu"
                 :dispensers="dispensers"
                 :totalFire="totalFire"
                 :totalFraud="totalFraud"
