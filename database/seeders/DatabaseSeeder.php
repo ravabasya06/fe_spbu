@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeVehicleSeeder::class);
 
         Spbu::factory(5)->create();
-        Dispenser::factory(10)->create();
-        Cctv::factory(10)->create();
+        Dispenser::factory(20)->create();
+        Cctv::factory(20)->create();
         Vehicle::factory(20)->create();
-        Detection::factory(20)->create();
+        Detection::factory(40)->create();
 
         // TypeVehicle::create(['type' => 'Motor']);
 
