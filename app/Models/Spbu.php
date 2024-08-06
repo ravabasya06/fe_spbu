@@ -41,6 +41,6 @@ class Spbu extends Model
 
     public function vehicles()
     {
-        return $this->hasMany(Vehicles::class, 'spbu_id', 'spbu_id');
+        return $this->hasMany(Vehicle::class, 'spbu_id', 'spbu_id');
     }
 }
