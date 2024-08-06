@@ -1,28 +1,7 @@
 <script setup>
 import { ref, watch } from "vue";
-const props = defineProps(["detections", "spbu"]);
+const props = defineProps(["detections", "spbu", "titleType"]);
 const totalDetection = ref(0);
-const detectionTitle = ref("???");
-
-// watch(
-//     () => props.detections?.[0]?.type_detection_id,
-//     (newVal) => {
-//         switch (newVal) {
-//             case 1:
-//                 detectionTitle.value = "Fire";
-//                 break;
-//             case 2:
-//                 detectionTitle.value = "Fraud";
-//                 break;
-//             case 3:
-//                 detectionTitle.value = "Object";
-//                 break;
-//             default:
-//                 detectionTitle.value = "???";
-//         }
-//     },
-//     { immediate: true },
-// );
 
 watch(
     () => props.detections,
@@ -33,14 +12,6 @@ watch(
     },
     { immediate: true },
 );
-
-// watch(
-//     () => props.detections?.[0]?.type_detection_id,
-//     (newValue) => {
-//         console.log("Detections updated:", newValue);
-//     },
-//     { immediate: true },
-// );
 </script>
 
 <template>
@@ -66,7 +37,10 @@ watch(
                 </div>
                 <div class="modal-body">
                     <h2>{{ spbu.name }}</h2>
-                    <p>Total Detection: {{ totalDetection }}</p>
+                    <p>
+                        Total {{ titleType }} Detection:
+                        {{ totalDetection }}
+                    </p>
                     <div class="detection">
                         <div class="table-container">
                             <table>
@@ -87,7 +61,9 @@ watch(
                                             ) in detections"
                                             :key="index"
                                         >
-                                            <td class="no">{{ index + 1 }}</td>
+                                            <td class="no">
+                                                {{ parseInt(index) + 1 }}
+                                            </td>
                                             <td class="date-time">
                                                 {{ detection.created_at }}
                                             </td>
@@ -187,7 +163,7 @@ watch(
 }
 
 .table-body-wrapper {
-    max-height: 200px; /* Adjust the height as needed */
+    max-height: 300px; /* Adjust the height as needed */
     overflow-y: auto; /* Add vertical scrolling for the table body */
 }
 

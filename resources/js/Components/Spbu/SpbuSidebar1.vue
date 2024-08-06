@@ -3,13 +3,15 @@ import DetectionModal from "./DetectionModal.vue";
 import { onMounted, ref } from "vue";
 let myModal;
 const selectedType = ref("");
+const titleType = ref("");
 
 onMounted(() => {
     myModal = new bootstrap.Modal(document.getElementById("detectionpopup"));
 });
 
-const showdetection = (type) => {
+const showdetection = (type, title) => {
     selectedType.value = type;
+    titleType.value = title;
     myModal.show();
 };
 
@@ -63,7 +65,10 @@ defineProps([
             </div>
         </div>
         <div class="detection">
-            <div class="detection-item" @click="showdetection(fireDetections)">
+            <div
+                class="detection-item"
+                @click="showdetection(fireDetections, 'Fire')"
+            >
                 <img
                     src="../../../../public/images/fire.png"
                     alt="Fire Detection"
@@ -73,7 +78,10 @@ defineProps([
                     <p>{{ totalFire }}</p>
                 </div>
             </div>
-            <div class="detection-item" @click="showdetection(fraudDetections)">
+            <div
+                class="detection-item"
+                @click="showdetection(fraudDetections, 'Fraud')"
+            >
                 <img
                     src="../../../../public/images/fraud.png"
                     alt="Fraud Detection"
@@ -85,7 +93,7 @@ defineProps([
             </div>
             <div
                 class="detection-item"
-                @click="showdetection(objectDetections)"
+                @click="showdetection(objectDetections, 'Object')"
             >
                 <img
                     src="../../../../public/images/object.png"
@@ -104,7 +112,11 @@ defineProps([
                 </div>
             </div>
         </div>
-        <DetectionModal :detections="selectedType" :spbu="spbu" />
+        <DetectionModal
+            :titleType="`${titleType}`"
+            :detections="selectedType"
+            :spbu="spbu"
+        />
     </div>
     <!-- <div v-if="modalType === 'vehicle'">
         <div class="body-title">
