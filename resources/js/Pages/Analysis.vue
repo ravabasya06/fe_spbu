@@ -3,7 +3,7 @@ import Search from "../Components/Analysis/Search.vue";
 import Layout from "../Components/Main/Layout.vue";
 import AnalysisCard from "../Components/Analysis/AnalysisCard.vue";
 
-defineProps(["spbus"]);
+defineProps(["spbus", "query", "results"]);
 </script>
 
 <template>
@@ -12,7 +12,7 @@ defineProps(["spbus"]);
             <Search />
         </div>
         <div class="list">
-            <AnalysisCard :spbus="spbus" />
+            <AnalysisCard :spbus="spbus" :results="results" />
         </div>
     </Layout>
 </template>

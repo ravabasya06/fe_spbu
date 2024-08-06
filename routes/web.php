@@ -13,6 +13,7 @@ use App\Http\Controllers\AnalysisController;
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/analysis', [AnalysisController::class, 'index']);
+Route::get('/analysis', [AnalysisController::class, 'search'])->name('analysis.search');
 Route::get('/spbu/{id}', [SpbuController::class, 'index']);
 
 Route::get('/users', [UserController::class, 'index'])->name('user.index');

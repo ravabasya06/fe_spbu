@@ -1,9 +1,24 @@
+<script setup>
+import { ref } from "vue";
+import { useForm } from "@inertiajs/vue3";
+
+const query = ref("");
+
+const search = () => {
+    const form = useForm({
+        query: query.value,
+    });
+    form.get(route("analysis.search"));
+};
+</script>
+
 <template>
     <div class="search-container">
-        <form method="get">
+        <form @submit.prevent="search">
             <input
+                v-model="query"
                 type="text"
-                name="cari"
+                name="query"
                 placeholder="Cari apa hari ini?"
                 autocomplete="off"
             />

@@ -12,6 +12,23 @@ class AnalysisController extends Controller
         $spbus = Spbu::orderByRaw('updated_at - created_at DESC')->get();
         return Inertia::render('Analysis', [
             'spbus' => $spbus,
+            'results' => [], 
+            'query' => '',
+        ]);
+    }
+    public function search(Request $request){
+        $query = $request->input('query');
+        $results = Spbu::where('spbu_id', 'LIKE', "%{$query}%")
+            ->orWhere('name', 'LIKE', "%{$query}%")
+            ->orWhere('road', 'LIKE', "%{$query}%")
+            ->orWhere('province', 'LIKE', "%{$query}%")
+            ->orWhere('island', 'LIKE', "%{$query}%")
+            ->get();
+
+        return Inertia::render('Analysis', [
+            'spbus' => [], 
+            'results' => $results,
+            'query' => $query,
         ]);
     }
 }

@@ -1,9 +1,10 @@
 <script setup>
-defineProps(["spbus"]);
+import { Link } from "@inertiajs/vue3";
+defineProps(["spbus", "results"]);
 </script>
 <template>
     <div class="container-cards">
-        <Link v-for="spbu in spbus" :href="`/spbu/${spbu.spbu_id}`">
+        <Link v-for="spbu in results" :href="`/spbu/${spbu.spbu_id}`">
             <div class="card">
                 <h3>{{ spbu.name }}</h3>
                 <p>{{ spbu.road }}</p>
