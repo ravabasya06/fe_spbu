@@ -21,6 +21,7 @@ class AnalysisController extends Controller
         $results = Spbu::where('spbu_id', 'LIKE', "%{$query}%")
             ->orWhere('name', 'LIKE', "%{$query}%")
             ->orWhere('road', 'LIKE', "%{$query}%")
+            ->orWhere('city', 'LIKE', "%{$query}%")
             ->orWhere('province', 'LIKE', "%{$query}%")
             ->orWhere('island', 'LIKE', "%{$query}%")
             ->get();
