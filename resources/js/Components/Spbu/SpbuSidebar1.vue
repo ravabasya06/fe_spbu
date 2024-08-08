@@ -9,7 +9,7 @@ const titleType = ref("");
 
 onMounted(() => {
     detectionModal = new bootstrap.Modal(
-        document.getElementById("detectionpopup")
+        document.getElementById("detectionpopup"),
     );
     vehicleModal = new bootstrap.Modal(document.getElementById("vehiclepopup"));
 });
@@ -17,10 +17,10 @@ onMounted(() => {
 const showdetection = (type, title) => {
     selectedType.value = type;
     titleType.value = title;
-    myModal.show();
+    detectionModal.show();
 };
 const showvehicle = () => {
-    vemodal.show();
+    vehicleModal.show();
 };
 
 defineProps([
@@ -125,7 +125,14 @@ defineProps([
             :detections="selectedType"
             :spbu="spbu"
         />
-        <VehicleModal />
+        <VehicleModal
+            :spbu="spbu"
+            :totalVehicle="totalVehicle"
+            :totalMotor="totalMotor"
+            :totalCar="totalCar"
+            :totalBus="totalBus"
+            :totalTruck="totalTruck"
+        />
     </div>
     <!-- <div v-if="modalType === 'vehicle'">
         <div class="body-title">

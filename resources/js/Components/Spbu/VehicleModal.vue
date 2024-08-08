@@ -1,3 +1,14 @@
+<script setup>
+defineProps([
+    "spbu",
+    "totalVehicle",
+    "totalMotor",
+    "totalCar",
+    "totalBus",
+    "totalTruck",
+]);
+</script>
+
 <template>
     <div
         class="modal fade"
@@ -10,7 +21,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        <!-- {{ detectionTitle }} Detection -->
+                        Vehicle Details
                     </h1>
                     <button
                         type="button"
@@ -21,8 +32,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="body-title">
-                        <h2>Vehicle Detection Details</h2>
-                        <p>Total Vehicle Detections: 0</p>
+                        <h2>{{ spbu.name }}</h2>
+                        <p>Total Vehicle Detection: {{ totalVehicle }}</p>
                     </div>
                     <div class="detection-modal">
                         <div class="vehicle-item">
@@ -31,7 +42,7 @@
                                 class="fa-2xl"
                                 style="color: #000"
                             />
-                            <p>0</p>
+                            <p>{{ totalMotor }}</p>
                         </div>
                         <div class="vehicle-item">
                             <font-awesome-icon
@@ -39,7 +50,7 @@
                                 class="fa-2xl"
                                 style="color: #000"
                             />
-                            <p>0</p>
+                            <p>{{ totalCar }}</p>
                         </div>
                         <div class="vehicle-item">
                             <font-awesome-icon
@@ -47,7 +58,7 @@
                                 class="fa-2xl"
                                 style="color: #000"
                             />
-                            <p>0</p>
+                            <p>{{ totalBus }}</p>
                         </div>
                         <div class="vehicle-item">
                             <font-awesome-icon
@@ -55,7 +66,7 @@
                                 class="fa-2xl"
                                 style="color: #000"
                             />
-                            <p>0</p>
+                            <p>{{ totalTruck }}</p>
                         </div>
                     </div>
                 </div>
