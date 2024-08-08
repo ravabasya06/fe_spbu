@@ -1,18 +1,24 @@
 <script setup>
 import DetectionModal from "./DetectionModal.vue";
+import VehicleModal from "./vehicleModal.vue";
 import { onMounted, ref } from "vue";
 let myModal;
+let vemodal;
 const selectedType = ref("");
 const titleType = ref("");
 
 onMounted(() => {
     myModal = new bootstrap.Modal(document.getElementById("detectionpopup"));
+    vemodal = new bootstrap.Modal(document.getElementById("vehiclepopup"));
 });
 
 const showdetection = (type, title) => {
     selectedType.value = type;
     titleType.value = title;
     myModal.show();
+};
+const showvehicle = () => {
+    vemodal.show();
 };
 
 defineProps([
@@ -104,7 +110,7 @@ defineProps([
                     <p>{{ totalObject }}</p>
                 </div>
             </div>
-            <div class="detection-item" @click="showdetection(vehicles)">
+            <div class="detection-item" @click="showvehicle">
                 <img src="../../../../public/images/car.png" alt="Vehicle" />
                 <div class="detection-text">
                     <p>TOTAL KENDARAAN</p>
@@ -117,6 +123,7 @@ defineProps([
             :detections="selectedType"
             :spbu="spbu"
         />
+        <VehicleModal />
     </div>
     <!-- <div v-if="modalType === 'vehicle'">
         <div class="body-title">
