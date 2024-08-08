@@ -6,7 +6,7 @@ const query = ref("");
 
 const search = () => {
     const form = useForm({
-        query: query.value,
+        search_query: query.value,
     });
     form.get(route("analysis.search"));
 };
@@ -18,8 +18,8 @@ const search = () => {
             <input
                 v-model="query"
                 type="text"
-                name="query"
-                placeholder="Cari apa hari ini?"
+                name="search_query"
+                placeholder="Telusuri"
                 autocomplete="off"
             />
             <button type="submit">Cari</button>

@@ -13,11 +13,11 @@ class AnalysisController extends Controller
         return Inertia::render('Analysis', [
             'spbus' => $spbus,
             'results' => [], 
-            'query' => '',
+            'query' => null,
         ]);
     }
     public function search(Request $request){
-        $query = $request->input('query');
+        $query = $request->input('search_query');
         $results = Spbu::where('spbu_id', 'LIKE', "%{$query}%")
             ->orWhere('name', 'LIKE', "%{$query}%")
             ->orWhere('road', 'LIKE', "%{$query}%")
@@ -25,7 +25,7 @@ class AnalysisController extends Controller
             ->orWhere('province', 'LIKE', "%{$query}%")
             ->orWhere('island', 'LIKE', "%{$query}%")
             ->get();
-
+        
         return Inertia::render('Analysis', [
             'spbus' => [], 
             'results' => $results,
