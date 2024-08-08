@@ -1,15 +1,17 @@
 <script setup>
 import DetectionModal from "./DetectionModal.vue";
-import VehicleModal from "./vehicleModal.vue";
+import VehicleModal from "./VehicleModal.vue";
 import { onMounted, ref } from "vue";
-let myModal;
-let vemodal;
+let detectionModal;
+let vehicleModal;
 const selectedType = ref("");
 const titleType = ref("");
 
 onMounted(() => {
-    myModal = new bootstrap.Modal(document.getElementById("detectionpopup"));
-    vemodal = new bootstrap.Modal(document.getElementById("vehiclepopup"));
+    detectionModal = new bootstrap.Modal(
+        document.getElementById("detectionpopup")
+    );
+    vehicleModal = new bootstrap.Modal(document.getElementById("vehiclepopup"));
 });
 
 const showdetection = (type, title) => {
