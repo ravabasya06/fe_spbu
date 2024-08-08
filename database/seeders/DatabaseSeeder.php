@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeDetectionSeeder::class);
         $this->call(TypeVehicleSeeder::class);
 
-        Spbu::factory(5)->create();
-        Dispenser::factory(20)->create();
-        Cctv::factory(20)->create();
-        Vehicle::factory(20)->create();
-        Detection::factory(40)->create();
+        Spbu::factory(6)->create();
+        Dispenser::factory(30)->create();
+        Cctv::factory(30)->create();
+        Vehicle::factory(50)->create();
+        Detection::factory(50)->create();
 
         // TypeVehicle::create(['type' => 'Motor']);
 

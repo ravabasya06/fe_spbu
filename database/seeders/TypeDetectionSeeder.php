@@ -13,8 +13,10 @@ class TypeDetectionSeeder extends Seeder
      */
     public function run(): void
     {
-        TypeDetection::create(['type' => 'Fire']);
-        TypeDetection::create(['type' => 'Fraud']);
-        TypeDetection::create(['type' => 'Object']);
+        if(!TypeDetection::exists('type_detection_id')){
+            TypeDetection::create(['type' => 'Fire']);
+            TypeDetection::create(['type' => 'Fraud']);
+            TypeDetection::create(['type' => 'Object']);
+        }
     }
 }

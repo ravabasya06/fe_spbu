@@ -13,9 +13,11 @@ class TypeVehicleSeeder extends Seeder
      */
     public function run(): void
     {
-        TypeVehicle::create(['type' => 'Motor']);
-        TypeVehicle::create(['type' => 'Car']);
-        TypeVehicle::create(['type' => 'Bus']);
-        TypeVehicle::create(['type' => 'Truck']);
+        if(!TypeVehicle::exists('type_detection_id')){
+            TypeVehicle::create(['type' => 'Motor']);
+            TypeVehicle::create(['type' => 'Car']);
+            TypeVehicle::create(['type' => 'Bus']);
+            TypeVehicle::create(['type' => 'Truck']);
+        }
     }
 }
