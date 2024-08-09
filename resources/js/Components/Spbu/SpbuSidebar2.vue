@@ -13,13 +13,13 @@ const showcctv = (Cctv) => {
     myModal.show();
 };
 
-defineProps(["cctvs", "totalWoman", "totalMan", "grandTotal"]);
+defineProps(["cctvs", "totalWoman", "totalMan"]);
 </script>
 <template>
     <div class="sidebar-right">
         <div class="face-recognition">
             <h2>Face Recognition</h2>
-            <h2>{{ grandTotal }}</h2>
+            <h2>{{ totalMan + totalWoman }}</h2>
             <div class="gender">
                 <img src="../../../../public/images/pria.png" alt="pria" />
                 <div class="gender-text">

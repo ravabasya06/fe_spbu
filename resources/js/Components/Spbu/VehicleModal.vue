@@ -1,7 +1,7 @@
 <script setup>
 defineProps([
     "spbu",
-    "totalVehicle",
+    "vehicles",
     "totalMotor",
     "totalCar",
     "totalBus",
@@ -33,7 +33,10 @@ defineProps([
                 <div class="modal-body">
                     <div class="body-title">
                         <h2>{{ spbu.name }}</h2>
-                        <p>Total Vehicle Detection: {{ totalVehicle }}</p>
+                        <p>
+                            Total Vehicle Detection:
+                            {{ Object.keys(vehicles).length }}
+                        </p>
                     </div>
                     <div class="detection-modal">
                         <div class="vehicle-item">

@@ -14,15 +14,10 @@ defineProps([
     "vehicles",
     "totalWoman",
     "totalMan",
-    "grandTotal",
-    "totalFire",
-    "totalFraud",
-    "totalObject",
     "totalMotor",
     "totalCar",
     "totalBus",
     "totalTruck",
-    "totalVehicle",
 ]);
 </script>
 
@@ -32,14 +27,11 @@ defineProps([
             <SpbuSidebar1
                 :spbu="spbu"
                 :dispensers="dispensers"
-                :totalFire="totalFire"
-                :totalFraud="totalFraud"
-                :totalObject="totalObject"
+                :vehicles="vehicles"
                 :totalMotor="totalMotor"
                 :totalCar="totalCar"
                 :totalBus="totalBus"
                 :totalTruck="totalTruck"
-                :totalVehicle="totalVehicle"
                 :fireDetections="fireDetections"
                 :fraudDetections="fraudDetections"
                 :objectDetections="objectDetections"
@@ -59,7 +51,6 @@ defineProps([
                 :cctvs="cctvs"
                 :totalWoman="totalWoman"
                 :totalMan="totalMan"
-                :grandTotal="grandTotal"
             />
         </main>
     </Layout>

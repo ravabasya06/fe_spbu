@@ -26,17 +26,14 @@ const showvehicle = () => {
 defineProps([
     "spbu",
     "dispensers",
+    "vehicles",
     "fireDetections",
     "fraudDetections",
     "objectDetections",
-    "totalFire",
-    "totalFraud",
-    "totalObject",
     "totalMotor",
     "totalCar",
     "totalBus",
     "totalTruck",
-    "totalVehicle",
 ]);
 </script>
 
@@ -83,7 +80,7 @@ defineProps([
                 />
                 <div class="detection-text">
                     <p>FIRE DETECTION</p>
-                    <p>{{ totalFire }}</p>
+                    <p>{{ Object.keys(fireDetections).length }}</p>
                 </div>
             </div>
             <div
@@ -96,7 +93,7 @@ defineProps([
                 />
                 <div class="detection-text">
                     <p>FRAUD DETECTION</p>
-                    <p>{{ totalFraud }}</p>
+                    <p>{{ Object.keys(fraudDetections).length }}</p>
                 </div>
             </div>
             <div
@@ -109,14 +106,14 @@ defineProps([
                 />
                 <div class="detection-text">
                     <p>OBJECT DETECTION</p>
-                    <p>{{ totalObject }}</p>
+                    <p>{{ Object.keys(objectDetections).length }}</p>
                 </div>
             </div>
             <div class="detection-item" @click="showvehicle">
                 <img src="../../../../public/images/car.png" alt="Vehicle" />
                 <div class="detection-text">
                     <p>TOTAL KENDARAAN</p>
-                    <p>{{ totalVehicle }}</p>
+                    <p>{{ Object.keys(vehicles).length }}</p>
                 </div>
             </div>
         </div>
@@ -127,53 +124,13 @@ defineProps([
         />
         <VehicleModal
             :spbu="spbu"
-            :totalVehicle="totalVehicle"
+            :vehicles="vehicles"
             :totalMotor="totalMotor"
             :totalCar="totalCar"
             :totalBus="totalBus"
             :totalTruck="totalTruck"
         />
     </div>
-    <!-- <div v-if="modalType === 'vehicle'">
-        <div class="body-title">
-            <h2>Vehicle Detection Details</h2>
-            <p>Total Vehicle Detections: {{ totalVehicle }}</p>
-        </div>
-        <div class="detection-modal">
-            <div class="vehicle-item">
-                <font-awesome-icon
-                    icon="motorcycle"
-                    class="fa-2xl"
-                    style="color: #000"
-                />
-                <p>{{ totalMotor }}</p>
-            </div>
-            <div class="vehicle-item">
-                <font-awesome-icon
-                    icon="car"
-                    class="fa-2xl"
-                    style="color: #000"
-                />
-                <p>{{ totalCar }}</p>
-            </div>
-            <div class="vehicle-item">
-                <font-awesome-icon
-                    icon="bus"
-                    class="fa-2xl"
-                    style="color: #000"
-                />
-                <p>{{ totalBus }}</p>
-            </div>
-            <div class="vehicle-item">
-                <font-awesome-icon
-                    icon="truck"
-                    class="fa-2xl"
-                    style="color: #000"
-                />
-                <p>{{ totalTruck }}</p>
-            </div>
-        </div>
-    </div> -->
 </template>
 
 <style scoped>

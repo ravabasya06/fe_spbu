@@ -26,16 +26,11 @@ class SpbuController extends Controller
 
         $totalWoman = $cctvs->sum('woman');
         $totalMan = $cctvs->sum('man');
-        $grandTotal = $totalWoman + $totalMan;
 
-        $totalFire = $detections->where('type_detection_id', 1)->count();
-        $totalFraud = $detections->where('type_detection_id', 2)->count();
-        $totalObject = $detections->where('type_detection_id', 3)->count();
         $totalMotor = $vehicles->where('type_vehicle_id', 1)->count();
         $totalCar = $vehicles->where('type_vehicle_id', 2)->count();
         $totalBus = $vehicles->where('type_vehicle_id', 3)->count();
         $totalTruck = $vehicles->where('type_vehicle_id', 4)->count();
-        $totalVehicle = $vehicles->count();
 
         return Inertia::render('Spbu', [
             'spbu' => $spbu,
@@ -46,16 +41,11 @@ class SpbuController extends Controller
 
             'totalWoman' => $totalWoman,
             'totalMan' => $totalMan,
-            'grandTotal' => $grandTotal,
             
-            'totalFire' => $totalFire,
-            'totalFraud' => $totalFraud,
-            'totalObject' => $totalObject,
             'totalMotor' => $totalMotor,
             'totalCar' => $totalCar,
             'totalBus' => $totalBus,
             'totalTruck' => $totalTruck,
-            'totalVehicle' => $totalVehicle,
 
             'fireDetections' => $fireDetections,
             'fraudDetections' => $fraudDetections,
