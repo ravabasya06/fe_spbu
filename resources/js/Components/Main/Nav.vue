@@ -23,9 +23,11 @@ function closeSidebar() {
             src="../../../../public/images/pertamina.png"
             alt="logo"
         />
-        <div class="user-icon">
-            <font-awesome-icon icon="user" />
-        </div>
+        <Link href="/profile">
+            <div class="user-icon">
+                <font-awesome-icon icon="user" />
+            </div>
+        </Link>
     </nav>
     <div class="sidebar" id="sidebar">
         <a href="javascript:void(0)" class="closebtn" @click="closeSidebar">
@@ -68,11 +70,13 @@ function closeSidebar() {
 }
 
 .user-icon {
-    margin: 25px;
+    color: white;
+    margin: 5px;
+    padding: 15px;
     font-size: 24px;
     cursor: pointer;
+    border-radius: 20%;
 }
-
 .sidebar {
     height: 100%;
     position: fixed;

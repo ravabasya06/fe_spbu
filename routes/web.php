@@ -6,15 +6,28 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SpbuController;
 use App\Http\Controllers\AnalysisController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProfileController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', [PagesController::class, 'index']);
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/analysis', [AnalysisController::class, 'index']);
-Route::get('/analysis', [AnalysisController::class, 'search'])->name('analysis.search');
-Route::get('/spbu/{id}', [SpbuController::class, 'index']);
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/', [PagesController::class, 'index'])->name('home');
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/analysis', [AnalysisController::class, 'index']);
+    Route::get('/analysis', [AnalysisController::class, 'search'])->name('analysis.search');
+    Route::get('/spbu/{id}', [SpbuController::class, 'index']);
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
+});
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+
+Route::get('/register', [RegisterController::class, 'create'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/users', [UserController::class, 'index'])->name('user.index');
 Route::post('/users', [UserController::class, 'store']);
