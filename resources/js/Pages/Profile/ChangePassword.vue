@@ -45,9 +45,9 @@ const submit = () => {
                             required
                         />
                         <span
-                            v-if="props.errors.current_password"
+                            v-if="form.errors.current_password"
                             style="color: red; text-align: center"
-                            >{{ props.errors.current_password }}</span
+                            >{{ form.errors.current_password }}</span
                         >
                     </div>
                     <div>
@@ -61,9 +61,9 @@ const submit = () => {
                             required
                         />
                         <span
-                            v-if="props.errors.password"
+                            v-if="form.errors.password"
                             style="color: red; text-align: center"
-                            >{{ props.errors.password }}</span
+                            >{{ form.errors.password }}</span
                         >
                     </div>
                     <div>
@@ -77,9 +77,9 @@ const submit = () => {
                             required
                         />
                         <span
-                            v-if="props.errors.password_confirmation"
+                            v-if="form.errors.password_confirmation"
                             style="color: red; text-align: center"
-                            >{{ props.errors.password_confirmation }}</span
+                            >{{ form.errors.password_confirmation }}</span
                         >
                     </div>
                     <button type="submit">Save</button>

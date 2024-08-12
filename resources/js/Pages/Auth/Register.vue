@@ -31,9 +31,9 @@ const submit = () => {
                             required
                         />
                         <span
-                            v-if="errors.name"
+                            v-if="form.errors.name"
                             style="color: red; text-align: center"
-                            >{{ errors.name }}</span
+                            >{{ form.errors.name }}</span
                         >
                     </div>
                     <div>
@@ -46,9 +46,9 @@ const submit = () => {
                             required
                         />
                         <span
-                            v-if="errors.password"
+                            v-if="form.errors.password"
                             style="color: red; text-align: center"
-                            >{{ errors.password }}</span
+                            >{{ form.errors.password }}</span
                         >
                     </div>
                     <div>
@@ -62,9 +62,9 @@ const submit = () => {
                             required
                         />
                         <span
-                            v-if="errors.password_confirmation"
+                            v-if="form.errors.password_confirmation"
                             style="color: red; text-align: center"
-                            >{{ errors.password_confirmation }}</span
+                            >{{ form.errors.password_confirmation }}</span
                         >
                     </div>
                     <button type="submit">Register</button>

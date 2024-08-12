@@ -27,9 +27,9 @@ const submit = () => {
                         autofocus
                     />
                     <span
-                        v-if="errors.name"
+                        v-if="form.errors.name"
                         style="color: red; text-align: center"
-                        >{{ errors.name }}</span
+                        >{{ form.errors.name }}</span
                     >
                 </div>
                 <div>
@@ -41,9 +41,9 @@ const submit = () => {
                         required
                     />
                     <span
-                        v-if="errors.password"
+                        v-if="form.errors.password"
                         style="color: red; text-align: center"
-                        >{{ errors.password }}</span
+                        >{{ form.errors.password }}</span
                     >
                 </div>
                 <button type="submit" :disabled="form.processing">Login</button>
