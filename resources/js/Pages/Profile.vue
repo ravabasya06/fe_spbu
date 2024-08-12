@@ -25,7 +25,7 @@ const logout = () => {
                 <form @submit.prevent="logout">
                     <button type="submit">Logout</button>
                 </form>
-                <Link href="/changepassword">Change Password</Link>
+                <Link href="/password">Change Password</Link>
             </div>
         </div>
     </Layout>
