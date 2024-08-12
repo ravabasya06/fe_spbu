@@ -2,10 +2,13 @@
 import { useForm } from "@inertiajs/vue3";
 import Layout from "../../Components/Main/Layout.vue";
 
-defineProps(["errors"]);
+// Define props to receive errors
+const props = defineProps({
+    errors: Object,
+});
 
 const form = useForm({
-    email: "",
+    name: "",
     password: "",
 });
 
@@ -15,35 +18,35 @@ const submit = () => {
 </script>
 
 <template>
-    <Layout title="Login">
-        <div class="login-container">
-            <h2>Login</h2>
-            <form @submit.prevent="submit">
-                <div>
-                    <label for="email">Email</label>
-                    <input
-                        v-model="form.email"
-                        id="email"
-                        type="email"
-                        required
-                        autofocus
-                    />
-                    <span v-if="errors.email">{{ errors.email }}</span>
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input
-                        v-model="form.password"
-                        id="password"
-                        type="password"
-                        required
-                    />
-                    <span v-if="errors.password">{{ errors.password }}</span>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-        </div>
-    </Layout>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form @submit.prevent="submit">
+            <div>
+                <label for="name">Name</label>
+                <input
+                    v-model="form.name"
+                    id="name"
+                    type="text"
+                    required
+                    autofocus
+                />
+                <span v-if="props.errors.name">{{ props.errors.name }}</span>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input
+                    v-model="form.password"
+                    id="password"
+                    type="password"
+                    required
+                />
+                <span v-if="props.errors.password">{{
+                    props.errors.password
+                }}</span>
+            </div>
+            <button type="submit" :disabled="form.processing">Login</button>
+        </form>
+    </div>
 </template>
 
 <style scoped>
@@ -53,7 +56,7 @@ const submit = () => {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #000000;
+    background-color: #000000; /* Adjusted to be lighter */
 }
 
 h2 {

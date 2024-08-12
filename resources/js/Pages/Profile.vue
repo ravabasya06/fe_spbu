@@ -16,7 +16,6 @@ const logout = () => {
     <Layout title="Profile">
         <div class="profile-container">
             <h1>Welcome, {{ user.name }}</h1>
-            <p>Email: {{ user.email }}</p>
             <form @submit.prevent="logout">
                 <button type="submit">Logout</button>
             </form>

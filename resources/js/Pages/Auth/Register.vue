@@ -4,7 +4,6 @@ import Layout from "../../Components/Main/Layout.vue";
 
 const form = useForm({
     name: "",
-    email: "",
     password: "",
     password_confirmation: "",
 });
@@ -15,45 +14,34 @@ const submit = () => {
 </script>
 
 <template>
-    <Layout title="Register">
-        <div class="auth-container">
-            <h2>Register</h2>
-            <form @submit.prevent="submit">
-                <div>
-                    <label for="name">Name</label>
-                    <input id="name" v-model="form.name" type="text" required />
-                </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input
-                        id="email"
-                        v-model="form.email"
-                        type="email"
-                        required
-                    />
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input
-                        id="password"
-                        v-model="form.password"
-                        type="password"
-                        required
-                    />
-                </div>
-                <div>
-                    <label for="password_confirmation">Confirm Password</label>
-                    <input
-                        id="password_confirmation"
-                        v-model="form.password_confirmation"
-                        type="password"
-                        required
-                    />
-                </div>
-                <button type="submit">Register</button>
-            </form>
-        </div>
-    </Layout>
+    <div class="auth-container">
+        <h2>Register</h2>
+        <form @submit.prevent="submit">
+            <div>
+                <label for="name">Name</label>
+                <input id="name" v-model="form.name" type="text" required />
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input
+                    id="password"
+                    v-model="form.password"
+                    type="password"
+                    required
+                />
+            </div>
+            <div>
+                <label for="password_confirmation">Confirm Password</label>
+                <input
+                    id="password_confirmation"
+                    v-model="form.password_confirmation"
+                    type="password"
+                    required
+                />
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
 </template>
 
 <style scoped>
