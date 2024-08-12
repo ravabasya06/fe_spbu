@@ -18,38 +18,47 @@ const submit = () => {
 </script>
 
 <template>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form @submit.prevent="submit">
-            <div>
-                <label for="name">Name</label>
-                <input
-                    v-model="form.name"
-                    id="name"
-                    type="text"
-                    required
-                    autofocus
-                />
-                <span v-if="props.errors.name">{{ props.errors.name }}</span>
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input
-                    v-model="form.password"
-                    id="password"
-                    type="password"
-                    required
-                />
-                <span v-if="props.errors.password">{{
-                    props.errors.password
-                }}</span>
-            </div>
-            <button type="submit" :disabled="form.processing">Login</button>
-        </form>
+    <div class="login">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form @submit.prevent="submit">
+                <div>
+                    <label for="name">Name</label>
+                    <input
+                        v-model="form.name"
+                        id="name"
+                        type="text"
+                        required
+                        autocomplete="off"
+                        autofocus
+                    />
+                    <span v-if="props.errors.name">{{
+                        props.errors.name
+                    }}</span>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input
+                        v-model="form.password"
+                        id="password"
+                        type="password"
+                        required
+                    />
+                    <span v-if="props.errors.password">{{
+                        props.errors.password
+                    }}</span>
+                </div>
+                <button type="submit" :disabled="form.processing">Login</button>
+            </form>
+        </div>
     </div>
 </template>
 
 <style scoped>
+.login {
+    height: 85vh;
+    align-content: center;
+}
 .login-container {
     max-width: 400px;
     margin: 0 auto;
@@ -94,5 +103,8 @@ button:disabled {
 span {
     color: red;
     font-size: 0.9em;
+}
+input:focus {
+    outline: none;
 }
 </style>

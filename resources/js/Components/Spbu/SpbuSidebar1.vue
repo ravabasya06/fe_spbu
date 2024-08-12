@@ -9,7 +9,7 @@ const titleType = ref("");
 
 onMounted(() => {
     detectionModal = new bootstrap.Modal(
-        document.getElementById("detectionpopup"),
+        document.getElementById("detectionpopup")
     );
     vehicleModal = new bootstrap.Modal(document.getElementById("vehiclepopup"));
 });
@@ -40,7 +40,7 @@ defineProps([
 <template>
     <div class="sidebar-left">
         <div class="queue">
-            <h2>ANTRIAN SPBU</h2>
+            <h3>ANTRIAN SPBU</h3>
             <div class="dispenser-item">
                 <div class="table-container">
                     <table class="dispenser-table">

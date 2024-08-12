@@ -14,16 +14,22 @@ const logout = () => {
 
 <template>
     <Layout title="Profile">
-        <div class="profile-container">
-            <h1>Welcome, {{ user.name }}</h1>
-            <form @submit.prevent="logout">
-                <button type="submit">Logout</button>
-            </form>
+        <div class="profile">
+            <div class="profile-container">
+                <h1>Welcome, {{ user.name }}</h1>
+                <form @submit.prevent="logout">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
         </div>
     </Layout>
 </template>
 
 <style scoped>
+.profile {
+    height: 85vh;
+    align-content: center;
+}
 .profile-container {
     max-width: 400px;
     margin: 0 auto;

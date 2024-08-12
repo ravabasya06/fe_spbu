@@ -69,6 +69,9 @@ defineProps([
     justify-content: center;
     gap: 100px;
 }
+.main-content h1 {
+    font-size: 35px;
+}
 .station-image {
     width: 80%;
     max-width: 500px;

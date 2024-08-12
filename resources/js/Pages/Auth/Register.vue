@@ -14,37 +14,50 @@ const submit = () => {
 </script>
 
 <template>
-    <div class="auth-container">
-        <h2>Register</h2>
-        <form @submit.prevent="submit">
-            <div>
-                <label for="name">Name</label>
-                <input id="name" v-model="form.name" type="text" required />
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    required
-                />
-            </div>
-            <div>
-                <label for="password_confirmation">Confirm Password</label>
-                <input
-                    id="password_confirmation"
-                    v-model="form.password_confirmation"
-                    type="password"
-                    required
-                />
-            </div>
-            <button type="submit">Register</button>
-        </form>
+    <div class="auth">
+        <div class="auth-container">
+            <h2>Register</h2>
+            <form @submit.prevent="submit">
+                <div>
+                    <label for="name">Name</label>
+                    <input
+                        id="name"
+                        v-model="form.name"
+                        type="text"
+                        autocomplete="off"
+                        required
+                    />
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input
+                        id="password"
+                        v-model="form.password"
+                        type="password"
+                        autocomplete="off"
+                        required
+                    />
+                </div>
+                <div>
+                    <label for="password_confirmation">Confirm Password</label>
+                    <input
+                        id="password_confirmation"
+                        v-model="form.password_confirmation"
+                        type="password"
+                        required
+                    />
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
     </div>
 </template>
 
 <style scoped>
+.auth {
+    height: 85vh;
+    align-content: center;
+}
 .auth-container {
     max-width: 400px;
     margin: auto;
