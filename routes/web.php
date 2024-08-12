@@ -9,6 +9,7 @@ use App\Http\Controllers\AnalysisController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PasswordController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/spbu/{id}', [SpbuController::class, 'index']);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
+    Route::get('/changepassword', [PasswordController::class, 'index'])->name('password');
 });
 
 Route::middleware('guest')->group(function () {
