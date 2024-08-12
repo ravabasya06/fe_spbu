@@ -1,14 +1,30 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
 import Layout from "../../Components/Main/Layout.vue";
+import { ref } from "vue";
+
+const passwordInput = ref(null);
+const currentPasswordInput = ref(null);
+
 const form = useForm({
     current_password: "",
-    new_password: "",
-    confirm_password: "",
+    password: "",
+    password_confirmation: "",
 });
 
 const submit = () => {
-    form.post(route("password"));
+    form.put(route("password.update"), {
+        preserveScroll: true,
+        onSuccess: () => form.reset(),
+        onError: () => {
+            if (form.errors.password) {
+                form.reset("password", "password_confirmation");
+            }
+            if (form.errors.current_password) {
+                form.reset("current_password");
+            }
+        },
+    });
 };
 </script>
 
@@ -21,33 +37,58 @@ const submit = () => {
                     <div>
                         <label for="current_password">Current Password</label>
                         <input
-                            id="password"
+                            id="current_password"
+                            ref="currentPasswordInput"
                             v-model="form.current_password"
                             type="password"
                             autocomplete="off"
                             required
                         />
+                        <span
+                            v-if="props.errors.current_password"
+                            style="color: red; text-align: center"
+                            >{{ props.errors.current_password }}</span
+                        >
                     </div>
                     <div>
-                        <label for="new_password">New Password</label>
+                        <label for="password">New Password</label>
                         <input
                             id="password"
-                            v-model="form.new_password"
+                            ref="passwordInput"
+                            v-model="form.password"
                             type="password"
                             autocomplete="off"
                             required
                         />
+                        <span
+                            v-if="props.errors.password"
+                            style="color: red; text-align: center"
+                            >{{ props.errors.password }}</span
+                        >
                     </div>
                     <div>
-                        <label for="confirm_password">Confirm Password</label>
+                        <label for="password_confirmation"
+                            >Confirm Password</label
+                        >
                         <input
-                            id="password"
-                            v-model="form.confirm_password"
+                            id="password_confirmation"
+                            v-model="form.password_confirmation"
                             type="password"
                             required
                         />
+                        <span
+                            v-if="props.errors.password_confirmation"
+                            style="color: red; text-align: center"
+                            >{{ props.errors.password_confirmation }}</span
+                        >
                     </div>
                     <button type="submit">Save</button>
+                    <p
+                        v-if="form.recentlySuccessful"
+                        style="color: lightgreen; text-align: center"
+                    >
+                        Password updated successfully
+                    </p>
                 </form>
             </div>
         </div>

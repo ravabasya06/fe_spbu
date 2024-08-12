@@ -22,7 +22,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/spbu/{id}', [SpbuController::class, 'index']);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
-    Route::get('/changepassword', [PasswordController::class, 'index'])->name('password');
+    Route::get('/password', [PasswordController::class, 'index'])->name('password');
+    Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
 });
 
 Route::middleware('guest')->group(function () {
