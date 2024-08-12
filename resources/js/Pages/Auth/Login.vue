@@ -1,11 +1,5 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
-import Layout from "../../Components/Main/Layout.vue";
-
-// Define props to receive errors
-const props = defineProps({
-    errors: Object,
-});
 
 const form = useForm({
     name: "",
@@ -32,9 +26,11 @@ const submit = () => {
                         autocomplete="off"
                         autofocus
                     />
-                    <span v-if="props.errors.name">{{
-                        props.errors.name
-                    }}</span>
+                    <span
+                        v-if="errors.name"
+                        style="color: red; text-align: center"
+                        >{{ errors.name }}</span
+                    >
                 </div>
                 <div>
                     <label for="password">Password</label>
@@ -44,9 +40,11 @@ const submit = () => {
                         type="password"
                         required
                     />
-                    <span v-if="props.errors.password">{{
-                        props.errors.password
-                    }}</span>
+                    <span
+                        v-if="errors.password"
+                        style="color: red; text-align: center"
+                        >{{ errors.password }}</span
+                    >
                 </div>
                 <button type="submit" :disabled="form.processing">Login</button>
             </form>
