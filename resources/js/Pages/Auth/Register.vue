@@ -9,48 +9,75 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route("register"));
+    form.post(route("register"), {
+        onSuccess: () => form.reset(),
+    });
 };
 </script>
 
 <template>
-    <div class="auth">
-        <div class="auth-container">
-            <h2>Register</h2>
-            <form @submit.prevent="submit">
-                <div>
-                    <label for="name">Name</label>
-                    <input
-                        id="name"
-                        v-model="form.name"
-                        type="text"
-                        autocomplete="off"
-                        required
-                    />
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input
-                        id="password"
-                        v-model="form.password"
-                        type="password"
-                        autocomplete="off"
-                        required
-                    />
-                </div>
-                <div>
-                    <label for="password_confirmation">Confirm Password</label>
-                    <input
-                        id="password_confirmation"
-                        v-model="form.password_confirmation"
-                        type="password"
-                        required
-                    />
-                </div>
-                <button type="submit">Register</button>
-            </form>
+    <Layout title="Register">
+        <div class="auth">
+            <div class="auth-container">
+                <h2>Register</h2>
+                <form @submit.prevent="submit">
+                    <div>
+                        <label for="name">Name</label>
+                        <input
+                            id="name"
+                            v-model="form.name"
+                            type="text"
+                            autocomplete="off"
+                            required
+                        />
+                        <span
+                            v-if="errors.name"
+                            style="color: red; text-align: center"
+                            >{{ errors.name }}</span
+                        >
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input
+                            id="password"
+                            v-model="form.password"
+                            type="password"
+                            autocomplete="off"
+                            required
+                        />
+                        <span
+                            v-if="errors.password"
+                            style="color: red; text-align: center"
+                            >{{ errors.password }}</span
+                        >
+                    </div>
+                    <div>
+                        <label for="password_confirmation"
+                            >Confirm Password</label
+                        >
+                        <input
+                            id="password_confirmation"
+                            v-model="form.password_confirmation"
+                            type="password"
+                            required
+                        />
+                        <span
+                            v-if="errors.password_confirmation"
+                            style="color: red; text-align: center"
+                            >{{ errors.password_confirmation }}</span
+                        >
+                    </div>
+                    <button type="submit">Register</button>
+                    <p
+                        v-if="form.recentlySuccessful"
+                        style="color: lightgreen; text-align: center"
+                    >
+                        User registered successfully
+                    </p>
+                </form>
+            </div>
         </div>
-    </div>
+    </Layout>
 </template>
 
 <style scoped>
