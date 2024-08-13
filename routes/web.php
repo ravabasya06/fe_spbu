@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\AdminPanelController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
     Route::get('/password', [PasswordController::class, 'index'])->name('password');
     Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
+    Route::get('/adminpanel', [AdminPanelController::class, 'index'])->name('adminpanel');
 });
 
 Route::middleware('guest')->group(function () {
