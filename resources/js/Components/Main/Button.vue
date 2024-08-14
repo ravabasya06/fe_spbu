@@ -1,16 +1,17 @@
 <script setup>
-defineProps(["link"]);
+defineProps(["link", "value", "color"]);
 </script>
 
 <template>
-    <Link :href="`${link}`">
-        <button class="back-button">Back</button>
+    <Link :href="link">
+        <button class="back-button" :style="{ backgroundColor: color }">
+            {{ value }}
+        </button>
     </Link>
 </template>
 
 <style scoped>
 .back-button {
-    background-color: blue;
     border: none;
     color: white;
     padding: 10px 20px;

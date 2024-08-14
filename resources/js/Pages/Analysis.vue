@@ -8,6 +8,9 @@ defineProps(["spbus", "query", "results"]);
 
 <template>
     <Layout title="Analysis">
+        <div v-if="$page.props.flash.message" class="alert">
+            {{ $page.props.flash.message }}
+        </div>
         <div class="search-wrapper">
             <Search />
         </div>

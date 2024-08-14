@@ -18,9 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('type_detection_id');
             $table->timestamps();
 
-            $table->foreign('spbu_id')->references('spbu_id')->on('spbus');
-            $table->foreign('cctv_id')->references('cctv_id')->on('cctvs');
-            $table->foreign('type_detection_id')->references('type_detection_id')->on('type_detections');
+            $table->foreign('spbu_id')->references('spbu_id')->on('spbus')->onDelete('cascade');
+            $table->foreign('cctv_id')->references('cctv_id')->on('cctvs')->onDelete('cascade');
+            $table->foreign('type_detection_id')->references('type_detection_id')->on('type_detections')->onDelete('cascade');
         });
     }
 

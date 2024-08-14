@@ -1,7 +1,7 @@
 <script setup>
 import Layout from "../Components/Main/Layout.vue";
 import DashboardData from "../Components/Dashboard/DashboardData.vue";
-import BackButton from "../Components/Main/BackButton.vue";
+import Button from "../Components/Main/Button.vue";
 </script>
 
 <template>
@@ -14,7 +14,7 @@ import BackButton from "../Components/Main/BackButton.vue";
             />
         </div>
         <div class="navigation">
-            <BackButton href="/" />
+            <Button href="/" value="Back" color="blue" />
         </div>
         <DashboardData />
     </Layout>

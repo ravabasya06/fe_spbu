@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('type_vehicle_id');
             $table->timestamps();
 
-            $table->foreign('spbu_id')->references('spbu_id')->on('spbus');
-            $table->foreign('type_vehicle_id')->references('type_vehicle_id')->on('type_vehicles');
+            $table->foreign('spbu_id')->references('spbu_id')->on('spbus')->onDelete('cascade');
+            $table->foreign('type_vehicle_id')->references('type_vehicle_id')->on('type_vehicles')->onDelete('cascade');
         });
     }
 

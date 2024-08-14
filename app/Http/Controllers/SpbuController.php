@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Models\Spbu;
 use App\Models\Dispenser;
@@ -33,6 +35,7 @@ class SpbuController extends Controller
         $totalTruck = $vehicles->where('type_vehicle_id', 4)->count();
 
         return Inertia::render('Spbu', [
+            'user' => Auth::user(),
             'spbu' => $spbu,
             'dispensers' => $dispensers,
             'cctvs' => $cctvs,
@@ -51,6 +54,13 @@ class SpbuController extends Controller
             'fraudDetections' => $fraudDetections,
             'objectDetections' => $objectDetections,
         ]);
+    }
+
+    public function destroy($spbu_id){
+        $spbu = Spbu::find($spbu_id);
+        Spbu::destroy($spbu_id);
+        $msg =  $spbu['name'] . ' deleted';
+        return Redirect::route('analysis.search')->with('message', $msg);
     }
 
     public function fetchSpbu($spbu_id){

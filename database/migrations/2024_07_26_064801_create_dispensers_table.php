@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('queue');
             $table->timestamps();
 
-            $table->foreign('spbu_id')->references('spbu_id')->on('spbus');
+            $table->foreign('spbu_id')->references('spbu_id')->on('spbus')->onDelete('cascade');
         });
     }
 
