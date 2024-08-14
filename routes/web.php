@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
@@ -25,7 +26,6 @@ Route::middleware('auth')->group(function(){
     Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
     Route::get('/password', [PasswordController::class, 'index'])->name('password');
     Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
-    Route::get('/adminpanel', [AdminPanelController::class, 'index'])->name('adminpanel');
 });
 
 Route::middleware('guest')->group(function () {
@@ -34,6 +34,10 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
     Route::post('/register', [RegisteredUserController::class, 'store']);
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/adminpanel', [AdminPanelController::class, 'index'])->name('adminpanel');
 });
 
 Route::get('/users', [UserController::class, 'index'])->name('user.index');
