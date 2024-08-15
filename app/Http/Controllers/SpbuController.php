@@ -59,7 +59,7 @@ class SpbuController extends Controller
     public function edit($spbu_id){
         $spbu = $this->fetchSpbu($spbu_id);
 
-        return Inertia::render('Admin/SpbuEdit', [
+        return Inertia::render('Admin/Edit', [
             'spbu' => $spbu,
         ]);
     }
