@@ -56,6 +56,26 @@ class SpbuController extends Controller
         ]);
     }
 
+    public function edit($spbu_id){
+        $spbu = $this->fetchSpbu($spbu_id);
+
+        return Inertia::render('Admin/SpbuEdit', [
+            'spbu' => $spbu,
+        ]);
+    }
+
+    public function update(Request $request, $spbu_id){
+        $spbu = Spbu::find($spbu_id);
+        Spbu::where('spbu_id', $spbu_id)->update([
+            'name' => $request->name, 
+            'road' => $request->road, 
+            'city' => $request->city,
+            'province' => $request->province, 
+            'island' => $request->island]);
+        
+        return Redirect::route('spbu.index', [$spbu])->with('message', 'Data updated successfully');
+    }
+
     public function destroy($spbu_id){
         $spbu = Spbu::find($spbu_id);
         Spbu::destroy($spbu_id);

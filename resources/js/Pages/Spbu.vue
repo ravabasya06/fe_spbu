@@ -66,7 +66,7 @@ export default {
                     <Button href="/analysis" value="Back" color="blue" />
                     <Button
                         v-if="user.isAdmin"
-                        href="/analysis"
+                        :href="`/spbu/${spbu.spbu_id}/edit`"
                         value="Edit"
                         color="green"
                     />

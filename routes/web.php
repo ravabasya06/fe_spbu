@@ -21,7 +21,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/analysis', [AnalysisController::class, 'index'])->name('analysis');
     Route::get('/analysis', [AnalysisController::class, 'search'])->name('analysis.search');
-    Route::get('/spbu/{id}', [SpbuController::class, 'index']);
+    Route::get('/spbu/{id}', [SpbuController::class, 'index'])->name('spbu.index');
+    Route::get('/spbu/{id}/edit', [SpbuController::class, 'edit']);
+    Route::put('/spbu/{id}', [SpbuController::class, 'update']);
     Route::delete('/spbu/{id}', [SpbuController::class, 'destroy']);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
