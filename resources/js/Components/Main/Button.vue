@@ -1,13 +1,20 @@
 <script setup>
-defineProps(["link", "value", "color"]);
+defineProps(["command", "link", "value", "color"]);
 </script>
 
 <template>
-    <Link :href="link">
+    <Link v-if="link" :href="link">
         <button class="back-button" :style="{ backgroundColor: color }">
             {{ value }}
         </button>
     </Link>
+    <button
+        v-else-if="!link"
+        class="back-button"
+        :style="{ backgroundColor: color }"
+    >
+        {{ value }}
+    </button>
 </template>
 
 <style scoped>
