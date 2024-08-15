@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
@@ -22,8 +21,6 @@ Route::middleware('auth')->group(function(){
     Route::get('/analysis', [AnalysisController::class, 'index'])->name('analysis');
     Route::get('/analysis', [AnalysisController::class, 'search'])->name('analysis.search');
     Route::get('/spbu/{id}', [SpbuController::class, 'index'])->name('spbu.index');
-    Route::get('/spbu/{id}/edit', [SpbuController::class, 'edit']);
-    Route::put('/spbu/{id}', [SpbuController::class, 'update']);
     Route::delete('/spbu/{id}', [SpbuController::class, 'destroy']);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
@@ -40,8 +37,15 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/spbu/{id}/edit', [SpbuController::class, 'edit']);
+    Route::put('/spbu/{id}', [SpbuController::class, 'update']);
+    Route::get('/adminpanel', [AdminPanelController::class, 'index'])->name('adminpanel');
 });
-Route::get('/adminpanel', [AdminPanelController::class, 'index'])->name('adminpanel');
+
+// Route::get('test', function () {
+//     dd(class_exists(\App\Http\Middleware\Admin\IsAdmin::class));
+// });
+
 
 Route::get('/users', [UserController::class, 'index'])->name('user.index');
 Route::post('/users', [UserController::class, 'store']);
