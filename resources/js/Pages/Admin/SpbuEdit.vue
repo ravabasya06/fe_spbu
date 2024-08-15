@@ -2,7 +2,7 @@
 import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
 import { ref } from "vue";
-
+const currentLayout = ref("spbu");
 const pulauOptions = ref([
     "Jawa",
     "Papua",
@@ -37,7 +37,25 @@ const provinsiOptions = ref([
     "Sumatera Utara",
     "Riau",
 ]);
+const dispenserRows = ref([{ name: "Dispenser 1", count: 0 }]);
 
+const maxDispenserRows = 10;
+
+// Function to add a new dispenser row
+const addDispenserRow = () => {
+    if (dispenserRows.value.length < maxDispenserRows) {
+        const newRow = {
+            name: `Dispenser ${dispenserRows.value.length + 1}`,
+            count: 0,
+        };
+        dispenserRows.value.push(newRow);
+    }
+};
+const deleteLastDispenserRow = () => {
+    if (dispenserRows.value.length > 1) {
+        dispenserRows.value.pop();
+    }
+};
 defineProps(["spbu"]);
 </script>
 
@@ -59,15 +77,38 @@ export default {
         update() {
             this.$inertia.put("/spbu/" + this.spbu.spbu_id, this.form);
         },
+        showLayout(layout) {
+            this.currentLayout = layout;
+        },
     },
 };
 </script>
 
 <template>
-    <Layout title="Admin Panel">
+    <Layout v-if="currentLayout === 'spbu'" title="Spbu-Edit">
+        <div class="buttons">
+            <Button
+                @click="currentLayout = 'spbu'"
+                value="Spbu"
+                color="green"
+            />
+            <Button
+                @click="currentLayout = 'dispenser'"
+                value="Dispenser Detection"
+                color="blue"
+            />
+            <button
+                @click="currentLayout = 'recognition'"
+                value="Recognition"
+                color="red"
+            >
+                Recognition
+            </button>
+        </div>
         <div class="Admin-Panel">
             <div class="container">
                 <h1>Edit</h1>
+
                 <form id="adminForm" @submit.prevent="update">
                     <div class="form-group">
                         <fieldset disabled="disabled">
@@ -143,14 +184,59 @@ export default {
                             </option>
                         </select>
                     </div>
-                    <button type="submit">Update</button>
+                    <button class="submit-button" type="submit">Update</button>
                 </form>
             </div>
         </div>
-        <Button :href="`/spbu/${spbu.spbu_id}`" value="Back" color="blue" />
+        <div class="back-button">
+            <Button :href="`/spbu/${spbu.spbu_id}`" value="Back" color="blue" />
+        </div>
+    </Layout>
+    <Layout title="Dispenser Edit" v-if="currentLayout === 'dispenser'">
+        <div class="Dispenser-Edit">
+            <div class="container">
+                <h2>Antrian Dispenser SPBU</h2>
+                <table id="dispenserTable">
+                    <thead>
+                        <tr>
+                            <th>Jenis Dispenser</th>
+                            <th>Jumlah Antrian</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(row, index) in dispenserRows" :key="index">
+                            <td>{{ row.name }}</td>
+                            <td>
+                                <input type="number" v-model="row.count" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="button-group">
+                    <button
+                        class="Add-Dispenser"
+                        type="button"
+                        @click="addDispenserRow"
+                    >
+                        Tambah Dispenser
+                    </button>
+                    <button
+                        class="Delete-Dispenser"
+                        type="button"
+                        @click="deleteLastDispenserRow"
+                        :disabled="dispenserRows.length <= 1"
+                    >
+                        Hapus Dispenser
+                    </button>
+                </div>
+                <button class="submit-button" type="submit">Update</button>
+            </div>
+        </div>
+        <div class="back-button">
+            <Button :href="`/spbu/${spbu.spbu_id}`" value="Back" color="blue" />
+        </div>
     </Layout>
 </template>
-
 <style scoped>
 .Admin-Panel {
     display: flex;
@@ -219,7 +305,7 @@ table th {
     color: #000000;
 }
 
-button {
+.submit-button {
     background-color: #4caf50;
     color: white;
     padding: 15px;
@@ -230,12 +316,34 @@ button {
     font-size: 1.2em;
 }
 
-button:hover {
+.submit:hover {
     background-color: #45a049;
 }
-.button-group {
+.buttons {
     display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
+    text-align: center;
+    gap: 25px;
+}
+.Add-Dispenser {
+    width: 20%;
+    padding: 0;
+}
+.Add-Dispenser {
+    width: 20%;
+    padding: 0;
+}
+
+.Delete-Dispenser {
+    width: 20%;
+    padding: 0;
+    margin-left: 10px;
+    background-color: #f44336;
+}
+
+.Delete-Dispenser:disabled {
+    cursor: not-allowed;
+}
+.Delete-Dispenser:hover {
+    background-color: #94140b;
 }
 </style>
