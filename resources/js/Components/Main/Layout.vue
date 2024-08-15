@@ -10,7 +10,7 @@ watch(
     (newTitle) => {
         document.title = newTitle;
     },
-    { immediate: true },
+    { immediate: true }
 );
 </script>
 
@@ -27,3 +27,9 @@ watch(
         </footer>
     </main>
 </template>
+
+<style scoped>
+article {
+    min-height: calc(100vh - 100px);
+}
+</style>
