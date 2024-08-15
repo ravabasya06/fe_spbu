@@ -63,13 +63,13 @@ export default {
                     class="station-image"
                 />
                 <div class="buttons">
-                    <Button href="/analysis" value="Back" color="blue" />
                     <Button
                         v-if="user.isAdmin"
                         :href="`/spbu/${spbu.spbu_id}/edit`"
                         value="Edit"
                         color="green"
                     />
+                    <Button href="/analysis" value="Back" color="blue" />
                     <form v-if="user.isAdmin" @submit.prevent="deleteSpbu">
                         <button type="submit" class="delete-button">
                             Delete
@@ -107,9 +107,9 @@ export default {
     max-width: 500px;
 }
 .buttons {
-    display: grid;
+    display: flex;
     text-align: center;
-    gap: 10px;
+    gap: 25px;
 }
 .delete-button {
     background-color: red;
