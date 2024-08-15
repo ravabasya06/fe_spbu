@@ -38,8 +38,12 @@ const provinsiOptions = ref([
     "Riau",
 ]);
 const dispenserRows = ref([{ name: "Dispenser 1", count: 0 }]);
-
+const CCTVRows = ref([{ name: "CCTV 1", count: 0 }]);
 const maxDispenserRows = 10;
+const maxCCTVRows = 10;
+const showLayout = (layout) => {
+    currentLayout.value = layout;
+};
 
 // Function to add a new dispenser row
 const addDispenserRow = () => {
@@ -54,6 +58,20 @@ const addDispenserRow = () => {
 const deleteLastDispenserRow = () => {
     if (dispenserRows.value.length > 1) {
         dispenserRows.value.pop();
+    }
+};
+const addCCTVRow = () => {
+    if (CCTVRows.value.length < maxCCTVRows) {
+        const newRow = {
+            name: `CCTV ${CCTVRows.value.length + 1}`,
+            count: 0,
+        };
+        CCTVRows.value.push(newRow);
+    }
+};
+const deleteLastCCTVRow = () => {
+    if (CCTVRows.value.length > 1) {
+        CCTVRows.value.pop();
     }
 };
 defineProps(["spbu"]);
@@ -77,33 +95,18 @@ export default {
         update() {
             this.$inertia.put("/spbu/" + this.spbu.spbu_id, this.form);
         },
-        showLayout(layout) {
-            this.currentLayout = layout;
-        },
     },
 };
 </script>
 
 <template>
-    <Layout v-if="currentLayout === 'spbu'" title="Spbu-Edit">
+    <Layout v-if="currentLayout == 'spbu'" title="Spbu-Edit">
         <div class="buttons">
-            <Button
-                @click="currentLayout = 'spbu'"
-                value="Spbu"
-                color="green"
-            />
-            <Button
-                @click="currentLayout = 'dispenser'"
-                value="Dispenser Detection"
-                color="blue"
-            />
-            <button
-                @click="currentLayout = 'recognition'"
-                value="Recognition"
-                color="red"
-            >
-                Recognition
+            <Button @click="showLayout('spbu')" value="Spbu" color="green" />
+            <button @click="showLayout('dispenser')" color="blue">
+                Dispenser
             </button>
+            <button @click="showLayout('CCTV')" color="red">CCTV</button>
         </div>
         <div class="Admin-Panel">
             <div class="container">
@@ -192,44 +195,127 @@ export default {
             <Button :href="`/spbu/${spbu.spbu_id}`" value="Back" color="blue" />
         </div>
     </Layout>
-    <Layout title="Dispenser Edit" v-if="currentLayout === 'dispenser'">
+    <Layout title="Dispenser Edit" v-if="currentLayout == 'dispenser'">
+        <div class="buttons">
+            <Button @click="showLayout('spbu')" value="Spbu" color="green" />
+            <button @click="showLayout('dispenser')" color="blue">
+                Dispenser
+            </button>
+            <button @click="showLayout('CCTV')" color="red">CCTV</button>
+        </div>
         <div class="Dispenser-Edit">
             <div class="container">
-                <h2>Antrian Dispenser SPBU</h2>
-                <table id="dispenserTable">
-                    <thead>
-                        <tr>
-                            <th>Jenis Dispenser</th>
-                            <th>Jumlah Antrian</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(row, index) in dispenserRows" :key="index">
-                            <td>{{ row.name }}</td>
-                            <td>
-                                <input type="number" v-model="row.count" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="button-group">
-                    <button
-                        class="Add-Dispenser"
-                        type="button"
-                        @click="addDispenserRow"
-                    >
-                        Tambah Dispenser
-                    </button>
-                    <button
-                        class="Delete-Dispenser"
-                        type="button"
-                        @click="deleteLastDispenserRow"
-                        :disabled="dispenserRows.length <= 1"
-                    >
-                        Hapus Dispenser
-                    </button>
-                </div>
-                <button class="submit-button" type="submit">Update</button>
+                <form>
+                    <h2>Antrian Dispenser SPBU</h2>
+                    <table id="dispenserTable">
+                        <thead>
+                            <tr>
+                                <th>Jenis Dispenser</th>
+                                <th>Jumlah Antrian</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                v-for="(row, index) in dispenserRows"
+                                :key="index"
+                            >
+                                <td>{{ row.name }}</td>
+                                <td>
+                                    <input
+                                        type="number"
+                                        v-model="row.count"
+                                        min="0"
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="button-group">
+                        <button
+                            class="Add-Dispenser"
+                            type="button"
+                            @click="addDispenserRow"
+                        >
+                            Tambah Dispenser
+                        </button>
+                        <button
+                            class="Delete-Dispenser"
+                            type="button"
+                            @click="deleteLastDispenserRow"
+                            :disabled="dispenserRows.length <= 1"
+                        >
+                            Hapus Dispenser
+                        </button>
+                    </div>
+                    <button class="submit-button" type="submit">Update</button>
+                </form>
+            </div>
+        </div>
+        <div class="back-button">
+            <Button :href="`/spbu/${spbu.spbu_id}`" value="Back" color="blue" />
+        </div>
+    </Layout>
+    <Layout title="CCTV Edit" v-if="currentLayout == 'CCTV'">
+        <div class="buttons">
+            <Button @click="showLayout('spbu')" value="Spbu" color="green" />
+            <button @click="showLayout('dispenser')" color="blue">
+                Dispenser
+            </button>
+            <button @click="showLayout('CCTV')" color="red">CCTV</button>
+        </div>
+        <div class="CCTV-Edit">
+            <div class="container">
+                <form>
+                    <h2>CCTV Crowd Control</h2>
+                    <table id="CCTVTable">
+                        <thead>
+                            <tr>
+                                <th>CCTV</th>
+                                <th>Pria</th>
+                                <th>Wanita</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(row, index) in CCTVRows" :key="index">
+                                <td>{{ row.name }}</td>
+                                <td>
+                                    <input
+                                        class="CCTV-Number"
+                                        type="number"
+                                        v-model="row.count"
+                                        min="0"
+                                    />
+                                </td>
+                                <td>
+                                    <input
+                                        class="CCTV-Number"
+                                        type="number"
+                                        v-model="row.count"
+                                        min="0"
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="button-group">
+                        <button
+                            class="Add-CCTV"
+                            type="button"
+                            @click="addCCTVRow"
+                        >
+                            Tambah CCTV
+                        </button>
+                        <button
+                            class="Delete-CCTV"
+                            type="button"
+                            @click="deleteLastCCTVRow"
+                            :disabled="CCTVRows.length <= 1"
+                        >
+                            Hapus Dispenser
+                        </button>
+                    </div>
+                    <button class="submit-button" type="submit">Update</button>
+                </form>
             </div>
         </div>
         <div class="back-button">
@@ -239,7 +325,8 @@ export default {
 </template>
 <style scoped>
 .Admin-Panel,
-.Dispenser-Edit {
+.Dispenser-Edit,
+.CCTV-Edit {
     display: flex;
     justify-content: center;
 }
@@ -324,27 +411,42 @@ table th {
     display: flex;
     text-align: center;
     gap: 25px;
-}
-.Add-Dispenser {
-    width: 20%;
-    padding: 0;
-}
-.Add-Dispenser {
-    width: 20%;
-    padding: 0;
+    justify-content: center;
+    margin-top: 10px;
 }
 
-.Delete-Dispenser {
+/* ini buat button yang ada di dispenser */
+.button-group {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+.Add-Dispenser,
+.Add-CCTV {
     width: 20%;
     padding: 0;
-    margin-left: 10px;
+    background-color: #3e4fb8;
+    border: none;
+}
+.Add-Dispenser:hover,
+.Add-CCTV:hover {
+    background-color: #0220e2;
+}
+.Delete-Dispenser,
+.Delete-CCTV {
+    width: 20%;
+    padding: 0;
     background-color: #f44336;
+    border: none;
+    color: white;
 }
 
-.Delete-Dispenser:disabled {
+.Delete-Dispenser:disabled,
+.Delete-CCTV:disabled {
     cursor: not-allowed;
 }
-.Delete-Dispenser:hover {
+.Delete-Dispenser:hover,
+.Delete-CCTV:hover {
     background-color: #94140b;
 }
 </style>
