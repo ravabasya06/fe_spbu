@@ -238,7 +238,8 @@ export default {
     </Layout>
 </template>
 <style scoped>
-.Admin-Panel {
+.Admin-Panel,
+.Dispenser-Edit {
     display: flex;
     justify-content: center;
 }
@@ -316,7 +317,7 @@ table th {
     font-size: 1.2em;
 }
 
-.submit:hover {
+.submit-button:hover {
     background-color: #45a049;
 }
 .buttons {
