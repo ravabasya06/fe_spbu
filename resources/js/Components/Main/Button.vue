@@ -1,5 +1,5 @@
 <script setup>
-defineProps(["command", "link", "value", "color"]);
+defineProps(["link", "value", "color"]);
 </script>
 
 <template>
