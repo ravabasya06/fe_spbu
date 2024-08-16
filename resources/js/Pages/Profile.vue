@@ -21,6 +21,7 @@ const logout = () => {
                     Created At: {{ user.created_at }} <br />
                     Updated At: {{ user.updated_at }}
                 </p>
+                <p v-if="user.isAdmin">You're an Admin!</p>
 
                 <form @submit.prevent="logout">
                     <button type="submit">Logout</button>
