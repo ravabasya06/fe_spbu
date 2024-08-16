@@ -1,4 +1,7 @@
 <script setup>
+import { usePage } from "@inertiajs/vue3";
+const { user } = usePage().props;
+
 function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
     if (sidebar.style.width === "250px") {
@@ -41,7 +44,7 @@ function closeSidebar() {
             <li><Link href="/">Home</Link></li>
             <li><Link href="/dashboard">Dashboard</Link></li>
             <li><Link href="/analysis">Analysis</Link></li>
-            <li v-if="user.isAdmin">
+            <li v-if="user && user.isAdmin">
                 <Link href="/adminpanel">Admin Panel</Link>
             </li>
         </ul>
