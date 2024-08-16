@@ -2,14 +2,13 @@
 import { useForm } from "@inertiajs/vue3";
 import Layout from "../Components/Main/Layout.vue";
 
-const props = defineProps(["user"]);
-
 const logoutForm = useForm({});
-
 const logout = () => {
     console.log("Logging out");
     logoutForm.post(route("logout"));
 };
+
+defineProps(["user"]);
 </script>
 
 <template>
