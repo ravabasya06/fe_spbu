@@ -41,6 +41,9 @@ function closeSidebar() {
             <li><Link href="/">Home</Link></li>
             <li><Link href="/dashboard">Dashboard</Link></li>
             <li><Link href="/analysis">Analysis</Link></li>
+            <li v-if="user.isAdmin">
+                <Link href="/adminpanel">Admin Panel</Link>
+            </li>
         </ul>
     </div>
 </template>
