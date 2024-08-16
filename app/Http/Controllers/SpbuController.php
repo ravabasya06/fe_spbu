@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Models\Spbu;
@@ -35,7 +34,6 @@ class SpbuController extends Controller
         $totalTruck = $vehicles->where('type_vehicle_id', 4)->count();
 
         return Inertia::render('Spbu', [
-            'user' => Auth::user(),
             'spbu' => $spbu,
             'dispensers' => $dispensers,
             'cctvs' => $cctvs,
