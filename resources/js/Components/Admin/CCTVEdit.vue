@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import Button from "../../Components/Main/Button.vue";
 const CCTVRows = ref([{ name: "CCTV 1", count: 0 }]);
 const maxCCTVRows = 10;
 const addCCTVRow = () => {
@@ -55,19 +56,21 @@ defineProps(["spbu"]);
                     </tbody>
                 </table>
                 <div class="button-group">
-                    <button class="Add-CCTV" type="button" @click="addCCTVRow">
-                        Tambah CCTV
-                    </button>
-                    <button
-                        class="Delete-CCTV"
+                    <Button
+                        type="button"
+                        @click="addCCTVRow"
+                        value="Tambah CCTV"
+                        color="green"
+                    />
+                    <Button
                         type="button"
                         @click="deleteLastCCTVRow"
                         :disabled="CCTVRows.length <= 1"
-                    >
-                        Hapus Dispenser
-                    </button>
+                        value="Hapus CCTV"
+                        color="red"
+                    />
                 </div>
-                <button class="submit-button" type="submit">Update</button>
+                <Button type="submit" value="Update" color="blue" />
             </form>
         </div>
     </div>
@@ -129,45 +132,9 @@ table th {
     background-color: #f8f8f8;
     color: #000000;
 }
-.submit-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.submit-button:hover {
-    background-color: #45a049;
-}
 .button-group {
     display: flex;
     gap: 25px;
     margin-bottom: 20px;
-}
-.Add-CCTV {
-    width: 20%;
-    padding: 0;
-    background-color: #3e4fb8;
-    border: none;
-}
-.Add-CCTV:hover {
-    background-color: #0220e2;
-}
-.Delete-CCTV {
-    width: 20%;
-    padding: 0;
-    background-color: #f44336;
-    border: none;
-    color: white;
-}
-.Delete-CCTV:disabled {
-    cursor: not-allowed;
-}
-.Delete-CCTV:hover {
-    background-color: #94140b;
 }
 </style>

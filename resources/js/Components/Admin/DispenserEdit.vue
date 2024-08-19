@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import Button from "../../Components/Main/Button.vue";
 const dispenserRows = ref([{ name: "Dispenser 1", count: 0 }]);
 const maxDispenserRows = 10;
 const addDispenserRow = () => {
@@ -45,23 +46,21 @@ defineProps(["spbu"]);
                     </tbody>
                 </table>
                 <div class="button-group">
-                    <button
-                        class="Add-Dispenser"
+                    <Button
                         type="button"
                         @click="addDispenserRow"
-                    >
-                        Tambah Dispenser
-                    </button>
-                    <button
-                        class="Delete-Dispenser"
+                        value="Tambah Dispenser"
+                        color="green"
+                    />
+                    <Button
                         type="button"
                         @click="deleteLastDispenserRow"
                         :disabled="dispenserRows.length <= 1"
-                    >
-                        Hapus Dispenser
-                    </button>
+                        value="Hapus Dispenser"
+                        color="red"
+                    />
                 </div>
-                <button class="submit-button" type="submit">Update</button>
+                <Button type="submit" color="blue" value="Update" />
             </form>
         </div>
     </div>
@@ -123,46 +122,9 @@ table th {
     background-color: #f8f8f8;
     color: #000000;
 }
-.submit-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.submit-button:hover {
-    background-color: #45a049;
-}
 .button-group {
     display: flex;
     gap: 25px;
     margin-bottom: 20px;
-}
-.Add-Dispenser {
-    width: 20%;
-    padding: 0;
-    background-color: #3e4fb8;
-    border: none;
-}
-.Add-Dispenser:hover {
-    background-color: #0220e2;
-}
-.Delete-Dispenser {
-    width: 20%;
-    padding: 0;
-    background-color: #f44336;
-    border: none;
-    color: white;
-}
-
-.Delete-Dispenser:disabled {
-    cursor: not-allowed;
-}
-.Delete-Dispenser:hover {
-    background-color: #94140b;
 }
 </style>

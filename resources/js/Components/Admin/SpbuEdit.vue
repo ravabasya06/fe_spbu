@@ -1,6 +1,7 @@
 <script setup>
 import { ref, reactive } from "vue";
 import { useForm } from "@inertiajs/vue3";
+import Button from "../../Components/Main/Button.vue";
 
 // Pulau (Island) and Provinsi (Province) options
 const pulauOptions = ref([
@@ -155,7 +156,7 @@ export default {
                         style="width: 100px"
                         v-model="form.island"
                     >
-                        <option>Pulau</option>
+                        <option disabled>Pulau</option>
                         <option
                             v-for="pulau in pulauOptions"
                             :key="pulau"
@@ -165,7 +166,7 @@ export default {
                         </option>
                     </select>
                 </div>
-                <button class="submit-button" type="submit">Update</button>
+                <Button type="submit" value="Update" color="blue" />
             </form>
         </div>
     </div>
@@ -211,19 +212,5 @@ input[type="text"] {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1.1em;
-}
-.submit-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.submit-button:hover {
-    background-color: #45a049;
 }
 </style>

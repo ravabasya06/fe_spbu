@@ -16,18 +16,34 @@ defineProps(["spbu"]);
 <template>
     <Layout title="Edit">
         <div class="buttons">
-            <Button @click="showLayout('spbu')" value="Spbu" color="green" />
             <Button
+                type="button"
+                @click="showLayout('spbu')"
+                value="Spbu"
+                color="green"
+            />
+            <Button
+                type="button"
                 @click="showLayout('dispenser')"
                 value="Dispenser"
                 color="blue"
             />
-            <Button @click="showLayout('cctv')" value="CCTV" color="red" />
+            <Button
+                type="button"
+                @click="showLayout('cctv')"
+                value="CCTV"
+                color="red"
+            />
         </div>
         <SpbuEdit v-if="currentLayout == 'spbu'" :spbu="spbu" />
         <DispenserEdit v-if="currentLayout == 'dispenser'" :spbu="spbu" />
         <CCTVEdit v-if="currentLayout == 'cctv'" :spbu="spbu" />
-        <Button :href="`/spbu/${spbu.spbu_id}`" value="Back" color="blue" />
+        <Button
+            type="link"
+            :href="`/spbu/${spbu.spbu_id}`"
+            value="Back"
+            color="blue"
+        />
     </Layout>
 </template>
 <style scoped>

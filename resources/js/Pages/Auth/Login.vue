@@ -1,5 +1,6 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import Button from "../../Components/Main/Button.vue";
 
 const form = useForm({
     name: "",
@@ -46,7 +47,12 @@ const submit = () => {
                         >{{ form.errors.password }}</span
                     >
                 </div>
-                <button type="submit" :disabled="form.processing">Login</button>
+                <Button
+                    type="submit"
+                    value="Login"
+                    color="blue"
+                    :disabled="form.processing"
+                />
             </form>
         </div>
     </div>
@@ -86,16 +92,6 @@ input {
 
 button {
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:disabled {
-    background-color: #aaa;
 }
 
 span {

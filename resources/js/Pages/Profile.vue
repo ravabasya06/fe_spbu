@@ -1,6 +1,7 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
 import Layout from "../Components/Main/Layout.vue";
+import Button from "../Components/Main/Button.vue";
 
 const logoutForm = useForm({});
 const logout = () => {
@@ -23,7 +24,7 @@ defineProps(["user"]);
                 <p v-if="user.isAdmin">You're an Admin!</p>
 
                 <form @submit.prevent="logout">
-                    <button type="submit">Logout</button>
+                    <Button type="submit" value="Logout" color="red" />
                 </form>
                 <Link href="/password">Change Password</Link>
             </div>
@@ -57,18 +58,5 @@ a:hover {
     border-radius: 5px;
     background-color: #000000;
     gap: 10px;
-}
-
-button {
-    background-color: #c32130;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #b71c25;
 }
 </style>

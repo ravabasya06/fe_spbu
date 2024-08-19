@@ -1,7 +1,8 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
-import Layout from "../../Components/Main/Layout.vue";
 import { ref } from "vue";
+import Layout from "../../Components/Main/Layout.vue";
+import Button from "../../Components/Main/Button.vue";
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
@@ -82,7 +83,7 @@ const submit = () => {
                             >{{ form.errors.password_confirmation }}</span
                         >
                     </div>
-                    <button type="submit">Save</button>
+                    <Button type="submit" value="Save" color="blue" />
                     <p
                         v-if="form.recentlySuccessful"
                         style="color: lightgreen; text-align: center"
@@ -133,16 +134,5 @@ const submit = () => {
 
 .change-container button {
     width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.change-container button:hover {
-    background-color: #0056b3;
 }
 </style>

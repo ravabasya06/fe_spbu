@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
+import Button from "../../Components/Main/Button.vue";
 
 const query = ref("");
 
@@ -22,7 +23,7 @@ const search = () => {
                 placeholder="Telusuri"
                 autocomplete="off"
             />
-            <button type="submit">Cari</button>
+            <Button type="submit" value="Cari" color="blue" />
         </form>
     </div>
 </template>
@@ -44,13 +45,5 @@ const search = () => {
 }
 .search-container input:focus {
     outline: none;
-}
-.search-container button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 15px;
-    background-color: blue;
-    color: white;
-    cursor: pointer;
 }
 </style>

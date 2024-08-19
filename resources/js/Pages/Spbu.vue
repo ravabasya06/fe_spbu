@@ -64,16 +64,20 @@ export default {
                 />
                 <div class="buttons">
                     <Button
+                        type="link"
                         v-if="user.isAdmin"
                         :href="`/spbu/${spbu.spbu_id}/edit`"
                         value="Edit"
                         color="green"
                     />
-                    <Button href="/analysis" value="Back" color="blue" />
+                    <Button
+                        type="link"
+                        href="/analysis"
+                        value="Back"
+                        color="blue"
+                    />
                     <form v-if="user.isAdmin" @submit.prevent="deleteSpbu">
-                        <button type="submit" class="delete-button">
-                            Delete
-                        </button>
+                        <Button type="submit" color="red" value="Delete" />
                     </form>
                 </div>
             </div>
@@ -110,18 +114,5 @@ export default {
     display: flex;
     text-align: center;
     gap: 25px;
-}
-.delete-button {
-    background-color: red;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 7px;
-    z-index: 1;
 }
 </style>

@@ -1,15 +1,28 @@
 <script setup>
-defineProps(["link", "value", "color"]);
+defineProps(["type", "link", "value", "color"]);
 </script>
 
 <template>
-    <Link v-if="link" :href="link">
-        <button class="back-button" :style="{ backgroundColor: color }">
+    <Link v-if="type == 'link'" :href="link">
+        <button
+            type="button"
+            class="back-button"
+            :style="{ backgroundColor: color }"
+        >
             {{ value }}
         </button>
     </Link>
     <button
-        v-else-if="!link"
+        v-else-if="type == 'button'"
+        type="button"
+        class="back-button"
+        :style="{ backgroundColor: color }"
+    >
+        {{ value }}
+    </button>
+    <button
+        v-else-if="type == 'submit'"
+        type="submit"
         class="back-button"
         :style="{ backgroundColor: color }"
     >
@@ -21,7 +34,7 @@ defineProps(["link", "value", "color"]);
 .back-button {
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -29,5 +42,6 @@ defineProps(["link", "value", "color"]);
     cursor: pointer;
     border-radius: 7px;
     z-index: 1;
+    cursor: pointer;
 }
 </style>

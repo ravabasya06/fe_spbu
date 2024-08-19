@@ -14,7 +14,7 @@ import Button from "../Components/Main/Button.vue";
             />
         </div>
         <div class="navigation">
-            <Button href="/" value="Back" color="blue" />
+            <Button type="link" href="/" value="Back" color="blue" />
         </div>
         <DashboardData />
     </Layout>
