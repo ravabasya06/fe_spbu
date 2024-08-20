@@ -8,8 +8,18 @@ import {
     faBus,
     faMotorcycle,
     faTruck,
+    faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faBars, faCircleXmark, faUser, faCar, faBus, faMotorcycle, faTruck);
+library.add(
+    faBars,
+    faCircleXmark,
+    faUser,
+    faCar,
+    faBus,
+    faMotorcycle,
+    faTruck,
+    faCircleInfo
+);
 
 export { FontAwesomeIcon };
