@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { useForm } from "@inertiajs/vue3";
+import { useForm, router } from "@inertiajs/vue3";
 import Button from "../../Components/Main/Button.vue";
 
 const query = ref("");
@@ -9,13 +9,18 @@ const search = () => {
     const form = useForm({
         search_query: query.value,
     });
-    form.get(route("analysis.search"));
+
+    if (query.value) {
+        form.get(route("analysis.search"));
+    } else {
+        router.visit("analysis");
+    }
 };
 </script>
 
 <template>
     <div class="search-container">
-        <form @submit.prevent="search">
+        <form class="search-form" @submit.prevent="search">
             <input
                 v-model="query"
                 type="text"
@@ -29,19 +34,15 @@ const search = () => {
 </template>
 
 <style scoped>
-.search-container {
+.search-form {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 10px;
 }
-
 .search-container input {
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 7px;
     border: none;
     width: 300px;
-    margin-right: 5px;
 }
 .search-container input:focus {
     outline: none;
