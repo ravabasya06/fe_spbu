@@ -17,7 +17,7 @@ class AdminPanelController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|unique:spbus',
             'road' => 'required',
             'city' => 'required',
@@ -25,13 +25,7 @@ class AdminPanelController extends Controller
             'island' => 'required',
         ]);
 
-        $spbu = Spbu::create([
-            'name' => $request->name,
-            'road' => $request->road,
-            'city' => $request->city,
-            'province' => $request->province,
-            'island' => $request->island,
-        ]);
+        $spbu = Spbu::create($validated);
 
         return Redirect::route('analysis.search')->with('message', 'Spbu created');
     }
@@ -46,13 +40,16 @@ class AdminPanelController extends Controller
 
     public function update(Request $request, $spbu_id){
         $spbu = Spbu::find($spbu_id);
-        Spbu::where('spbu_id', $spbu_id)->update([
-            'name' => $request->name, 
-            'road' => $request->road, 
-            'city' => $request->city,
-            'province' => $request->province, 
-            'island' => $request->island,
+
+        $validated = $request->validate([
+            'name' => 'required|unique:spbus,name,' . $spbu_id . ',spbu_id',
+            'road' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'island' => 'required',
         ]);
+
+        Spbu::where('spbu_id', $spbu_id)->update($validated);
         
         return Redirect::route('spbu.index', [$spbu])->with('message', 'Data updated successfully');
     }
