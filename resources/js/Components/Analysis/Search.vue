@@ -13,7 +13,7 @@ const search = () => {
     if (query.value) {
         form.get(route("analysis.search"));
     } else {
-        router.visit("analysis.index");
+        router.visit("/analysis");
     }
 };
 </script>
