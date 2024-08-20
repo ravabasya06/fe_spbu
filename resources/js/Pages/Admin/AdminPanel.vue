@@ -3,7 +3,7 @@ import { ref } from "vue";
 import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
 import FormLayoutButton from "../../Components/Admin/FormLayoutButton.vue";
-import SpbuPost from "../../Components/Admin/SpbuPost.vue";
+import SpbuForm from "../../Components/Admin/SpbuForm.vue";
 
 const currentLayout = ref("spbu");
 const updateLayout = (layout) => {
@@ -16,7 +16,7 @@ defineProps(["spbu"]);
 <template>
     <Layout title="Admin">
         <FormLayoutButton @update-layout="updateLayout" />
-        <SpbuPost v-if="currentLayout == 'spbu'" :spbu="spbu" />
+        <SpbuForm v-if="currentLayout == 'spbu'" />
         <div class="back-button">
             <Button type="link" href="/" value="Back" color="blue" />
         </div>

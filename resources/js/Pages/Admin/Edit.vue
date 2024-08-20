@@ -3,7 +3,7 @@ import { ref } from "vue";
 import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
 import FormLayoutButton from "../../Components/Admin/FormLayoutButton.vue";
-import SpbuEdit from "../../Components/Admin/SpbuEdit.vue";
+import SpbuForm from "../../Components/Admin/SpbuForm.vue";
 import DispenserEdit from "../../Components/Admin/DispenserEdit.vue";
 import CCTVEdit from "../../Components/Admin/CCTVEdit.vue";
 import DetectionEdit from "../../Components/Admin/DetectionEdit.vue";
@@ -19,7 +19,7 @@ defineProps(["spbu"]);
 <template>
     <Layout title="Edit">
         <FormLayoutButton @update-layout="updateLayout" />
-        <SpbuEdit v-if="currentLayout == 'spbu'" :spbu="spbu" />
+        <SpbuForm v-if="currentLayout == 'spbu'" :spbu="spbu" />
         <DispenserEdit v-if="currentLayout == 'dispenser'" :spbu="spbu" />
         <CCTVEdit v-if="currentLayout == 'cctv'" :spbu="spbu" />
         <DetectionEdit v-if="currentLayout == 'detection'" :spbu="spbu" />
