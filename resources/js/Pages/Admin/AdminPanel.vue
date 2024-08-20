@@ -1,10 +1,12 @@
 <script setup>
+import { ref } from "vue";
 import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
+import FormLayoutButton from "../../Components/Admin/FormLayoutButton.vue";
 import SpbuPost from "../../Components/Admin/SpbuPost.vue";
-import { ref } from "vue";
+
 const currentLayout = ref("spbu");
-const showLayout = (layout) => {
+const updateLayout = (layout) => {
     currentLayout.value = layout;
 };
 
@@ -13,26 +15,7 @@ defineProps(["spbu"]);
 
 <template>
     <Layout title="Admin">
-        <div class="buttons">
-            <Button
-                type="button"
-                @click="showLayout('spbu')"
-                value="Spbu"
-                color="blue"
-            />
-            <Button
-                type="button"
-                @click="showLayout('dispenser')"
-                value="Dispenser"
-                color="blue"
-            />
-            <Button
-                type="button"
-                @click="showLayout('cctv')"
-                value="CCTV"
-                color="blue"
-            />
-        </div>
+        <FormLayoutButton @update-layout="updateLayout" />
         <SpbuPost v-if="currentLayout == 'spbu'" :spbu="spbu" />
         <div class="back-button">
             <Button type="link" href="/" value="Back" color="blue" />
