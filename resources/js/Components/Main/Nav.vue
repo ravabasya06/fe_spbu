@@ -32,7 +32,7 @@ function closeSidebar() {
                 />
             </Link>
         </div>
-
+        <Search />
         <div class="right-group">
             <Link v-if="user && user.isAdmin" href="/adminpanel">
                 <div class="plus-button">
