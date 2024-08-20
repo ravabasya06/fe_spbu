@@ -10,7 +10,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route("register"), {
+    form.post(route("register.index"), {
         preserveScroll: true,
         onSuccess: () => form.reset(),
         onError: () => {

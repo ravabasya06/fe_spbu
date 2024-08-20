@@ -59,6 +59,13 @@ class SpbuController extends Controller
         ]);
     }
 
+    public function edit($spbu_id){
+        $spbu = Spbu::find($spbu_id);
+        return Inertia::render('Admin/Edit', [
+            'spbu' => $spbu,
+        ]);
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([

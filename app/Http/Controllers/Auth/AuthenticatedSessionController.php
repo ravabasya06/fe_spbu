@@ -11,7 +11,7 @@ use Inertia\Inertia;
 
 class AuthenticatedSessionController extends Controller
 {
-    public function create()
+    public function index()
     {
         return Inertia::render('Auth/Login');
     }
