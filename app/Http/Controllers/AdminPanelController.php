@@ -27,7 +27,7 @@ class AdminPanelController extends Controller
 
         $spbu = Spbu::create($validated);
 
-        return Redirect::route('analysis.search')->with('message', 'Spbu created');
+        return Redirect::route('analysis.search')->with('message', 'Spbu successfully created');
     }
 
     public function edit($spbu_id){

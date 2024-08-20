@@ -78,12 +78,6 @@ const submit = () => {
                         >
                     </div>
                     <Button type="submit" value="Register" color="blue" />
-                    <p
-                        v-if="form.recentlySuccessful"
-                        style="color: lightgreen; text-align: center"
-                    >
-                        User registered successfully
-                    </p>
                 </form>
             </div>
         </div>
