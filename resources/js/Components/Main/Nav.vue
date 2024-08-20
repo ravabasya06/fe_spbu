@@ -65,8 +65,11 @@ function closeSidebar() {
             </div>
             <div v-if="user && user.isAdmin" class="categories-list">
                 <span class="categories-title">Admin</span>
-                <li class="last-list">
+                <li>
                     <Link href="/register">Register User</Link>
+                </li>
+                <li class="last-list">
+                    <Link href="/">Manage User</Link>
                 </li>
             </div>
         </ul>
