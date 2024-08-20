@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
@@ -12,7 +13,7 @@ class AuthenticatedSessionController extends Controller
 {
     public function create()
     {
-        return Inertia::render('Auth/Login'); // Point to your Vue component for login
+        return Inertia::render('Auth/Login');
     }
 
     public function store(Request $request)
@@ -22,7 +23,7 @@ class AuthenticatedSessionController extends Controller
         if (Auth::attempt($this->credentials($request))) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/'); // Adjust redirection as needed
+            return Redirect::route('home')->with('message', 'You are now logged in!');
         }
 
         throw ValidationException::withMessages([

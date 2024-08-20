@@ -84,12 +84,6 @@ const submit = () => {
                         >
                     </div>
                     <Button type="submit" value="Save" color="blue" />
-                    <p
-                        v-if="form.recentlySuccessful"
-                        style="color: lightgreen; text-align: center"
-                    >
-                        Password updated successfully
-                    </p>
                 </form>
             </div>
         </div>

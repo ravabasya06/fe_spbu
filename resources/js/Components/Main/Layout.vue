@@ -2,6 +2,7 @@
 import { watch } from "vue";
 import Nav from "./Nav.vue";
 import Footer from "./Footer.vue";
+import Notification from "./Notification.vue";
 
 const props = defineProps(["title"]);
 
@@ -10,7 +11,7 @@ watch(
     (newTitle) => {
         document.title = newTitle;
     },
-    { immediate: true }
+    { immediate: true },
 );
 </script>
 
@@ -20,6 +21,7 @@ watch(
             <Nav />
         </header>
         <article>
+            <Notification />
             <slot />
         </article>
         <footer>

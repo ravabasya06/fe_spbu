@@ -1,6 +1,5 @@
 <script setup>
 import Layout from "../Components/Main/Layout.vue";
-import Notification from "../Components/Main/Notification.vue";
 import Search from "../Components/Analysis/Search.vue";
 import AnalysisCard from "../Components/Analysis/AnalysisCard.vue";
 
@@ -9,7 +8,6 @@ defineProps(["spbus", "query", "results"]);
 
 <template>
     <Layout title="Analysis">
-        <Notification />
         <div class="search-wrapper">
             <Search />
         </div>
