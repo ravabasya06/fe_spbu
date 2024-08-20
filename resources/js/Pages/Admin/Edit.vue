@@ -17,7 +17,7 @@ defineProps(["spbu"]);
 </script>
 
 <template>
-    <Layout title="Edit">
+    <Layout title="Edit SPBU">
         <FormLayoutButton @update-layout="updateLayout" />
         <SpbuForm v-if="currentLayout == 'spbu'" :spbu="spbu" />
         <DispenserEdit v-if="currentLayout == 'dispenser'" :spbu="spbu" />
