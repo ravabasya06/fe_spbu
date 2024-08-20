@@ -5,7 +5,10 @@ let myModal;
 const selectedCctv = ref("");
 
 onMounted(() => {
-    myModal = new bootstrap.Modal(document.getElementById("cctvpopup"));
+    const modalElement = document.getElementById("cctvpopup");
+    if (modalElement) {
+        myModal = new bootstrap.Modal(document.getElementById("cctvpopup"));
+    }
 });
 
 const showcctv = (Cctv) => {
