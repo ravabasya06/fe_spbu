@@ -7,7 +7,7 @@ defineProps(["spbu"]);
 </script>
 
 <template>
-    <Layout title="Admin">
+    <Layout title="Create SPBU">
         <SpbuForm />
         <div class="back-button">
             <Button type="link" href="/" value="Back" color="blue" />
