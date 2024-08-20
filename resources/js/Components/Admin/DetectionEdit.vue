@@ -1,34 +1,56 @@
 <script setup>
-import { ref } from "vue";
 import Button from "../../Components/Main/Button.vue";
-defineProps(["spbu"]);
 </script>
+
 <template>
     <div class="Dispenser-Edit">
         <div class="container">
             <form>
-                <h2>Antrian Dispenser SPBU</h2>
-                <table id="dispenserTable">
+                <h2>Total Detection</h2>
+                <table id="CCTVTable">
                     <thead>
                         <tr>
-                            <th>Jenis Dispenser</th>
-                            <th>Jumlah Antrian</th>
-                            <th>Aksi</th>
+                            <th>Jenis Detection</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Dispenser 1</td>
-                            <td>0</td>
+                            <td>Fire Detection</td>
                             <td>
-                                <a href="">Edit </a>
-                                <br />
-                                <a href="" style="color: red">Delete</a>
+                                <input
+                                    class="Detection-Number"
+                                    type="number"
+                                    min="0"
+                                    value="0"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fraud Detection</td>
+                            <td>
+                                <input
+                                    class="Detection-Number"
+                                    type="number"
+                                    min="0"
+                                    value="0"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Object Detection</td>
+                            <td>
+                                <input
+                                    class="Detection-Number"
+                                    type="number"
+                                    min="0"
+                                    value="0"
+                                />
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <Button type="submit" color="blue" value="Update" />
+                <Button type="submit" value="Update" color="blue" />
             </form>
         </div>
     </div>
@@ -88,13 +110,5 @@ table td {
 
 table th {
     background-color: #2b2b2b;
-}
-.button-group {
-    display: flex;
-    gap: 25px;
-    margin-bottom: 20px;
-}
-.delete-button:disabled {
-    cursor: not-allowed;
 }
 </style>

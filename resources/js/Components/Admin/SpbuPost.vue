@@ -95,8 +95,6 @@ const store = () => {
                     <select
                         name="provinsi"
                         id="provinsi"
-                        width="100"
-                        style="width: 150px"
                         v-model="form.province"
                         required
                     >
@@ -114,8 +112,6 @@ const store = () => {
                     <select
                         name="pulau"
                         id="pulau"
-                        width="100"
-                        style="width: 100px"
                         v-model="form.island"
                         required
                     >

@@ -135,8 +135,6 @@ export default {
                     <select
                         name="provinsi"
                         id="provinsi"
-                        width="100"
-                        style="width: 150px"
                         v-model="form.province"
                     >
                         <option disabled>Nama Provinsi</option>
@@ -149,13 +147,7 @@ export default {
                         </option>
                     </select>
                     <label for="island">Pulau:</label>
-                    <select
-                        name="pulau"
-                        id="pulau"
-                        width="100"
-                        style="width: 100px"
-                        v-model="form.island"
-                    >
+                    <select name="pulau" id="pulau" v-model="form.island">
                         <option disabled>Pulau</option>
                         <option
                             v-for="pulau in pulauOptions"

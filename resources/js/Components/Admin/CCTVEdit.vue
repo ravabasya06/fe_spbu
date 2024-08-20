@@ -1,23 +1,5 @@
 <script setup>
-import { ref } from "vue";
 import Button from "../../Components/Main/Button.vue";
-const CCTVRows = ref([{ name: "CCTV 1", count: 0 }]);
-const maxCCTVRows = 10;
-const addCCTVRow = () => {
-    if (CCTVRows.value.length < maxCCTVRows) {
-        const newRow = {
-            name: `CCTV ${CCTVRows.value.length + 1}`,
-            count: 0,
-        };
-        CCTVRows.value.push(newRow);
-    }
-};
-const deleteLastCCTVRow = () => {
-    if (CCTVRows.value.length > 1) {
-        CCTVRows.value.pop();
-    }
-};
-
 defineProps(["spbu"]);
 </script>
 <template>
@@ -29,47 +11,26 @@ defineProps(["spbu"]);
                     <thead>
                         <tr>
                             <th>CCTV</th>
+                            <th>Status</th>
                             <th>Pria</th>
                             <th>Wanita</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(row, index) in CCTVRows" :key="index">
-                            <td>{{ row.name }}</td>
+                        <tr>
+                            <td>CCTV 1</td>
+                            <td>On</td>
+                            <td>0</td>
+                            <td>0</td>
                             <td>
-                                <input
-                                    class="CCTV-Number"
-                                    type="number"
-                                    v-model="row.count"
-                                    min="0"
-                                />
-                            </td>
-                            <td>
-                                <input
-                                    class="CCTV-Number"
-                                    type="number"
-                                    v-model="row.count"
-                                    min="0"
-                                />
+                                <a href="">Edit </a>
+                                <br />
+                                <a href="" style="color: red">Delete</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="button-group">
-                    <Button
-                        type="button"
-                        @click="addCCTVRow"
-                        value="Tambah CCTV"
-                        color="green"
-                    />
-                    <Button
-                        type="button"
-                        @click="deleteLastCCTVRow"
-                        :disabled="CCTVRows.length <= 1"
-                        value="Hapus CCTV"
-                        color="red"
-                    />
-                </div>
                 <Button type="submit" value="Update" color="blue" />
             </form>
         </div>
@@ -101,11 +62,6 @@ form {
     display: flex;
     flex-direction: column;
 }
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1.2em;
-}
 input[type="number"] {
     width: 100%;
     padding: 12px;
@@ -129,12 +85,15 @@ table td {
 }
 
 table th {
-    background-color: #f8f8f8;
-    color: #000000;
+    background-color: #2b2b2b;
 }
 .button-group {
     display: flex;
     gap: 25px;
     margin-bottom: 20px;
+}
+
+.delete-button:disabled {
+    cursor: not-allowed;
 }
 </style>
