@@ -34,7 +34,7 @@ function closeSidebar() {
         </div>
         <Search />
         <div class="right-group">
-            <Link v-if="user && user.isAdmin" href="/adminpanel">
+            <Link v-if="user && user.isAdmin" href="/create">
                 <div class="plus-button">
                     <font-awesome-icon icon="plus" />
                 </div>
