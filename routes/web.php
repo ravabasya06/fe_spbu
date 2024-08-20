@@ -27,12 +27,11 @@ Route::middleware('auth')->group(function(){
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-
-    Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
-    Route::post('/register', [RegisteredUserController::class, 'store']);
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+    Route::post('/register', [RegisteredUserController::class, 'store']);
     Route::get('/spbu/{id}/edit', [AdminPanelController::class, 'edit']);
     Route::put('/spbu/{id}', [AdminPanelController::class, 'update']);
     Route::delete('/spbu/{id}', [AdminPanelController::class, 'destroy']);
