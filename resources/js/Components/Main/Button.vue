@@ -15,7 +15,7 @@ defineProps(["type", "link", "value", "color"]);
     <button
         v-else-if="type == 'button'"
         type="button"
-        class="back-button"
+        class="button"
         :style="{ backgroundColor: color }"
     >
         {{ value }}
@@ -23,7 +23,7 @@ defineProps(["type", "link", "value", "color"]);
     <button
         v-else-if="type == 'submit'"
         type="submit"
-        class="back-button"
+        class="button"
         :style="{ backgroundColor: color }"
     >
         {{ value }}
