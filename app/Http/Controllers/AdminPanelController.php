@@ -18,7 +18,7 @@ class AdminPanelController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique',
+            'name' => 'required|unique:spbus',
             'road' => 'required',
             'city' => 'required',
             'province' => 'required',
