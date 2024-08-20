@@ -54,6 +54,49 @@ class SpbuController extends Controller
         ]);
     }
 
+    public function create(){
+        return Inertia::render('Admin/CreateSPBU', [
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|unique:spbus',
+            'road' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'island' => 'required',
+        ]);
+
+        $spbu = Spbu::create($validated);
+
+        return Redirect::route('analysis.search')->with('message', 'Spbu successfully created');
+    }
+
+    public function update(Request $request, $spbu_id){
+        $spbu = Spbu::find($spbu_id);
+
+        $validated = $request->validate([
+            'name' => 'required|unique:spbus,name,' . $spbu_id . ',spbu_id',
+            'road' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'island' => 'required',
+        ]);
+
+        Spbu::where('spbu_id', $spbu_id)->update($validated);
+        
+        return Redirect::route('spbu.index', [$spbu])->with('message', 'Data updated successfully');
+    }
+
+    public function destroy($spbu_id){
+        $spbu = Spbu::find($spbu_id);
+        Spbu::destroy($spbu_id);
+        $msg =  $spbu['name'] . ' deleted';
+        return Redirect::route('analysis.search')->with('message', $msg);
+    }
+
     public function fetchSpbu($spbu_id){
         $spbu = Spbu::find($spbu_id);
         return $spbu;
@@ -63,11 +106,4 @@ class SpbuController extends Controller
     {
         return $model::where('spbu_id', $spbu_id)->orderByRaw('updated_at - created_at ASC')->get();
     }
-
-    public function fetchDetectionsByType($spbu_id, $type_id)
-{
-    return Detection::where('spbu_id', $spbu_id)
-        ->where('type_detection_id', $type_id)
-        ->count();
-}
 }

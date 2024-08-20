@@ -23,7 +23,7 @@ class AuthenticatedSessionController extends Controller
         if (Auth::attempt($this->credentials($request))) {
             $request->session()->regenerate();
 
-            return Redirect::route('home')->with('message', 'You are now logged in!');
+            return Redirect::route('home.index')->with('message', 'You are now logged in!');
         }
 
         throw ValidationException::withMessages([

@@ -41,6 +41,6 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return Redirect::route('register')->with('message', 'Account successfully created');
+        return Redirect::route('register.index')->with('message', 'Account successfully created');
     }
 }
