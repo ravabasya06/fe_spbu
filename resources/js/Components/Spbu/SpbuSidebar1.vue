@@ -8,10 +8,18 @@ const selectedType = ref("");
 const titleType = ref("");
 
 onMounted(() => {
-    detectionModal = new bootstrap.Modal(
-        document.getElementById("detectionpopup")
-    );
-    vehicleModal = new bootstrap.Modal(document.getElementById("vehiclepopup"));
+    const detectionModalElement = document.getElementById("detectionpopup");
+    const vehicleModalElement = document.getElementById("vehiclepopup");
+    if (detectionModalElement) {
+        detectionModal = new bootstrap.Modal(
+            document.getElementById("detectionpopup"),
+        );
+    }
+    if (vehicleModalElement) {
+        vehicleModal = new bootstrap.Modal(
+            document.getElementById("vehiclepopup"),
+        );
+    }
 });
 
 const showdetection = (type, title) => {
