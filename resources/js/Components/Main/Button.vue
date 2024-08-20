@@ -6,7 +6,7 @@ defineProps(["type", "link", "value", "color"]);
     <Link v-if="type == 'link'" :href="link">
         <button
             type="button"
-            class="back-button"
+            class="button"
             :style="{ backgroundColor: color }"
         >
             {{ value }}
@@ -31,7 +31,7 @@ defineProps(["type", "link", "value", "color"]);
 </template>
 
 <style scoped>
-.back-button {
+.button {
     border: none;
     color: white;
     padding: 12px 20px;
