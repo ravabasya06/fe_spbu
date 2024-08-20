@@ -10,11 +10,11 @@ import Button from "../../Components/Main/Button.vue";
             <form id="adminForm">
                 <div class="form-group">
                     <fieldset disabled="disabled">
-                        <label for="idSpbu">ID DISPENSER:</label>
+                        <label for="idDispenser">ID DISPENSER:</label>
                         <input
                             type="text"
-                            id="idSpbu"
-                            name="idSpbu"
+                            id="idDispenser"
+                            name="idDispenser"
                             placeholder="Masukkan ID"
                         />
                     </fieldset>
