@@ -11,7 +11,8 @@
 <style scope>
 .alert {
     left: 10px;
-    top: 10px;
+    position: absolute;
+    z-index: 4;
     width: max-content;
     border-radius: 10px;
     color: white;
