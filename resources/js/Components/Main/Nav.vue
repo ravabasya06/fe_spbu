@@ -1,5 +1,7 @@
 <script setup>
 import { usePage } from "@inertiajs/vue3";
+import Search from "../../Components/Analysis/Search.vue";
+
 const { user } = usePage().props;
 
 function toggleSidebar() {
@@ -18,19 +20,31 @@ function closeSidebar() {
 
 <template>
     <nav class="navbar">
-        <div class="menu-icon" @click="toggleSidebar">
-            <font-awesome-icon icon="bars" />
-        </div>
-        <img
-            class="logo"
-            src="../../../../public/images/pertamina.png"
-            alt="logo"
-        />
-        <Link href="/profile">
-            <div class="user-icon">
-                <font-awesome-icon icon="user" />
+        <div class="left-group">
+            <div class="menu-icon" @click="toggleSidebar">
+                <font-awesome-icon icon="bars" />
             </div>
-        </Link>
+            <Link href="/">
+                <img
+                    class="logo"
+                    src="../../../../public/images/pertamina.png"
+                    alt="logo"
+                />
+            </Link>
+        </div>
+
+        <div class="right-group">
+            <Link v-if="user && user.isAdmin" href="/adminpanel">
+                <div class="plus-button">
+                    <font-awesome-icon icon="plus" />
+                </div>
+            </Link>
+            <Link href="/profile">
+                <div class="user-icon">
+                    <font-awesome-icon icon="user" />
+                </div>
+            </Link>
+        </div>
     </nav>
     <div class="sidebar" id="sidebar">
         <a href="javascript:void(0)" class="closebtn" @click="closeSidebar">
@@ -40,13 +54,21 @@ function closeSidebar() {
                 style="color: #ffffff"
             />
         </a>
-        <ul>
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/dashboard">Dashboard</Link></li>
-            <li><Link href="/analysis">Analysis</Link></li>
-            <li v-if="user && user.isAdmin">
-                <Link href="/adminpanel">Admin Panel</Link>
-            </li>
+        <ul class="categories">
+            <div v-if="user" class="categories-list">
+                <span class="categories-title">General</span>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/dashboard">Dashboard</Link></li>
+                <li class="last-list">
+                    <Link href="/analysis">Analysis</Link>
+                </li>
+            </div>
+            <div v-if="user && user.isAdmin" class="categories-list">
+                <span class="categories-title">Admin</span>
+                <li class="last-list">
+                    <Link href="/register">Register User</Link>
+                </li>
+            </div>
         </ul>
     </div>
 </template>
@@ -60,25 +82,61 @@ function closeSidebar() {
     padding: 10px;
     width: 100%;
     z-index: 1;
-    left: 0;
-    right: 0;
+}
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.categories-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: solid 1px rgb(32, 32, 32);
+    border-radius: 10px;
+    margin: 15px;
+}
+.categories-title {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(32, 32, 32);
+    font-weight: bold;
+    text-align: center;
 }
 
 .logo {
     width: 125px;
-    margin: 20px;
 }
 
 .menu-icon {
-    margin: 20px;
     font-size: 24px;
     cursor: pointer;
 }
 
+.right-group {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 25px;
+    margin: 10px;
+}
+
+.left-group {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 25px;
+    margin: 10px;
+}
+
 .user-icon {
     color: white;
-    margin: 5px;
-    padding: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 20%;
+}
+.plus-button {
+    color: white;
     font-size: 24px;
     cursor: pointer;
     border-radius: 20%;
@@ -108,12 +166,15 @@ function closeSidebar() {
 
 .sidebar ul li a {
     padding: 15px;
-    margin: 0 20px 0 20px;
-    border-radius: 10px;
     color: white;
     text-decoration: none;
     display: block;
     transition: 0.3s;
+}
+
+.last-list a {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .sidebar ul li a:hover {

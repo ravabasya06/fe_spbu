@@ -9,6 +9,7 @@ import {
     faMotorcycle,
     faTruck,
     faCircleInfo,
+    faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -19,7 +20,8 @@ library.add(
     faBus,
     faMotorcycle,
     faTruck,
-    faCircleInfo
+    faCircleInfo,
+    faPlus,
 );
 
 export { FontAwesomeIcon };
