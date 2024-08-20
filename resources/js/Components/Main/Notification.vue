@@ -10,7 +10,7 @@
 </template>
 <style scope>
 .alert {
-    left: 10px;
+    margin: 15px;
     position: absolute;
     z-index: 4;
     width: max-content;
