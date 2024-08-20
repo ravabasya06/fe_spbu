@@ -20,8 +20,8 @@ watch(
         <header>
             <Nav />
         </header>
+        <Notification />
         <article>
-            <Notification />
             <slot />
         </article>
         <footer>
