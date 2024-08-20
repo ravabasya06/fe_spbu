@@ -1,6 +1,7 @@
 <script setup>
-import Search from "../Components/Analysis/Search.vue";
 import Layout from "../Components/Main/Layout.vue";
+import Notification from "../Components/Main/Notification.vue";
+import Search from "../Components/Analysis/Search.vue";
 import AnalysisCard from "../Components/Analysis/AnalysisCard.vue";
 
 defineProps(["spbus", "query", "results"]);
@@ -8,9 +9,7 @@ defineProps(["spbus", "query", "results"]);
 
 <template>
     <Layout title="Analysis">
-        <div v-if="$page.props.flash.message" class="alert">
-            {{ $page.props.flash.message }}
-        </div>
+        <Notification />
         <div class="search-wrapper">
             <Search />
         </div>

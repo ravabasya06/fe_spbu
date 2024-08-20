@@ -1,6 +1,7 @@
 <script setup>
 import Button from "../Components/Main/Button.vue";
 import Layout from "../Components/Main/Layout.vue";
+import Notification from "../Components/Main/Notification.vue";
 import SpbuSidebar1 from "../Components/Spbu/SpbuSidebar1.vue";
 import SpbuSidebar2 from "../Components/Spbu/SpbuSidebar2.vue";
 
@@ -42,6 +43,7 @@ export default {
 
 <template>
     <Layout title="Profile SPBU">
+        <Notification />
         <main class="spbu">
             <SpbuSidebar1
                 :spbu="spbu"
