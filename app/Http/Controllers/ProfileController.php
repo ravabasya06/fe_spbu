@@ -21,6 +21,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::route('login.index')->with('message', 'You logged out of an account');
+        return Redirect::route('login')->with('message', 'You logged out of an account');
     }
 }
