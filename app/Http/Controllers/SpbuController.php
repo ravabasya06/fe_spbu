@@ -60,9 +60,11 @@ class SpbuController extends Controller
     }
 
     public function edit($spbu_id){
-        $spbu = Spbu::find($spbu_id);
+        $spbu = $this->fetchSpbu($spbu_id);
+        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id);
         return Inertia::render('Admin/Edit', [
             'spbu' => $spbu,
+            'dispensers' => $dispensers,
         ]);
     }
 
