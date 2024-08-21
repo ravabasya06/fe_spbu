@@ -14,6 +14,7 @@
     position: absolute;
     z-index: 4;
     width: max-content;
+    border: solid 1px white;
     border-radius: 10px;
     color: white;
     background-color: black;
