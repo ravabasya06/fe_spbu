@@ -3,14 +3,13 @@ defineProps(["type", "link", "value", "color"]);
 </script>
 
 <template>
-    <Link v-if="type == 'link'" :href="link">
-        <button
-            type="button"
-            class="button"
-            :style="{ backgroundColor: color }"
-        >
-            {{ value }}
-        </button>
+    <Link
+        v-if="type == 'link'"
+        :href="link"
+        class="button"
+        :style="{ backgroundColor: color }"
+    >
+        {{ value }}
     </Link>
     <button
         v-else-if="type == 'button'"
