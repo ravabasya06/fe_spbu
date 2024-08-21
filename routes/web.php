@@ -38,5 +38,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/spbu/{id}', [SpbuController::class, 'destroy']);
     Route::post('/spbu', [SpbuController::class, 'store'])->name('spbu.store');
     Route::get('/create', [SpbuController::class, 'create'])->name('spbu.create');
-    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::delete('/users/{id}', [UserController::class, 'destroy']);
 });
