@@ -15,7 +15,7 @@ class SpbuController extends Controller
 {
     public function index($spbu_id)
     {
-        $spbu = $this->fetchSpbu($spbu_id);
+        $spbu = Spbu::find($spbu_id);
         $dispensers = $this->fetchModel(Dispenser::class, $spbu_id);
         $cctvs = $this->fetchModel(Cctv::class, $spbu_id);
         $detections = $this->fetchModel(Detection::class, $spbu_id);
@@ -60,7 +60,7 @@ class SpbuController extends Controller
     }
 
     public function edit($spbu_id){
-        $spbu = $this->fetchSpbu($spbu_id);
+        $spbu = Spbu::find($spbu_id);
         $dispensers = $this->fetchModel(Dispenser::class, $spbu_id);
         return Inertia::render('Admin/Edit', [
             'spbu' => $spbu,
@@ -104,11 +104,6 @@ class SpbuController extends Controller
         Spbu::destroy($spbu_id);
         $msg =  $spbu['name'] . ' deleted';
         return Redirect::route('analysis.search')->with('message', $msg);
-    }
-
-    public function fetchSpbu($spbu_id){
-        $spbu = Spbu::find($spbu_id);
-        return $spbu;
     }
     
     public function fetchModel($model, $spbu_id)

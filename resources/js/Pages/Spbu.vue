@@ -1,4 +1,5 @@
 <script setup>
+import { router } from "@inertiajs/vue3";
 import Button from "../Components/Main/Button.vue";
 import Layout from "../Components/Main/Layout.vue";
 import SpbuSidebar1 from "../Components/Spbu/SpbuSidebar1.vue";
@@ -21,22 +22,11 @@ defineProps([
     "totalTruck",
 ]);
 
-// const deleteSpbu = () => {
-//     if (confirm("Delete this spbu?")) {
-//         Inertia.delete(`/spbu/${spbu.spbu_id}`);
-//     }
-// };
-</script>
-
-<script>
-export default {
-    methods: {
-        deleteSpbu() {
-            if (confirm("Delete this spbu?")) {
-                this.$inertia.delete("/spbu/" + this.spbu.spbu_id);
-            }
-        },
-    },
+const deleteSpbu = (spbu) => {
+    router.delete(`/spbu/${spbu.spbu_id}`, {
+        onBefore: () =>
+            confirm(`Are you sure you want to delete ${spbu.name}?`),
+    });
 };
 </script>
 
@@ -76,7 +66,10 @@ export default {
                         value="Back"
                         color="blue"
                     />
-                    <form v-if="user.isAdmin" @submit.prevent="deleteSpbu">
+                    <form
+                        v-if="user.isAdmin"
+                        @submit.prevent="deleteSpbu(spbu)"
+                    >
                         <Button type="submit" color="red" value="Delete" />
                     </form>
                 </div>
