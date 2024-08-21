@@ -81,6 +81,9 @@ const submit = () => {
                 </form>
             </div>
         </div>
+        <div class="back-button">
+            <Button type="link" :href="`/`" value="Back" color="blue" />
+        </div>
     </Layout>
 </template>
 
@@ -122,5 +125,10 @@ const submit = () => {
 
 .auth-container button {
     width: 100%;
+}
+.back-button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 </style>
