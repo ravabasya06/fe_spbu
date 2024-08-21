@@ -1,7 +1,6 @@
 <script setup>
-import { ref } from "vue";
 import Button from "../../Components/Main/Button.vue";
-defineProps(["spbu"]);
+defineProps(["spbu", "dispensers"]);
 </script>
 <template>
     <div class="Dispenser-Edit">
@@ -17,13 +16,12 @@ defineProps(["spbu"]);
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Dispenser 1</td>
-                            <td>0</td>
-                            <td>
-                                <a href="">Edit </a>
-                                <br />
-                                <a href="" style="color: red">Delete</a>
+                        <tr v-for="(dispenser, index) in dispensers">
+                            <td>Dispenser {{ index + 1 }}</td>
+                            <td>{{ dispenser.queue }}</td>
+                            <td class="action-container">
+                                <Link href="">Edit</Link>
+                                <Link href="" style="color: red">Delete</Link>
                             </td>
                         </tr>
                     </tbody>
@@ -49,6 +47,20 @@ defineProps(["spbu"]);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     color: #fff;
+}
+.action-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+}
+.action-container a {
+    text-decoration: none;
+}
+.action-container a:hover {
+    text-decoration: underline;
 }
 h2 {
     text-align: center;

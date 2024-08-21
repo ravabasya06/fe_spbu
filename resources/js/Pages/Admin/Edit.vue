@@ -4,7 +4,7 @@ import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
 import FormLayoutButton from "../../Components/Admin/FormLayoutButton.vue";
 import SpbuForm from "../../Components/Admin/SpbuForm.vue";
-import DispenserEdit from "../../Components/Admin/DispenserEdit.vue";
+import DispenserList from "../../Components/Admin/DispenserList.vue";
 import CCTVEdit from "../../Components/Admin/CCTVEdit.vue";
 import DetectionEdit from "../../Components/Admin/DetectionEdit.vue";
 
@@ -13,14 +13,18 @@ const updateLayout = (layout) => {
     currentLayout.value = layout;
 };
 
-defineProps(["spbu"]);
+defineProps(["spbu", "dispensers"]);
 </script>
 
 <template>
     <Layout title="Edit SPBU">
         <FormLayoutButton @update-layout="updateLayout" />
         <SpbuForm v-if="currentLayout == 'spbu'" :spbu="spbu" />
-        <DispenserEdit v-if="currentLayout == 'dispenser'" :spbu="spbu" />
+        <DispenserList
+            v-if="currentLayout == 'dispenser'"
+            :spbu="spbu"
+            :dispensers="dispensers"
+        />
         <CCTVEdit v-if="currentLayout == 'cctv'" :spbu="spbu" />
         <DetectionEdit v-if="currentLayout == 'detection'" :spbu="spbu" />
         <div class="back-button">
