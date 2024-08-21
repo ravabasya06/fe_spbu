@@ -69,7 +69,7 @@ function closeSidebar() {
                     <Link href="/register">Register User</Link>
                 </li>
                 <li class="last-list">
-                    <Link href="/user">Manage User</Link>
+                    <Link href="/users">Manage User</Link>
                 </li>
             </div>
         </ul>
