@@ -89,7 +89,7 @@ const submit = () => {
 
 <style scoped>
 .auth {
-    height: 85vh;
+    height: 75vh;
     align-content: center;
 }
 .auth-container {
