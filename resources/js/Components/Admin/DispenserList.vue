@@ -16,7 +16,10 @@ defineProps(["spbu", "dispensers"]);
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(dispenser, index) in dispensers">
+                        <tr
+                            v-for="(dispenser, index) in dispensers"
+                            :key="index"
+                        >
                             <td>Dispenser {{ index + 1 }}</td>
                             <td>{{ dispenser.queue }}</td>
                             <td class="action-container">
