@@ -10,42 +10,31 @@ import Button from "../../Components/Main/Button.vue";
                 <table id="CCTVTable">
                     <thead>
                         <tr>
-                            <th>Jenis Detection</th>
+                            <th>Jenis Deteksi</th>
                             <th>Total</th>
+                            <th>aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Fire Detection</td>
-                            <td>
-                                <input
-                                    class="Detection-Number"
-                                    type="number"
-                                    min="0"
-                                    value="0"
-                                />
+                            <td>0</td>
+                            <td class="action-container">
+                                <Link href="">Edit</Link>
                             </td>
                         </tr>
                         <tr>
                             <td>Fraud Detection</td>
-                            <td>
-                                <input
-                                    class="Detection-Number"
-                                    type="number"
-                                    min="0"
-                                    value="0"
-                                />
+                            <td>0</td>
+                            <td class="action-container">
+                                <Link href="">Edit</Link>
                             </td>
                         </tr>
                         <tr>
                             <td>Object Detection</td>
-                            <td>
-                                <input
-                                    class="Detection-Number"
-                                    type="number"
-                                    min="0"
-                                    value="0"
-                                />
+                            <td>0</td>
+                            <td class="action-container">
+                                <Link href="">Edit</Link>
                             </td>
                         </tr>
                     </tbody>
@@ -110,5 +99,11 @@ table td {
 
 table th {
     background-color: #2b2b2b;
+}
+.action-container a {
+    text-decoration: none;
+}
+.action-container a:hover {
+    text-decoration: underline;
 }
 </style>
