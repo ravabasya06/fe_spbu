@@ -1,7 +1,10 @@
 <script setup>
+import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
+
+const AdminCheck = ref(["Yes", "No"]);
 
 // const form = useForm({
 //     id: user.id,
@@ -36,7 +39,16 @@ import Button from "../../Components/Main/Button.vue";
                 </fieldset>
                 <fieldset>
                     <label for="Admin">Admin</label>
-                    <input id="admin" type="number" min="0" max="1" required />
+                    <select name="admin" id="admin" required>
+                        <option disabled>Admin</option>
+                        <option
+                            v-for="admin in AdminCheck"
+                            :key="admin"
+                            :value="admin"
+                        >
+                            {{ admin }}
+                        </option>
+                    </select>
                 </fieldset>
                 <fieldset disabled="disabled">
                     <label for="created_at">Created At</label>
@@ -76,8 +88,8 @@ import Button from "../../Components/Main/Button.vue";
 }
 .auth-container {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    align-self: center;
     border: 1px solid #ffffff;
     max-width: 750px;
     width: 100%;
@@ -92,10 +104,6 @@ import Button from "../../Components/Main/Button.vue";
 .auth-container h2 {
     text-align: center;
     margin-bottom: 20px;
-}
-
-.auth-container form div {
-    margin-bottom: 15px;
 }
 
 .auth-container label {
@@ -113,6 +121,7 @@ import Button from "../../Components/Main/Button.vue";
 .auth-container button {
     width: 100%;
 }
+
 .back-button {
     display: flex;
     justify-content: center;
