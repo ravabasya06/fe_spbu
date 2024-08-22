@@ -17,6 +17,13 @@ class UserController extends Controller
         ]);
     }
 
+    public function edit($id){
+        $user = User::find($id);
+        return Inertia::render('Admin/User', [
+            'user' => $user,
+        ]);
+    }
+
     public function destroy($id){
         $user = User::find($id);
         User::destroy($id);

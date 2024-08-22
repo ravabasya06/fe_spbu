@@ -32,7 +32,9 @@ const deleteUser = (user) => {
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.isAdmin ? "Yes" : "No" }}</td>
                                 <td class="action-container">
-                                    <Link href="">Edit</Link>
+                                    <Link :href="`/users/${user.id}/edit`"
+                                        >Edit</Link
+                                    >
                                     <form @submit.prevent="deleteUser(user)">
                                         <button
                                             type="submit"

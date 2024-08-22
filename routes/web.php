@@ -40,4 +40,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/create', [SpbuController::class, 'create'])->name('spbu.create');
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
+    Route::get('/users/{id}/edit', [UserController::class, 'edit']);
+    Route::put('/users/{id}', [UserController::class, 'update']);
 });
