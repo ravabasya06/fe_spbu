@@ -11,7 +11,7 @@ watch(
     (newTitle) => {
         document.title = newTitle;
     },
-    { immediate: true },
+    { immediate: true }
 );
 </script>
 
@@ -32,6 +32,8 @@ watch(
 
 <style scoped>
 article {
+    display: flex;
+    flex-direction: column;
     min-height: calc(100vh - 100px);
 }
 </style>
