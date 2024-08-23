@@ -95,6 +95,7 @@ const handleSubmit = () => {
                         placeholder="Masukkan Nama Cabang"
                         v-model="form.name"
                         required
+                        autocomplete="off"
                     />
 
                     <label for="streetName">Nama Jalan:</label>
@@ -105,6 +106,7 @@ const handleSubmit = () => {
                         placeholder="Masukkan Nama Jalan"
                         v-model="form.road"
                         required
+                        autocomplete="off"
                     />
 
                     <label for="city">Kota:</label>
@@ -115,6 +117,7 @@ const handleSubmit = () => {
                         placeholder="Masukkan Nama Kota"
                         v-model="form.city"
                         required
+                        autocomplete="off"
                     />
 
                     <label for="provinceSelect">Provinsi:</label>
