@@ -2,11 +2,12 @@
 import { ref } from "vue";
 import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
-import FormLayoutButton from "../../Components/Admin/FormLayoutButton.vue";
+import FormLayoutButton from "../../Components/Admin/Button/FormLayoutButton.vue";
 import SpbuForm from "../../Components/Admin/SpbuForm.vue";
-import DispenserList from "../../Components/Admin/DispenserList.vue";
-import CCTVEdit from "../../Components/Admin/CCTVEdit.vue";
-import DetectionEdit from "../../Components/Admin/DetectionEdit.vue";
+import DispenserList from "../../Components/Admin/Edit/DispenserEdit.vue";
+import CCTVEdit from "../../Components/Admin/Edit/CCTVEdit.vue";
+import DetectionEdit from "../../Components/Admin/Edit/DetectionEdit.vue";
+import VehcileEdit from "../../Components/Admin/Edit/VehicleEdit.vue";
 
 const currentLayout = ref("spbu");
 const updateLayout = (layout) => {
@@ -27,6 +28,7 @@ defineProps(["spbu", "dispensers"]);
         />
         <CCTVEdit v-if="currentLayout == 'cctv'" :spbu="spbu" />
         <DetectionEdit v-if="currentLayout == 'detection'" :spbu="spbu" />
+        <VehcileEdit v-if="currentLayout == 'vehicle'" />
         <div class="back-button">
             <Button
                 type="link"
