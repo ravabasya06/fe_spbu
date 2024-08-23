@@ -4,24 +4,30 @@ import { useForm } from "@inertiajs/vue3";
 import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
 
-const AdminCheck = ref(["Yes", "No"]);
+const AdminCheck = ref(["0", "1"]);
 
-// const form = useForm({
-//     id: user.id,
-//     name: user.name,
-//     isAdmin: user.isAdmin,
-//     created_at: user.created_at,
-//     updated_at: user.updated_at,
-// });
+const props = defineProps({
+    theuser: {
+        type: Object,
+        required: true,
+    },
+    user: {
+        type: Object,
+    },
+});
 
-// const update = () => {
-//     form.put(`/users/${form.id}`, {
-//         preserveScroll: true,
-//         onSuccess: () => form.reset(),
-//     });
-// };
-
-// defineProps(["user"]);
+const form = useForm({
+    id: props.theuser.id,
+    name: props.theuser.name,
+    isAdmin: props.theuser.isAdmin,
+    created_at: props.theuser.created_at,
+    updated_at: props.theuser.updated_at,
+});
+const update = () => {
+    form.put(route("user.update", { id: form.id }), {
+        preserveScroll: true,
+    });
+};
 </script>
 
 <template>
@@ -31,16 +37,32 @@ const AdminCheck = ref(["Yes", "No"]);
             <form class="form" @submit.prevent="update">
                 <fieldset disabled="disabled">
                     <label for="id">User ID</label>
-                    <input id="id" type="text" autocomplete="off" required />
+                    <input
+                        v-model="form.id"
+                        id="id"
+                        type="text"
+                        autocomplete="off"
+                        required
+                    />
                 </fieldset>
                 <fieldset>
                     <label for="name">Name</label>
-                    <input id="name" type="text" autocomplete="off" required />
+                    <input
+                        v-model="form.name"
+                        id="name"
+                        type="text"
+                        autocomplete="off"
+                        required
+                    />
                 </fieldset>
-                <fieldset>
+                <fieldset v-if="user.id !== theuser.id">
                     <label for="Admin">Admin</label>
-                    <select name="admin" id="admin" required>
-                        <option disabled>Admin</option>
+                    <select
+                        v-model="form.isAdmin"
+                        name="admin"
+                        id="admin"
+                        required
+                    >
                         <option
                             v-for="admin in AdminCheck"
                             :key="admin"
@@ -50,23 +72,32 @@ const AdminCheck = ref(["Yes", "No"]);
                         </option>
                     </select>
                 </fieldset>
+                <fieldset v-else disabled>
+                    <label for="Admin">Admin</label>
+                    <select name="admin" id="admin" required>
+                        <option>
+                            Anda tidak dapat mengubah akses milik anda sendiri
+                        </option>
+                        <option>
+                            Changing the field set wont do anything...
+                        </option>
+                    </select>
+                </fieldset>
                 <fieldset disabled="disabled">
                     <label for="created_at">Created At</label>
                     <input
+                        v-model="form.created_at"
                         id="created_at"
-                        type="date"
-                        min="0"
-                        max="1"
+                        type="text"
                         required
                     />
                 </fieldset>
                 <fieldset disabled="disabled">
                     <label for="updated_at">Updated At</label>
                     <input
+                        v-model="form.updated_at"
                         id="updated_at"
-                        type="date"
-                        min="0"
-                        max="1"
+                        type="text"
                         required
                     />
                 </fieldset>
@@ -74,7 +105,7 @@ const AdminCheck = ref(["Yes", "No"]);
             </form>
         </div>
         <div class="back-button">
-            <Button type="link" :href="`/`" value="Back" color="blue" />
+            <Button type="link" :href="`/users`" value="Back" color="blue" />
         </div>
     </Layout>
 </template>

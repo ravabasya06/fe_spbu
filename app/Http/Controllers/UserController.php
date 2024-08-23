@@ -18,16 +18,27 @@ class UserController extends Controller
     }
 
     public function edit($id){
-        $user = User::find($id);
+        $theuser = User::find($id);
         return Inertia::render('Admin/User', [
-            'user' => $user,
+            'theuser' => $theuser,
         ]);
     }
 
+    public function update(Request $request, $id){
+        $theuser = User::find($id);
+        $validated = $request->validate([
+            'name' => 'required|unique:users,name,' . $id . ',id',
+            'isAdmin' => 'required',
+        ]);
+
+        User::where('id', $id)->update($validated);
+        return Redirect::route('user.index')->with('message', 'Data updated successfully!');
+    }
+
     public function destroy($id){
-        $user = User::find($id);
+        $theuser = User::find($id);
         User::destroy($id);
-        $msg =  'User ' . $user['name'] . ' successfully deleted';
+        $msg =  'User ' . $theuser['name'] . ' successfully deleted';
         return Redirect::route('user.index')->with('message', $msg);
     }
 }

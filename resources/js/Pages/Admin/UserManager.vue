@@ -2,12 +2,12 @@
 import { router } from "@inertiajs/vue3";
 import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
-defineProps(["users"]);
+defineProps(["users", "user"]);
 
-const deleteUser = (user) => {
-    router.delete(`/users/${user.id}`, {
+const deleteUser = (theuser) => {
+    router.delete(`/users/${theuser.id}`, {
         onBefore: () =>
-            confirm(`Are you sure you want to delete user ${user.name}?`),
+            confirm(`Are you sure you want to delete user ${theuser.name}?`),
     });
 };
 </script>
@@ -27,15 +27,19 @@ const deleteUser = (user) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(user, index) in users" :key="index">
+                            <tr v-for="(theuser, index) in users" :key="index">
                                 <td>{{ index + 1 }}</td>
-                                <td>{{ user.name }}</td>
-                                <td>{{ user.isAdmin ? "Yes" : "No" }}</td>
-                                <td class="action-container">
-                                    <Link :href="`/users/${user.id}/edit`"
-                                        >Edit</Link
+                                <td>{{ theuser.name }}</td>
+                                <td>{{ theuser.isAdmin ? "Yes" : "No" }}</td>
+                                <td>
+                                    <form
+                                        @submit.prevent="deleteUser(theuser)"
+                                        class="action-container"
                                     >
-                                    <form @submit.prevent="deleteUser(user)">
+                                        <Link
+                                            :href="`/users/${theuser.id}/edit`"
+                                            >Edit</Link
+                                        >
                                         <button
                                             type="submit"
                                             class="delete-button"
