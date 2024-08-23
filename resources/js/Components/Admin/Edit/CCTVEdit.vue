@@ -8,36 +8,49 @@ defineProps(["spbu", "cctvs"]);
         <div class="container">
             <form>
                 <h2>CCTV Crowd Control</h2>
-                <table id="CCTVTable">
-                    <thead>
-                        <tr>
-                            <th>CCTV</th>
-                            <th>Status</th>
-                            <th>Pria</th>
-                            <th>Wanita</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(cctv, index) in cctvs">
-                            <td>CCTV {{ index + 1 }}</td>
-                            <td>{{ cctv.status ? "Active" : "Inactive" }}</td>
-                            <td>{{ cctv.man }}</td>
-                            <td>{{ cctv.woman }}</td>
-                            <td>
-                                <form
-                                    @submit.prevent=""
-                                    class="action-container"
-                                >
-                                    <Link href="">Edit</Link>
-                                    <button type="submit" class="delete-button">
-                                        Delete
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>CCTV</th>
+                                <th>Status</th>
+                                <th>Pria</th>
+                                <th>Wanita</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="table-body-wrapper">
+                        <table>
+                            <tbody>
+                                <tr v-for="(cctv, index) in cctvs">
+                                    <td>CCTV {{ index + 1 }}</td>
+                                    <td>
+                                        {{
+                                            cctv.status ? "Active" : "Inactive"
+                                        }}
+                                    </td>
+                                    <td>{{ cctv.man }}</td>
+                                    <td>{{ cctv.woman }}</td>
+                                    <td>
+                                        <form
+                                            @submit.prevent=""
+                                            class="action-container"
+                                        >
+                                            <Link href="">Edit</Link>
+                                            <button
+                                                type="submit"
+                                                class="delete-button"
+                                            >
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <Button type="submit" value="Update" color="blue" />
             </form>
         </div>
@@ -69,30 +82,33 @@ form {
     display: flex;
     flex-direction: column;
 }
-input[type="number"] {
-    width: 100%;
-    padding: 12px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1.1em;
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    margin-bottom: 10px;
 }
-table {
+.table-container table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 30px;
-    font-size: 1.1em;
+    table-layout: fixed; /* Add this to fix the column width */
 }
-
-table th,
-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
+.table-container th,
+.table-container td {
+    padding: 10px;
     text-align: center;
+    border: 1px solid white;
 }
-
-table th {
+.table-container thead {
     background-color: #2b2b2b;
+    color: white;
+}
+.table-body-wrapper {
+    max-height: 200px;
+    overflow-y: auto;
+}
+.table-body-wrapper table {
+    width: 100%;
 }
 .button-group {
     display: flex;
