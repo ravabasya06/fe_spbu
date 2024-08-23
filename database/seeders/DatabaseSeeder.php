@@ -20,6 +20,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(TypeDetectionSeeder::class);
         $this->call(TypeVehicleSeeder::class);
+        
+        User::factory()->create([
+            'name' => 'admin',
+            'isAdmin' => 1,
+            'password' => 'admin'
+        ]);
 
         Spbu::factory(6)->create();
         Dispenser::factory(30)->create();
@@ -29,12 +35,6 @@ class DatabaseSeeder extends Seeder
 
         // TypeVehicle::create(['type' => 'Motor']);
 
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
         // Spbu::factory()->create([
         // 'name' => 'Pertamina Bekasi',
         // 'road' => 'Jl. Galaxy',
