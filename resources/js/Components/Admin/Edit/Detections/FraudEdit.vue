@@ -1,11 +1,12 @@
 <script setup>
-import Button from "../../../Components/Main/Button.vue";
-defineProps(["objectDetections"]);
+import Button from "../../../../Components/Main/Button.vue";
+
+defineProps(["fraudDetections"]);
 </script>
 
 <template>
     <form>
-        <h2>Object Detection</h2>
+        <h2>Fraud Detection</h2>
         <div class="table-container">
             <table>
                 <thead>
@@ -20,7 +21,7 @@ defineProps(["objectDetections"]);
             <div class="table-body-wrapper">
                 <table>
                     <tbody>
-                        <tr v-for="(detection, index) in objectDetections">
+                        <tr v-for="(detection, index) in fraudDetections">
                             <td>{{ index + 1 }}</td>
                             <td>{{ detection.cctv_id }}</td>
                             <td>{{ detection.created_at }}</td>
@@ -63,13 +64,14 @@ form {
 .table-container table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
+    table-layout: fixed; /* Add this to fix the column width */
 }
 .table-container th,
 .table-container td {
     padding: 10px;
     text-align: center;
     border: 1px solid white;
+    width: 33%; /* Ensure all columns are equal width */
 }
 .table-container thead {
     background-color: #2b2b2b;
@@ -82,7 +84,6 @@ form {
 .table-body-wrapper table {
     width: 100%;
 }
-
 .action-container a {
     text-decoration: none;
 }

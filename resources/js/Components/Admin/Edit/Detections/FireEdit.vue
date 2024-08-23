@@ -1,5 +1,5 @@
 <script setup>
-import Button from "../../../Components/Main/Button.vue";
+import Button from "../../../../Components/Main/Button.vue";
 defineProps(["fireDetections"]);
 </script>
 

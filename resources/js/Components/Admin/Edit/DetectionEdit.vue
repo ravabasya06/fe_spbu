@@ -1,9 +1,9 @@
 <script setup>
 import { ref } from "vue";
 import DetectionButton from "../Button/DetectionButton.vue";
-import FireEdit from "./FireEdit.vue";
-import FraudEdit from "./FraudEdit.vue";
-import ObjectEdit from "./ObjectEdit.vue";
+import FireEdit from "./Detections/FireEdit.vue";
+import FraudEdit from "./Detections/FraudEdit.vue";
+import ObjectEdit from "./Detections/ObjectEdit.vue";
 
 const currentDetection = ref("fire");
 const updateDetection = (layout) => {
