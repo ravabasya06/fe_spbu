@@ -60,5 +60,10 @@ php artisan serve
 ```
 in a new terminal.
 
+### Account
+By default there will be one account upon seeding, 
+username : admin
+password : admin
+
 ## To-do
 dashboard datas
