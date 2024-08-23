@@ -21,6 +21,13 @@ class Vehicle extends Model
         'type_vehicle_id',
     ];
 
+    protected function createdAt(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Carbon::parse($value)->format('d-m-Y h:m:s'),
+        );
+    }
+
     public function spbu()
     {
         return $this->belongsTo(Spbu::class, 'spbu_id', 'spbu_id');
