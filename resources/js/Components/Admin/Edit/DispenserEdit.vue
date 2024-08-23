@@ -22,9 +22,16 @@ defineProps(["spbu", "dispensers"]);
                         >
                             <td>Dispenser {{ index + 1 }}</td>
                             <td>{{ dispenser.queue }}</td>
-                            <td class="action-container">
-                                <Link href="">Edit</Link>
-                                <Link href="" style="color: red">Delete</Link>
+                            <td>
+                                <form
+                                    @submit.prevent=""
+                                    class="action-container"
+                                >
+                                    <Link href="">Edit</Link>
+                                    <button type="submit" class="delete-button">
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>
@@ -108,5 +115,22 @@ table th {
 }
 .delete-button:disabled {
     cursor: not-allowed;
+}
+.action-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+}
+.delete-button {
+    padding: 0;
+    border: none;
+    background-color: black;
+    color: red;
+}
+.delete-button:hover {
+    text-decoration: underline;
 }
 </style>

@@ -1,7 +1,7 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
 import Button from "../../../Components/Main/Button.vue";
-defineProps(["spbu"]);
+defineProps(["spbu", "cctvs"]);
 </script>
 <template>
     <div class="CCTV-Edit">
@@ -19,14 +19,21 @@ defineProps(["spbu"]);
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>CCTV 1</td>
-                            <td>On</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td class="action-container">
-                                <Link href="">Edit</Link>
-                                <Link href="" style="color: red">Delete</Link>
+                        <tr v-for="(cctv, index) in cctvs">
+                            <td>CCTV {{ index + 1 }}</td>
+                            <td>{{ cctv.status ? "Active" : "Inactive" }}</td>
+                            <td>{{ cctv.man }}</td>
+                            <td>{{ cctv.woman }}</td>
+                            <td>
+                                <form
+                                    @submit.prevent=""
+                                    class="action-container"
+                                >
+                                    <Link href="">Edit</Link>
+                                    <button type="submit" class="delete-button">
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>
@@ -101,6 +108,23 @@ table th {
     text-decoration: none;
 }
 .action-container a:hover {
+    text-decoration: underline;
+}
+.action-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+}
+.delete-button {
+    padding: 0;
+    border: none;
+    background-color: black;
+    color: red;
+}
+.delete-button:hover {
     text-decoration: underline;
 }
 </style>

@@ -1,5 +1,7 @@
 <script setup>
 import Button from "../../../Components/Main/Button.vue";
+
+defineProps(["fraudDetections"]);
 </script>
 
 <template>
@@ -11,7 +13,7 @@ import Button from "../../../Components/Main/Button.vue";
                     <tr>
                         <th class="column-no">No</th>
                         <th class="column-cctv">CCTV</th>
-                        <th class="column-updated">Updated At</th>
+                        <th class="column-updated">Waktu</th>
                         <th class="column-action">Aksi</th>
                     </tr>
                 </thead>
@@ -19,40 +21,20 @@ import Button from "../../../Components/Main/Button.vue";
             <div class="table-body-wrapper">
                 <table>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>CCTV 1</td>
-                            <td>2024-10-20</td>
-                            <td class="action-container">
-                                <Link href="">Edit</Link>&nbsp;
-                                <Link href="" style="color: red">Delete</Link>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>CCTV 1</td>
-                            <td>2024-10-20</td>
-                            <td class="action-container">
-                                <Link href="">Edit</Link>&nbsp;
-                                <Link href="" style="color: red">Delete</Link>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>CCTV 1</td>
-                            <td>2024-10-20</td>
-                            <td class="action-container">
-                                <Link href="">Edit</Link>&nbsp;
-                                <Link href="" style="color: red">Delete</Link>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>CCTV 1</td>
-                            <td>2024-10-20</td>
-                            <td class="action-container">
-                                <Link href="">Edit</Link>&nbsp;
-                                <Link href="" style="color: red">Delete</Link>
+                        <tr v-for="(detection, index) in fraudDetections">
+                            <td>{{ index + 1 }}</td>
+                            <td>{{ detection.cctv_id }}</td>
+                            <td>{{ detection.created_at }}</td>
+                            <td>
+                                <form
+                                    @submit.prevent=""
+                                    class="action-container"
+                                >
+                                    <Link href="">Edit</Link>
+                                    <button type="submit" class="delete-button">
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>
@@ -106,6 +88,23 @@ form {
     text-decoration: none;
 }
 .action-container a:hover {
+    text-decoration: underline;
+}
+.action-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+}
+.delete-button {
+    padding: 0;
+    border: none;
+    background-color: black;
+    color: red;
+}
+.delete-button:hover {
     text-decoration: underline;
 }
 </style>

@@ -7,13 +7,19 @@ const currentVehicle = ref("mobil");
 const updateVehicle = (layout) => {
     currentVehicle.value = layout;
 };
+
+defineProps(["motorVehicles", "carVehicles", "busVehicles", "truckVehicles"]);
 </script>
 
 <template>
     <div class="Detection-Edit">
         <div class="container">
             <VehicleButton @update-vehicle="updateVehicle" />
-            <CarEdit v-if="currentVehicle == 'mobil'" />
+            <!-- <MotorEdit v-if="currentVehicle == 'motor'" :motorVehicles="motorVehicles" /> -->
+            <CarEdit
+                v-if="currentVehicle == 'mobil'"
+                :carVehicles="carVehicles"
+            />
         </div>
     </div>
 </template>

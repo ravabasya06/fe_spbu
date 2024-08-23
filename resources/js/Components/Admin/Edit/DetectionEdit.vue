@@ -9,15 +9,26 @@ const currentDetection = ref("fire");
 const updateDetection = (layout) => {
     currentDetection.value = layout;
 };
+
+defineProps(["fireDetections", "fraudDetections", "objectDetections"]);
 </script>
 
 <template>
     <div class="Detection-Edit">
         <div class="container">
             <DetectionButton @update-detection="updateDetection" />
-            <FireEdit v-if="currentDetection == 'fire'" />
-            <FraudEdit v-if="currentDetection == 'fraud'" />
-            <ObjectEdit v-if="currentDetection == 'object'" />
+            <FireEdit
+                v-if="currentDetection == 'fire'"
+                :fireDetections="fireDetections"
+            />
+            <FraudEdit
+                v-if="currentDetection == 'fraud'"
+                :fraudDetections="fraudDetections"
+            />
+            <ObjectEdit
+                v-if="currentDetection == 'object'"
+                :objectDetections="objectDetections"
+            />
         </div>
     </div>
 </template>

@@ -3,18 +3,31 @@ import { ref } from "vue";
 import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
 import FormLayoutButton from "../../Components/Admin/Button/FormLayoutButton.vue";
-import SpbuForm from "../../Components/Admin/SpbuForm.vue";
+import SpbuForm from "../../Components/Admin/Form/SpbuForm.vue";
 import DispenserList from "../../Components/Admin/Edit/DispenserEdit.vue";
 import CCTVEdit from "../../Components/Admin/Edit/CCTVEdit.vue";
 import DetectionEdit from "../../Components/Admin/Edit/DetectionEdit.vue";
-import VehcileEdit from "../../Components/Admin/Edit/VehicleEdit.vue";
+import VehicleEdit from "../../Components/Admin/Edit/VehicleEdit.vue";
 
 const currentLayout = ref("spbu");
 const updateLayout = (layout) => {
     currentLayout.value = layout;
 };
 
-defineProps(["spbu", "dispensers"]);
+defineProps([
+    "spbu",
+    "dispensers",
+    "cctvs",
+
+    "fireDetections",
+    "fraudDetections",
+    "objectDetections",
+
+    "motorVehicles",
+    "carVehicles",
+    "busVehicles",
+    "truckVehicles",
+]);
 </script>
 
 <template>
@@ -26,9 +39,21 @@ defineProps(["spbu", "dispensers"]);
             :spbu="spbu"
             :dispensers="dispensers"
         />
-        <CCTVEdit v-if="currentLayout == 'cctv'" :spbu="spbu" />
-        <DetectionEdit v-if="currentLayout == 'detection'" :spbu="spbu" />
-        <VehcileEdit v-if="currentLayout == 'vehicle'" />
+        <CCTVEdit v-if="currentLayout == 'cctv'" :spbu="spbu" :cctvs="cctvs" />
+        <DetectionEdit
+            v-if="currentLayout == 'detection'"
+            :spbu="spbu"
+            :fireDetections="fireDetections"
+            :fraudDetections="fraudDetections"
+            :objectDetections="objectDetections"
+        />
+        <VehicleEdit
+            v-if="currentLayout == 'vehicle'"
+            :motorVehicles="motorVehicles"
+            :carVehicles="carVehicles"
+            :busVehicles="busVehicles"
+            :truckVehicles="truckVehicles"
+        />
         <div class="back-button">
             <Button
                 type="link"
