@@ -7,17 +7,17 @@ defineProps(["fireDetections"]);
     <form>
         <h2>Fire Detection</h2>
         <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>CCTV</th>
-                        <th>Waktu</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-            </table>
             <div class="table-body-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>CCTV</th>
+                            <th>Waktu</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                </table>
                 <table>
                     <tbody>
                         <tr v-for="(detection, index) in fireDetections">

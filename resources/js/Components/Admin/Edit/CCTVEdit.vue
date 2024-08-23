@@ -9,18 +9,18 @@ defineProps(["spbu", "cctvs"]);
             <form>
                 <h2>CCTV Crowd Control</h2>
                 <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>CCTV</th>
-                                <th>Status</th>
-                                <th>Pria</th>
-                                <th>Wanita</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                    </table>
                     <div class="table-body-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CCTV</th>
+                                    <th>Status</th>
+                                    <th>Pria</th>
+                                    <th>Wanita</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                        </table>
                         <table>
                             <tbody>
                                 <tr v-for="(cctv, index) in cctvs">

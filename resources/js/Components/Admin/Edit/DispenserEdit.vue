@@ -7,17 +7,17 @@ defineProps(["spbu", "dispensers"]);
         <div class="container">
             <form>
                 <h2>Antrian Dispenser SPBU</h2>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Jenis Dispenser</th>
-                                <th>Jumlah Antrian</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                    </table>
-                    <div class="table-body-wrapper">
+                <div class="table-body-wrapper">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Jenis Dispenser</th>
+                                    <th>Jumlah Antrian</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                        </table>
                         <table>
                             <tbody>
                                 <tr

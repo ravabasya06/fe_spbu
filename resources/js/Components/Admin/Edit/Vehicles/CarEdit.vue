@@ -8,16 +8,16 @@ defineProps(["carVehicles"]);
     <form>
         <h2>Kendaraan Mobil</h2>
         <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="column-no">No</th>
-                        <th class="column-updated">Waktu</th>
-                        <th class="column-action">Aksi</th>
-                    </tr>
-                </thead>
-            </table>
             <div class="table-body-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="column-no">No</th>
+                            <th class="column-updated">Waktu</th>
+                            <th class="column-action">Aksi</th>
+                        </tr>
+                    </thead>
+                </table>
                 <table>
                     <tbody>
                         <tr v-for="(car, index) in carVehicles">
