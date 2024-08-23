@@ -10,10 +10,10 @@ defineProps(["fireDetections"]);
             <table>
                 <thead>
                     <tr>
-                        <th class="column-no">No</th>
-                        <th class="column-cctv">CCTV</th>
-                        <th class="column-updated">Waktu</th>
-                        <th class="column-action">Aksi</th>
+                        <th>No</th>
+                        <th>CCTV</th>
+                        <th>Waktu</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
             </table>
