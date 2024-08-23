@@ -1,7 +1,7 @@
 <script setup>
 import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
-import SpbuForm from "../../Components/Admin/SpbuForm.vue";
+import SpbuForm from "../../Components/Admin/Form/SpbuForm.vue";
 
 defineProps(["spbu"]);
 </script>
