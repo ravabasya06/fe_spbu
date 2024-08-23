@@ -1,8 +1,10 @@
 <script setup>
 import { ref } from "vue";
 import VehicleButton from "../Button/VehicleButton.vue";
-import CarEdit from "../Edit/CarEdit.vue";
-
+import CarEdit from "./Vehicles/CarEdit.vue";
+import MotorEdit from "./Vehicles/MotorEdit.vue";
+import BusEdit from "./Vehicles/BusEdit.vue";
+import TruckEdit from "./Vehicles/TruckEdit.vue";
 const currentVehicle = ref("mobil");
 const updateVehicle = (layout) => {
     currentVehicle.value = layout;
@@ -15,10 +17,21 @@ defineProps(["motorVehicles", "carVehicles", "busVehicles", "truckVehicles"]);
     <div class="Detection-Edit">
         <div class="container">
             <VehicleButton @update-vehicle="updateVehicle" />
-            <!-- <MotorEdit v-if="currentVehicle == 'motor'" :motorVehicles="motorVehicles" /> -->
             <CarEdit
                 v-if="currentVehicle == 'mobil'"
                 :carVehicles="carVehicles"
+            />
+            <MotorEdit
+                v-if="currentVehicle == 'motor'"
+                :motorVehicles="motorVehicles"
+            />
+            <BusEdit
+                v-if="currentVehicle == 'bus'"
+                :busVehicles="busVehicles"
+            />
+            <TruckEdit
+                v-if="currentVehicle == 'truck'"
+                :truckVehicles="truckVehicles"
             />
         </div>
     </div>
