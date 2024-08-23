@@ -16,14 +16,14 @@ class SpbuController extends Controller
     public function index($spbu_id)
     {
         $spbu = Spbu::find($spbu_id);
-        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id);
-        $cctvs = $this->fetchModel(Cctv::class, $spbu_id);
-        $detections = $this->fetchModel(Detection::class, $spbu_id);
-        $vehicles = $this->fetchModel(Vehicle::class, $spbu_id);
+        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id)->get();
+        $cctvs = $this->fetchModel(Cctv::class, $spbu_id)->get();
+        $detections = $this->fetchModel(Detection::class, $spbu_id)->get();
+        $vehicles = $this->fetchModel(Vehicle::class, $spbu_id)->get();
         
-        $fireDetections = $detections->where('type_detection_id', 1);
-        $fraudDetections = $detections->where('type_detection_id', 2);
-        $objectDetections = $detections->where('type_detection_id', 3);
+        $fireDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 1)->get();
+        $fraudDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 2)->get();
+        $objectDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 3)->get();
 
         $totalWoman = $cctvs->sum('woman');
         $totalMan = $cctvs->sum('man');
@@ -61,10 +61,31 @@ class SpbuController extends Controller
 
     public function edit($spbu_id){
         $spbu = Spbu::find($spbu_id);
-        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id);
+        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id)->get();
+        $cctvs = $this->fetchModel(Cctv::class, $spbu_id)->get();
+        $detections = $this->fetchModel(Detection::class, $spbu_id)->get();
+        
+        $fireDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 1)->get();
+        $fraudDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 2)->get();
+        $objectDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 3)->get();
+
+        $motorVehicles = $this->fetchModel(Vehicle::class, $spbu_id)->where('type_vehicle_id', 1)->get();
+        $carVehicles = $this->fetchModel(Vehicle::class, $spbu_id)->where('type_vehicle_id', 2)->get();
+        $busVehicles = $this->fetchModel(Vehicle::class, $spbu_id)->where('type_vehicle_id', 3)->get();
+        $truckVehicles = $this->fetchModel(Vehicle::class, $spbu_id)->where('type_vehicle_id', 4)->get();
         return Inertia::render('Admin/Edit', [
             'spbu' => $spbu,
             'dispensers' => $dispensers,
+            'cctvs' => $cctvs,
+
+            'fireDetections' => $fireDetections,
+            'fraudDetections' => $fraudDetections,
+            'objectDetections' => $objectDetections,
+
+            'motorVehicles' => $motorVehicles,
+            'carVehicles' => $carVehicles,
+            'busVehicles' => $busVehicles,
+            'truckVehicles' => $truckVehicles,
         ]);
     }
 
@@ -108,6 +129,6 @@ class SpbuController extends Controller
     
     public function fetchModel($model, $spbu_id)
     {
-        return $model::where('spbu_id', $spbu_id)->orderByRaw('updated_at - created_at ASC')->get();
+        return $model::where('spbu_id', $spbu_id)->orderByRaw('updated_at - created_at ASC');
     }
 }
