@@ -21,11 +21,13 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeDetectionSeeder::class);
         $this->call(TypeVehicleSeeder::class);
         
-        User::factory()->create([
-            'name' => 'admin',
-            'isAdmin' => 1,
-            'password' => 'admin'
-        ]);
+        if(!User::where('name', 'admin')->exists()){
+            User::factory()->create([
+                'name' => 'admin',
+                'isAdmin' => 1,
+                'password' => 'admin'
+            ]);
+        }
 
         Spbu::factory(6)->create();
         Dispenser::factory(30)->create();
