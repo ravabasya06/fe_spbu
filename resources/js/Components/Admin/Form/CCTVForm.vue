@@ -24,7 +24,7 @@ const statusOptions = ref(["On", "Off"]);
                     <select name="status" id="status" required>
                         <option disabled>Status</option>
                         <option
-                            v-for="Status in statusOptions"
+                            v-for="status in statusOptions"
                             :key="status"
                             :value="status"
                         >
@@ -36,7 +36,6 @@ const statusOptions = ref(["On", "Off"]);
                         type="number"
                         id="queue"
                         name="queue"
-                        placeholder="0"
                         min="0"
                         value="0"
                         required
@@ -46,7 +45,6 @@ const statusOptions = ref(["On", "Off"]);
                         type="number"
                         id="queue"
                         name="queue"
-                        placeholder="0"
                         min="0"
                         value="0"
                         required
