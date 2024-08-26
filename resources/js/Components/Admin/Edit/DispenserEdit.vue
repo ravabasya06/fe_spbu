@@ -45,7 +45,7 @@ defineProps(["spbu", "dispensers"]);
                         </table>
                     </div>
                 </div>
-                <Button type="submit" color="blue" value="Update" />
+                <Button type="link" href="" value="Tambah" color="blue" />
             </form>
         </div>
     </div>
