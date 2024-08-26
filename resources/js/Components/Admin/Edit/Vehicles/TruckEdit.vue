@@ -40,7 +40,7 @@ defineProps(["truckVehicles"]);
                 </table>
             </div>
         </div>
-        <Button type="submit" value="Update" color="blue" />
+        <Button type="link" href="" value="Tambah" color="blue" />
     </form>
 </template>
 
