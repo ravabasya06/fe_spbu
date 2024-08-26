@@ -23,7 +23,6 @@ import Button from "../../../Components/Main/Button.vue";
                         type="number"
                         id="queue"
                         name="queue"
-                        placeholder="0"
                         min="0"
                         value="0"
                         required
