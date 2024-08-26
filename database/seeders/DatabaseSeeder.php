@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
 
         Spbu::factory(6)->create();
         Dispenser::factory(30)->create();
-        Cctv::factory(30)->create();
+        $this->call(CctvSeeder::class);
+        // Cctv::factory(30)->create();
         Vehicle::factory(50)->create();
         Detection::factory(50)->create();
 
