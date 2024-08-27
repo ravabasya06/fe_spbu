@@ -39,6 +39,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/spbu', [SpbuController::class, 'store'])->name('spbu.store');
     Route::get('/create', [SpbuController::class, 'create'])->name('spbu.create');
 
+    Route::get('/dispenser/{id}/edit', [DispenserController::class, 'edit']);
+    Route::put('/dispenser/{id}', [DispenserController::class, 'update']);
+    Route::get('/dispenser', [DispenserController::class, 'store']);
+    Route::delete('/dispenser/{id}', [DispenserController::class, 'destroy']);
+
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
     Route::get('/users/{id}/edit', [UserController::class, 'edit']);

@@ -1,6 +1,14 @@
 <script setup>
+import { router } from "@inertiajs/vue3";
 import Button from "../../../Components/Main/Button.vue";
 defineProps(["spbu", "dispensers"]);
+
+const deleteDispenser = (dispenser) => {
+    router.delete(`/dispenser/${dispenser.dispenser_id}`, {
+        onBefore: () =>
+            confirm("Are you sure you want to delete this dispenser?"),
+    });
+};
 </script>
 <template>
     <div class="Dispenser-Edit">
@@ -28,10 +36,15 @@ defineProps(["spbu", "dispensers"]);
                                     <td>{{ dispenser.queue }}</td>
                                     <td>
                                         <form
-                                            @submit.prevent=""
+                                            @submit.prevent="
+                                                deleteDispenser(dispenser)
+                                            "
                                             class="action-container"
                                         >
-                                            <Link href="">Edit</Link>
+                                            <Link
+                                                :href="`/dispenser/${dispenser.dispenser_id}/edit`"
+                                                >Edit</Link
+                                            >
                                             <button
                                                 type="submit"
                                                 class="delete-button"
