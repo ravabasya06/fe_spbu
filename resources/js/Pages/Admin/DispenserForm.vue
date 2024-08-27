@@ -129,4 +129,9 @@ input[type="number"] {
     border-radius: 4px;
     font-size: 1.1em;
 }
+.back-button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
 </style>
