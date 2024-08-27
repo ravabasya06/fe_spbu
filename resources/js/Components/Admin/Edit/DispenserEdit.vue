@@ -58,7 +58,12 @@ const deleteDispenser = (dispenser) => {
                         </table>
                     </div>
                 </div>
-                <Button type="link" href="" value="Tambah" color="blue" />
+                <Button
+                    type="link"
+                    :href="`/spbu/${spbu.spbu_id}/dispenser`"
+                    value="Tambah"
+                    color="blue"
+                />
             </form>
         </div>
     </div>

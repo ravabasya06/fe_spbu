@@ -10,6 +10,12 @@ use App\Models\Dispenser;
 
 class DispenserController extends Controller
 {
+    public function create($spbu_id){
+        return Inertia::render('Admin/DispenserForm', [
+            'spbu_id' => $spbu_id,
+        ]);
+    }
+
     public function destroy($dispenser_id){
         $dispenser = Dispenser::find($dispenser_id);
         Dispenser::destroy($dispenser_id);
@@ -26,6 +32,7 @@ class DispenserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'spbu_id' => 'required',
             'queue' => 'required',
         ]);
 

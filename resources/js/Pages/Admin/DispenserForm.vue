@@ -9,11 +9,14 @@ const props = defineProps({
         type: Object,
         default: null,
     },
+    spbu_id: {
+        type: String,
+    },
 });
 
 const form = useForm({
     dispenser_id: props.dispenser?.dispenser_id ?? "",
-    spbu_id: props.dispenser?.spbu_id ?? "",
+    spbu_id: props.dispenser?.spbu_id ?? props.spbu_id,
     queue: props.dispenser?.queue ?? "",
 });
 
@@ -72,14 +75,18 @@ const handleSubmit = () => {
                             required
                         />
                     </div>
-                    <Button type="submit" value="Update" color="blue" />
+                    <Button
+                        type="submit"
+                        :value="isEditMode ? 'Update' : 'Save'"
+                        color="blue"
+                    />
                 </form>
             </div>
         </div>
         <div class="back-button">
             <Button
                 type="link"
-                :href="`/spbu/${dispenser.spbu_id}/edit`"
+                :href="`/spbu/${dispenser?.spbu_id ?? props.spbu_id}/edit`"
                 value="Back"
                 color="blue"
             />

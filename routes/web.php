@@ -41,8 +41,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/dispenser/{id}/edit', [DispenserController::class, 'edit']);
     Route::put('/dispenser/{id}', [DispenserController::class, 'update']);
-    Route::get('/dispenser', [DispenserController::class, 'store']);
     Route::delete('/dispenser/{id}', [DispenserController::class, 'destroy']);
+    Route::post('/dispenser', [DispenserController::class, 'store'])->name('dispenser.store');
+    Route::get('/spbu/{id}/dispenser', [DispenserController::class, 'create'])->name('dispenser.create');
 
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
