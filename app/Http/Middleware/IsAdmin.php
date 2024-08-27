@@ -12,7 +12,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next): Response
     {
          if (!Auth::user()->isAdmin) {
-            return redirect('/');
+            return redirect('/')->with('message', 'You dont have access to this page...');;
         }
         return $next($request);
     }
