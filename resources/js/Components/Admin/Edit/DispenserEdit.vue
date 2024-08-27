@@ -29,10 +29,12 @@ const deleteDispenser = (dispenser) => {
                         <table>
                             <tbody>
                                 <tr
-                                    v-for="(dispenser, index) in dispensers"
-                                    :key="index"
+                                    v-for="dispenser in dispensers"
+                                    :key="dispenser.dispenser_id"
                                 >
-                                    <td>Dispenser {{ index + 1 }}</td>
+                                    <td>
+                                        Dispenser {{ dispenser.dispenser_no }}
+                                    </td>
                                     <td>{{ dispenser.queue }}</td>
                                     <td>
                                         <form

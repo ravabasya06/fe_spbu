@@ -19,6 +19,7 @@ class Dispenser extends Model
     protected $fillable = [
         'spbu_id',
         'queue',
+        'dispenser_no',
     ];
 
     public function spbu()

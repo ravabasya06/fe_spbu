@@ -18,6 +18,7 @@ const form = useForm({
     dispenser_id: props.dispenser?.dispenser_id ?? "",
     spbu_id: props.dispenser?.spbu_id ?? props.spbu_id,
     queue: props.dispenser?.queue ?? "",
+    dispenser_no: props.dispenser?.dispenser_no ?? "",
 });
 
 const isEditMode = computed(() => !!props.dispenser);
@@ -42,7 +43,7 @@ const handleSubmit = () => {
 
                 <form id="adminForm" @submit.prevent="handleSubmit">
                     <div class="form-group">
-                        <fieldset v-if="isEditMode" disabled="disabled">
+                        <fieldset v-if="isEditMode">
                             <label for="idDispenser">ID Dispenser:</label>
                             <input
                                 type="text"
@@ -52,8 +53,6 @@ const handleSubmit = () => {
                                 v-model="form.dispenser_id"
                                 disabled
                             />
-                        </fieldset>
-                        <fieldset disabled="disabled">
                             <label for="idSpbu">ID SPBU:</label>
                             <input
                                 type="text"
@@ -64,6 +63,17 @@ const handleSubmit = () => {
                                 disabled
                             />
                         </fieldset>
+                        <label for="number">Dispenser no:</label>
+                        <input
+                            type="number"
+                            id="no"
+                            name="no"
+                            min="0"
+                            value="0"
+                            v-model="form.dispenser_no"
+                            required
+                            :disabled="isEditMode"
+                        />
                         <label for="queue">Queue:</label>
                         <input
                             type="number"

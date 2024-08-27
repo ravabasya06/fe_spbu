@@ -9,6 +9,7 @@ use App\Models\Cctv;
 use App\Models\Vehicle;
 use App\Models\Detection;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -30,7 +31,7 @@ class DatabaseSeeder extends Seeder
         }
 
         Spbu::factory(6)->create();
-        Dispenser::factory(30)->create();
+        Dispenser::factory()->count(10)->state(new Sequence(fn (Sequence $sequence) => ['dispenser_no' => $sequence-> index + 1 ]))->create();
         $this->call(CctvSeeder::class);
         // Cctv::factory(30)->create();
         Vehicle::factory(50)->create();

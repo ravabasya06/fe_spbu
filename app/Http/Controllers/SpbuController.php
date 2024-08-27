@@ -61,7 +61,7 @@ class SpbuController extends Controller
 
     public function edit($spbu_id){
         $spbu = Spbu::find($spbu_id);
-        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id)->get();
+        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id)->orderBy("dispenser_no")->get();
         $cctvs = $this->fetchModel(Cctv::class, $spbu_id)->get();
         $detections = $this->fetchModel(Detection::class, $spbu_id)->get();
         

@@ -12,12 +12,12 @@ onMounted(() => {
     const vehicleModalElement = document.getElementById("vehiclepopup");
     if (detectionModalElement) {
         detectionModal = new bootstrap.Modal(
-            document.getElementById("detectionpopup"),
+            document.getElementById("detectionpopup")
         );
     }
     if (vehicleModalElement) {
         vehicleModal = new bootstrap.Modal(
-            document.getElementById("vehiclepopup"),
+            document.getElementById("vehiclepopup")
         );
     }
 });
@@ -63,10 +63,12 @@ defineProps([
                         <table>
                             <tbody>
                                 <tr
-                                    v-for="(dispenser, index) in dispensers"
-                                    :key="index"
+                                    v-for="dispenser in dispensers"
+                                    :key="dispenser.dispenser_no"
                                 >
-                                    <td>DISPENSER {{ index + 1 }}</td>
+                                    <td>
+                                        DISPENSER {{ dispenser.dispenser_no }}
+                                    </td>
                                     <td class="jumlah-antrian">
                                         {{ dispenser.queue }}
                                     </td>
