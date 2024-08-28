@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\DispenserController;
+use App\Http\Controllers\CctvController;
 
 Route::middleware('auth')->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
@@ -44,6 +45,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/dispenser/{id}', [DispenserController::class, 'destroy']);
     Route::post('/dispenser', [DispenserController::class, 'store'])->name('dispenser.store');
     Route::get('/spbu/{id}/dispenser', [DispenserController::class, 'create'])->name('dispenser.create');
+
+    Route::get('/cctv/{id}/edit', [CctvController::class, 'edit']);
+    Route::put('/cctv/{id}', [CctvController::class, 'update']);
+    Route::delete('/cctv/{id}', [CctvController::class, 'destroy']);
+    Route::post('/cctv', [CctvController::class, 'store'])->name('cctv.store');
+    Route::get('/spbu/{id}/cctv', [CctvController::class, 'create'])->name('cctv.create');
 
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::delete('/users/{id}', [UserController::class, 'destroy']);

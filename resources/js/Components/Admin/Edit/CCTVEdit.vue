@@ -1,7 +1,13 @@
 <script setup>
-import { Link } from "@inertiajs/vue3";
+import { router } from "@inertiajs/vue3";
 import Button from "../../../Components/Main/Button.vue";
 defineProps(["spbu", "cctvs"]);
+
+const deleteCctv = (cctv) => {
+    router.delete(`/cctv/${cctv.cctv_id}`, {
+        onBefore: () => confirm("Are you sure you want to delete this CCTV?"),
+    });
+};
 </script>
 <template>
     <div class="CCTV-Edit">
@@ -23,8 +29,11 @@ defineProps(["spbu", "cctvs"]);
                         </table>
                         <table>
                             <tbody>
-                                <tr v-for="(cctv, index) in cctvs">
-                                    <td>CCTV {{ index + 1 }}</td>
+                                <tr
+                                    v-for="cctv in cctvs"
+                                    :key="cctv.cctv_number"
+                                >
+                                    <td>CCTV {{ cctv.cctv_number }}</td>
                                     <td>
                                         {{
                                             cctv.status ? "Active" : "Inactive"
@@ -34,10 +43,13 @@ defineProps(["spbu", "cctvs"]);
                                     <td>{{ cctv.woman }}</td>
                                     <td>
                                         <form
-                                            @submit.prevent=""
+                                            @submit.prevent="deleteCctv(cctv)"
                                             class="action-container"
                                         >
-                                            <Link href="">Edit</Link>
+                                            <Link
+                                                :href="`/cctv/${cctv.cctv_id}/edit`"
+                                                >Edit</Link
+                                            >
                                             <button
                                                 type="submit"
                                                 class="delete-button"
@@ -51,7 +63,12 @@ defineProps(["spbu", "cctvs"]);
                         </table>
                     </div>
                 </div>
-                <Button type="link" href="" value="Tambah" color="blue" />
+                <Button
+                    type="link"
+                    :href="`/spbu/${spbu.spbu_id}/cctv`"
+                    value="Tambah"
+                    color="blue"
+                />
             </form>
         </div>
     </div>
