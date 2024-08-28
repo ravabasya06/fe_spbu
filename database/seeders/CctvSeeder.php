@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Cctv;
 use App\Models\Spbu;
 
-class CCTVSeeder extends Seeder
+class CctvSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -16,8 +16,8 @@ class SpbuController extends Controller
     public function index($spbu_id)
     {
         $spbu = Spbu::find($spbu_id);
-        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id)->get();
-        $cctvs = $this->fetchModel(Cctv::class, $spbu_id)->get();
+        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id)->orderBy("dispenser_number")->get();
+        $cctvs = $this->fetchModel(Cctv::class, $spbu_id)->orderBy("cctv_number")->get();
         $detections = $this->fetchModel(Detection::class, $spbu_id)->get();
         $vehicles = $this->fetchModel(Vehicle::class, $spbu_id)->get();
         
@@ -61,8 +61,8 @@ class SpbuController extends Controller
 
     public function edit($spbu_id){
         $spbu = Spbu::find($spbu_id);
-        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id)->orderBy("dispenser_no")->get();
-        $cctvs = $this->fetchModel(Cctv::class, $spbu_id)->get();
+        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id)->orderBy("dispenser_number")->get();
+        $cctvs = $this->fetchModel(Cctv::class, $spbu_id)->orderBy("cctv_number")->get();
         $detections = $this->fetchModel(Detection::class, $spbu_id)->get();
         
         $fireDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 1)->get();
@@ -129,6 +129,6 @@ class SpbuController extends Controller
     
     public function fetchModel($model, $spbu_id)
     {
-        return $model::where('spbu_id', $spbu_id)->orderByRaw('updated_at - created_at ASC');
+        return $model::where('spbu_id', $spbu_id)->orderByRaw('created_at ASC');
     }
 }

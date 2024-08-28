@@ -33,8 +33,8 @@ class DispenserController extends Controller
     {
         $validated = $request->validate([
             'spbu_id' => 'required',
+            'dispenser_number' => 'required',
             'queue' => 'required',
-            'dispenser_no' => 'required',
         ]);
 
         $dispenser = Dispenser::create($validated);
@@ -48,10 +48,9 @@ class DispenserController extends Controller
         $validated = $request->validate([
             'queue' => 'required',
         ]);
-        $dispenser->queue = $validated["queue"]; 
-        $dispenser->save();
-        // dd (Dispenser::where('dispenser_id', $dispenser_id)->update($validated));
-        
+
+        Dispenser::where('dispenser_id', $dispenser_id)->update($validated);
+
         return back()->with('message', 'Data updated successfully');
     }
 }

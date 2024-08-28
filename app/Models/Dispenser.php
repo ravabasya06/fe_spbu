@@ -18,8 +18,8 @@ class Dispenser extends Model
 
     protected $fillable = [
         'spbu_id',
+        'dispenser_number',
         'queue',
-        'dispenser_no',
     ];
 
     public function spbu()
