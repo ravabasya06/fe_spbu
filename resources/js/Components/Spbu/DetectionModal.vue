@@ -10,7 +10,7 @@ watch(
             ? Object.keys(props.detections).length
             : 0;
     },
-    { immediate: true },
+    { immediate: true }
 );
 </script>
 
