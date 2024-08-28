@@ -16,9 +16,9 @@ const props = defineProps({
 
 const form = useForm({
     dispenser_id: props.dispenser?.dispenser_id ?? "",
+    no: props.dispenser?.no ?? "",
     spbu_id: props.dispenser?.spbu_id ?? props.spbu_id,
     queue: props.dispenser?.queue ?? "",
-    dispenser_no: props.dispenser?.dispenser_no ?? "",
 });
 
 const isEditMode = computed(() => !!props.dispenser);
@@ -53,6 +53,8 @@ const handleSubmit = () => {
                                 v-model="form.dispenser_id"
                                 disabled
                             />
+                        </fieldset>
+                        <fieldset>
                             <label for="idSpbu">ID SPBU:</label>
                             <input
                                 type="text"
@@ -63,27 +65,31 @@ const handleSubmit = () => {
                                 disabled
                             />
                         </fieldset>
-                        <label for="number">Dispenser no:</label>
-                        <input
-                            type="number"
-                            id="no"
-                            name="no"
-                            min="0"
-                            value="0"
-                            v-model="form.dispenser_no"
-                            required
-                            :disabled="isEditMode"
-                        />
-                        <label for="queue">Queue:</label>
-                        <input
-                            type="number"
-                            id="queue"
-                            name="queue"
-                            min="0"
-                            value="0"
-                            v-model="form.queue"
-                            required
-                        />
+                        <fieldset>
+                            <label for="number">Dispenser Number:</label>
+                            <input
+                                type="number"
+                                id="no"
+                                name="no"
+                                min="0"
+                                value="0"
+                                v-model="form.no"
+                                required
+                                :disabled="isEditMode"
+                            />
+                        </fieldset>
+                        <fieldset>
+                            <label for="queue">Queue:</label>
+                            <input
+                                type="number"
+                                id="queue"
+                                name="queue"
+                                min="0"
+                                value="0"
+                                v-model="form.queue"
+                                required
+                            />
+                        </fieldset>
                     </div>
                     <Button
                         type="submit"

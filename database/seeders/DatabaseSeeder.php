@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         }
 
         Spbu::factory(6)->create();
-        Dispenser::factory()->count(10)->state(new Sequence(fn (Sequence $sequence) => ['dispenser_no' => $sequence-> index + 1 ]))->create();
+        Dispenser::factory()->count(30)->state(new Sequence(fn (Sequence $sequence) => ['no' => $sequence-> index + 1 ]))->create();
         $this->call(CctvSeeder::class);
         // Cctv::factory(30)->create();
         Vehicle::factory(50)->create();
