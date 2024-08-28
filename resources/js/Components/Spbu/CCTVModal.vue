@@ -15,7 +15,7 @@ defineProps(["cctv"]);
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        CCTV {{ cctv.cctv_id }}
+                        CCTV {{ cctv.cctv_number }}
                     </h1>
                     <button
                         type="button"
@@ -25,7 +25,12 @@ defineProps(["cctv"]);
                     ></button>
                 </div>
                 <div class="modal-body">
-                    <img :src="`${cctv.link}`" alt="" class="placeholder-img" />
+                    <h2>Status : {{ cctv.status ? "Active" : "Inactive" }}</h2>
+                    <img
+                        :src="cctv.status ? cctv.link : null"
+                        alt=""
+                        class="placeholder-img"
+                    />
                 </div>
             </div>
         </div>
