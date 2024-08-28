@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('detections', function (Blueprint $table) {
             $table->uuid('detection_id')->primary();
             $table->string('spbu_id');
-            $table->string('cctv_id');
+            $table->unsignedBigInteger('cctv_id');
             $table->unsignedBigInteger('type_detection_id');
             $table->timestamps();
 

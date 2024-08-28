@@ -12,7 +12,7 @@ const props = defineProps({
         default: null,
     },
     spbu_id: {
-        type: String,
+        type: Number,
     },
 });
 
