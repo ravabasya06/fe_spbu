@@ -54,12 +54,15 @@ defineProps(["cctvs", "totalWoman", "totalMan"]);
                     <div class="table-body-wrapper">
                         <table>
                             <tbody>
-                                <tr v-for="(cctv, index) in cctvs">
+                                <tr
+                                    v-for="cctv in cctvs"
+                                    :key="cctv.cctv_number"
+                                >
                                     <td
                                         @click="showcctv(cctv)"
                                         class="showcctv"
                                     >
-                                        CCTV {{ index + 1 }}
+                                        CCTV {{ cctv.cctv_number }}
                                     </td>
                                     <td class="pria-col">
                                         {{ cctv.man }}
