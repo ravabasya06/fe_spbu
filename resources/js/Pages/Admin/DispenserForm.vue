@@ -16,8 +16,8 @@ const props = defineProps({
 
 const form = useForm({
     dispenser_id: props.dispenser?.dispenser_id ?? "",
-    no: props.dispenser?.no ?? "",
     spbu_id: props.dispenser?.spbu_id ?? props.spbu_id,
+    dispenser_number: props.dispenser?.dispenser_number ?? "",
     queue: props.dispenser?.queue ?? "",
 });
 
@@ -73,7 +73,7 @@ const handleSubmit = () => {
                                 name="no"
                                 min="0"
                                 value="0"
-                                v-model="form.no"
+                                v-model="form.dispenser_number"
                                 required
                                 :disabled="isEditMode"
                             />

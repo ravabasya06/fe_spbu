@@ -64,9 +64,12 @@ defineProps([
                             <tbody>
                                 <tr
                                     v-for="dispenser in dispensers"
-                                    :key="dispenser.no"
+                                    :key="dispenser.dispenser_number"
                                 >
-                                    <td>DISPENSER {{ dispenser.no }}</td>
+                                    <td>
+                                        DISPENSER
+                                        {{ dispenser.dispenser_number }}
+                                    </td>
                                     <td class="jumlah-antrian">
                                         {{ dispenser.queue }}
                                     </td>
