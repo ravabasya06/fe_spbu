@@ -21,8 +21,8 @@ class DispenserSeeder extends Seeder
 
             for ($i = 1; $i <= $numberOfDispensers; $i++) {
                 Dispenser::factory()->create([
-                    'dispenser_number' => $i,
                     'spbu_id' => $spbu->spbu_id,
+                    'dispenser_number' => $i,
                     'queue' => fake()->numberBetween(1, 15),
                 ]);
             }

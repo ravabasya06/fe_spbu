@@ -32,8 +32,8 @@ class DispenserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'no' => 'required',
             'spbu_id' => 'required',
+            'dispenser_number' => 'required',
             'queue' => 'required',
         ]);
 

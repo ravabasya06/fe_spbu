@@ -19,6 +19,7 @@ class DispenserFactory extends Factory
     {
         return [
             'spbu_id' => Spbu::inRandomOrder()->first()->spbu_id,
+            'dispenser_number' => fake()->numberBetween(1, 15),
             'queue' => fake()->numberBetween(1, 15),
         ];
     }

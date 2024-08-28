@@ -17,8 +17,8 @@ class Dispenser extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'no',
         'spbu_id',
+        'dispenser_number',
         'queue',
     ];
 

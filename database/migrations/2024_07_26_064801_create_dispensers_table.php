@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('dispensers', function (Blueprint $table) {
             $table->uuid('dispenser_id')->primary();
-            $table->bigInteger('no');
             $table->string('spbu_id');
+            $table->bigInteger('dispenser_number');
             $table->bigInteger('queue');
             $table->timestamps();
 
-            $table->unique(['spbu_id', 'no']);
+            $table->unique(['spbu_id', 'dispenser_number']);
             $table->foreign('spbu_id')->references('spbu_id')->on('spbus')->onDelete('cascade');
         });
     }
