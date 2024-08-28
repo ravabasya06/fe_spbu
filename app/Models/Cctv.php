@@ -18,6 +18,7 @@ class Cctv extends Model
 
     protected $fillable = [
         'spbu_id',
+        'cctv_number',
         'status',
         'man',
         'woman',
