@@ -20,9 +20,12 @@ defineProps(["objectDetections"]);
                 </table>
                 <table>
                     <tbody>
-                        <tr v-for="(detection, index) in objectDetections">
+                        <tr
+                            v-for="(detection, index) in objectDetections"
+                            :key="detection.detection_id"
+                        >
                             <td>{{ index + 1 }}</td>
-                            <td>{{ detection.cctv_id }}</td>
+                            <td>CCTV {{ detection.cctv_number }}</td>
                             <td>{{ detection.created_at }}</td>
                             <td>
                                 <form

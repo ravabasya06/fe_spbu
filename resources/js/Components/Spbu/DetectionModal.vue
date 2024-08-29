@@ -59,16 +59,16 @@ watch(
                                             v-for="(
                                                 detection, index
                                             ) in detections"
-                                            :key="index"
+                                            :key="detection.detection_id"
                                         >
                                             <td class="no">
-                                                {{ parseInt(index) + 1 }}
+                                                {{ index + 1 }}
                                             </td>
                                             <td class="date-time">
                                                 {{ detection.created_at }}
                                             </td>
                                             <td class="cctv">
-                                                {{ detection.cctv_id }}
+                                                CCTV {{ detection.cctv_number }}
                                             </td>
                                         </tr>
                                     </tbody>
