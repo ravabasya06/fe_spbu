@@ -4,10 +4,10 @@ import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
 import FormLayoutButton from "../../Components/Admin/Button/FormLayoutButton.vue";
 import SpbuForm from "../../Components/Admin/Form/SpbuForm.vue";
-import DispenserList from "../../Components/Admin/Edit/DispenserEdit.vue";
-import CCTVEdit from "../../Components/Admin/Edit/CCTVEdit.vue";
-import DetectionEdit from "../../Components/Admin/Edit/DetectionEdit.vue";
-import VehicleEdit from "../../Components/Admin/Edit/VehicleEdit.vue";
+import DispenserList from "../../Components/Admin/Edit/DispenserList.vue";
+import CCTVList from "../../Components/Admin/Edit/CCTVList.vue";
+import DetectionList from "../../Components/Admin/Edit/DetectionList.vue";
+import VehicleList from "../../Components/Admin/Edit/VehicleList.vue";
 
 const currentLayout = ref("spbu");
 const updateLayout = (layout) => {
@@ -39,15 +39,15 @@ defineProps([
             :spbu="spbu"
             :dispensers="dispensers"
         />
-        <CCTVEdit v-if="currentLayout == 'cctv'" :spbu="spbu" :cctvs="cctvs" />
-        <DetectionEdit
+        <CCTVList v-if="currentLayout == 'cctv'" :spbu="spbu" :cctvs="cctvs" />
+        <DetectionList
             v-if="currentLayout == 'detection'"
             :spbu="spbu"
             :fireDetections="fireDetections"
             :fraudDetections="fraudDetections"
             :objectDetections="objectDetections"
         />
-        <VehicleEdit
+        <VehicleList
             v-if="currentLayout == 'vehicle'"
             :motorVehicles="motorVehicles"
             :carVehicles="carVehicles"
