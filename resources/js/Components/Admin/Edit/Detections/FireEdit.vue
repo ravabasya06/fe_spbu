@@ -1,6 +1,14 @@
 <script setup>
+import { router } from "@inertiajs/vue3";
 import Button from "../../../../Components/Main/Button.vue";
 defineProps(["fireDetections"]);
+
+const deleteDetection = (detection) => {
+    router.delete(`/detection/${detection.detection_id}`, {
+        onBefore: () =>
+            confirm("Are you sure you want to delete this Detection?"),
+    });
+};
 </script>
 
 <template>
@@ -29,7 +37,7 @@ defineProps(["fireDetections"]);
                             <td>{{ detection.created_at }}</td>
                             <td>
                                 <form
-                                    @submit.prevent=""
+                                    @submit.prevent="deleteDetection(detection)"
                                     class="action-container"
                                 >
                                     <Link href="">Edit</Link>
