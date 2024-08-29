@@ -2,7 +2,7 @@
 import Button from "../../../Components/Main/Button.vue";
 import { ref } from "vue";
 const emit = defineEmits(["update-detection"]);
-const currentDetection = ref("fire");
+const currentDetection = ref("Fire");
 const showDetection = (layout) => {
     currentDetection.value = layout;
     emit("update-detection", layout);
@@ -12,19 +12,19 @@ const showDetection = (layout) => {
     <div class="buttons">
         <Button
             type="button"
-            @click="showDetection('fire')"
+            @click="showDetection('Fire')"
             value="Fire"
             color="blue"
         />
         <Button
             type="button"
-            @click="showDetection('fraud')"
+            @click="showDetection('Fraud')"
             value="Fraud"
             color="blue"
         />
         <Button
             type="button"
-            @click="showDetection('object')"
+            @click="showDetection('Object')"
             value="Object"
             color="blue"
         />
