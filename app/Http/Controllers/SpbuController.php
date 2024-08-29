@@ -4,26 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use App\Models\Spbu;
-use App\Models\Dispenser;
-use App\Models\Cctv;
-use App\Models\Detection;
-use App\Models\Vehicle;
 
 class SpbuController extends Controller
 {
     public function index($spbu_id)
     {
-        $spbu = Spbu::find($spbu_id);
-        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id)->orderBy("dispenser_number")->get();
-        $cctvs = $this->fetchModel(Cctv::class, $spbu_id)->orderBy("cctv_number")->get();
-        $detections = $this->fetchModel(Detection::class, $spbu_id)->get();
-        $vehicles = $this->fetchModel(Vehicle::class, $spbu_id)->get();
+        $spbu = Spbu::findOrFail($spbu_id);
+        $dispensers = $this->fetchModel('dispensers', $spbu_id)->orderBy("dispenser_number")->get();
+        $cctvs = $this->fetchModel('cctvs', $spbu_id)->orderBy("cctv_number")->get();
+
+        $detections = $this->fetchDetection($spbu_id)->get();
+
+        $vehicles = $this->fetchModel('vehicles', $spbu_id)->get();
         
-        $fireDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 1)->get();
-        $fraudDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 2)->get();
-        $objectDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 3)->get();
+        $fireDetections = $this->fetchDetection($spbu_id)->where('type_detection_id', 1)->get();
+        $fraudDetections = $this->fetchDetection($spbu_id)->where('type_detection_id', 2)->get();
+        $objectDetections = $this->fetchDetection($spbu_id)->where('type_detection_id', 3)->get();
 
         $totalWoman = $cctvs->sum('woman');
         $totalMan = $cctvs->sum('man');
@@ -60,19 +59,22 @@ class SpbuController extends Controller
     }
 
     public function edit($spbu_id){
-        $spbu = Spbu::find($spbu_id);
-        $dispensers = $this->fetchModel(Dispenser::class, $spbu_id)->orderBy("dispenser_number")->get();
-        $cctvs = $this->fetchModel(Cctv::class, $spbu_id)->orderBy("cctv_number")->get();
-        $detections = $this->fetchModel(Detection::class, $spbu_id)->get();
-        
-        $fireDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 1)->get();
-        $fraudDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 2)->get();
-        $objectDetections = $this->fetchModel(Detection::class, $spbu_id)->where('type_detection_id', 3)->get();
+        $spbu = Spbu::findOrFail($spbu_id);
+        $dispensers = $this->fetchModel('dispensers', $spbu_id)->orderBy("dispenser_number")->get();
+        $cctvs = $this->fetchModel('cctvs', $spbu_id)->orderBy("cctv_number")->get();
 
-        $motorVehicles = $this->fetchModel(Vehicle::class, $spbu_id)->where('type_vehicle_id', 1)->get();
-        $carVehicles = $this->fetchModel(Vehicle::class, $spbu_id)->where('type_vehicle_id', 2)->get();
-        $busVehicles = $this->fetchModel(Vehicle::class, $spbu_id)->where('type_vehicle_id', 3)->get();
-        $truckVehicles = $this->fetchModel(Vehicle::class, $spbu_id)->where('type_vehicle_id', 4)->get();
+        $detections = $this->fetchDetection($spbu_id)->get();
+
+        $vehicles = $this->fetchModel('vehicles', $spbu_id)->get();
+        
+        $fireDetections = $this->fetchDetection($spbu_id)->where('type_detection_id', 1)->get();
+        $fraudDetections = $this->fetchDetection($spbu_id)->where('type_detection_id', 2)->get();
+        $objectDetections = $this->fetchDetection($spbu_id)->where('type_detection_id', 3)->get();
+
+        $motorVehicles = $this->fetchModel('vehicles', $spbu_id)->where('type_vehicle_id', 1)->get();
+        $carVehicles = $this->fetchModel('vehicles', $spbu_id)->where('type_vehicle_id', 2)->get();
+        $busVehicles = $this->fetchModel('vehicles', $spbu_id)->where('type_vehicle_id', 3)->get();
+        $truckVehicles = $this->fetchModel('vehicles', $spbu_id)->where('type_vehicle_id', 4)->get();
         return Inertia::render('Admin/Edit', [
             'spbu' => $spbu,
             'dispensers' => $dispensers,
@@ -105,7 +107,7 @@ class SpbuController extends Controller
     }
 
     public function update(Request $request, $spbu_id){
-        $spbu = Spbu::find($spbu_id);
+        $spbu = Spbu::findOrFail($spbu_id);
 
         $validated = $request->validate([
             'name' => 'required|unique:spbus,name,' . $spbu_id . ',spbu_id',
@@ -121,7 +123,7 @@ class SpbuController extends Controller
     }
 
     public function destroy($spbu_id){
-        $spbu = Spbu::find($spbu_id);
+        $spbu = Spbu::findOrFail($spbu_id);
         Spbu::destroy($spbu_id);
         $msg =  $spbu['name'] . ' deleted';
         return Redirect::route('analysis.search')->with('message', $msg);
@@ -129,6 +131,14 @@ class SpbuController extends Controller
     
     public function fetchModel($model, $spbu_id)
     {
-        return $model::where('spbu_id', $spbu_id)->orderByRaw('created_at ASC');
+        return DB::table($model)->where('spbu_id', $spbu_id)->orderByRaw('created_at ASC');
+    }
+
+    public function fetchDetection($spbu_id)
+    {
+        return DB::table('detections')
+        ->join('cctvs', 'detections.cctv_id', '=', 'cctvs.cctv_id')
+        ->select('detections.detection_id', 'detections.spbu_id', 'cctvs.cctv_number', 'detections.type_detection_id', 'detections.created_at', 'detections.updated_at')
+        ->where('detections.spbu_id', $spbu_id);
     }
 }
