@@ -1,7 +1,7 @@
 <script setup>
 import { router } from "@inertiajs/vue3";
 import Button from "../../../Components/Main/Button.vue";
-defineProps(["detections", "title"]);
+defineProps(["spbu", "detections", "title"]);
 
 const deleteDetection = (detection) => {
     router.delete(`/detection/${detection.detection_id}`, {
@@ -51,7 +51,12 @@ const deleteDetection = (detection) => {
                 </table>
             </div>
         </div>
-        <Button type="link" href="" value="Tambah" color="blue" />
+        <Button
+            type="link"
+            :href="`/spbu/${spbu.spbu_id}/detection`"
+            value="Tambah"
+            color="blue"
+        />
     </form>
 </template>
 
