@@ -1,52 +1,120 @@
 <script setup>
-import { ref } from "vue";
-import DetectionButton from "../Button/DetectionButton.vue";
-import FireEdit from "./Detections/FireEdit.vue";
-import FraudEdit from "./Detections/FraudEdit.vue";
-import ObjectEdit from "./Detections/ObjectEdit.vue";
+import { router } from "@inertiajs/vue3";
+import Button from "../../../Components/Main/Button.vue";
+defineProps(["detections", "title"]);
 
-const currentDetection = ref("fire");
-const updateDetection = (layout) => {
-    currentDetection.value = layout;
+const deleteDetection = (detection) => {
+    router.delete(`/detection/${detection.detection_id}`, {
+        onBefore: () =>
+            confirm("Are you sure you want to delete this Detection?"),
+    });
 };
-
-defineProps(["fireDetections", "fraudDetections", "objectDetections"]);
 </script>
 
 <template>
-    <div class="Detection-Edit">
-        <div class="container">
-            <DetectionButton @update-detection="updateDetection" />
-            <FireEdit
-                v-if="currentDetection == 'fire'"
-                :fireDetections="fireDetections"
-            />
-            <FraudEdit
-                v-if="currentDetection == 'fraud'"
-                :fraudDetections="fraudDetections"
-            />
-            <ObjectEdit
-                v-if="currentDetection == 'object'"
-                :objectDetections="objectDetections"
-            />
+    <form>
+        <h2>{{ title }} Detection</h2>
+        <div class="table-container">
+            <div class="table-body-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>CCTV</th>
+                            <th>Waktu</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table>
+                    <tbody>
+                        <tr
+                            v-for="(detection, index) in detections"
+                            :key="detection.detection_id"
+                        >
+                            <td>{{ index + 1 }}</td>
+                            <td>CCTV {{ detection.cctv_number }}</td>
+                            <td>{{ detection.created_at }}</td>
+                            <td>
+                                <form
+                                    @submit.prevent="deleteDetection(detection)"
+                                    class="action-container"
+                                >
+                                    <Link href="">Edit</Link>
+                                    <button type="submit" class="delete-button">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+        <Button type="link" href="" value="Tambah" color="blue" />
+    </form>
 </template>
+
 <style scoped>
-.Detection-Edit {
+h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
-.container {
-    border: 1px solid #ffffff;
-    max-width: 750px;
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    margin-bottom: 10px;
+}
+.table-container table {
     width: 100%;
-    margin: 20px;
-    background: #000000;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    color: #fff;
+    border-collapse: collapse;
+    table-layout: fixed; /* Add this to fix the column width */
+}
+.table-container th,
+.table-container td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid white;
+}
+.table-container thead {
+    background-color: #2b2b2b;
+    color: white;
+}
+.table-body-wrapper {
+    max-height: 200px;
+    overflow-y: auto;
+}
+.table-body-wrapper table {
+    width: 100%;
+}
+.action-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+}
+.action-container a {
+    text-decoration: none;
+}
+.action-container a:hover {
+    text-decoration: underline;
+}
+.delete-button {
+    padding: 0;
+    border: none;
+    background-color: black;
+    color: red;
+}
+.delete-button:hover {
+    text-decoration: underline;
 }
 </style>
