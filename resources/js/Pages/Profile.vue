@@ -1,7 +1,8 @@
 <script setup>
-import { useForm } from "@inertiajs/vue3";
+import { useForm, router } from "@inertiajs/vue3";
 import Layout from "../Components/Main/Layout.vue";
 import Button from "../Components/Main/Button.vue";
+defineProps(["user"]);
 
 const logoutForm = useForm({});
 const logout = () => {
@@ -9,7 +10,12 @@ const logout = () => {
     logoutForm.post(route("logout"));
 };
 
-defineProps(["user"]);
+const deleteUser = (user) => {
+    router.delete(`/profile/${user.id}`, {
+        onBefore: () =>
+            confirm("Are you sure you want to delete your account?"),
+    });
+};
 </script>
 
 <template>
@@ -26,7 +32,15 @@ defineProps(["user"]);
                 <form @submit.prevent="logout">
                     <Button type="submit" value="Logout" color="red" />
                 </form>
-                <Link href="/password">Change Password</Link>
+                <form
+                    class="action-container"
+                    @submit.prevent="deleteUser(user)"
+                >
+                    <Link href="/password">Change Password</Link>
+                    <button type="submit" class="delete-button">
+                        Delete Account
+                    </button>
+                </form>
             </div>
         </div>
     </Layout>
@@ -41,8 +55,6 @@ a {
     color: white;
     font-size: 13px;
     text-decoration: none;
-    text-align: left;
-    max-width: fit-content;
 }
 a:hover {
     text-decoration: underline;
@@ -58,5 +70,17 @@ a:hover {
     border-radius: 5px;
     background-color: #000000;
     gap: 10px;
+}
+.action-container {
+    display: flex;
+    justify-content: space-between;
+}
+.delete-button {
+    border: none;
+    background-color: black;
+    font-size: 13px;
+}
+.delete-button:hover {
+    text-decoration: underline;
 }
 </style>
