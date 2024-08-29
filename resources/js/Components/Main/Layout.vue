@@ -11,13 +11,13 @@ watch(
     (newTitle) => {
         document.title = newTitle;
     },
-    { immediate: true }
+    { immediate: true },
 );
 </script>
 
 <template>
     <main>
-        <header>
+        <header v-if="title !== 'Login'">
             <Nav />
         </header>
         <Notification />
@@ -34,6 +34,6 @@ watch(
 article {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh);
 }
 </style>
