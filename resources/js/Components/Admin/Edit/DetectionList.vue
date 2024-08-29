@@ -8,7 +8,7 @@ const updateDetection = (layout) => {
     currentDetection.value = layout;
 };
 
-defineProps(["fireDetections", "fraudDetections", "objectDetections"]);
+defineProps(["spbu", "fireDetections", "fraudDetections", "objectDetections"]);
 </script>
 
 <template>
@@ -19,16 +19,19 @@ defineProps(["fireDetections", "fraudDetections", "objectDetections"]);
                 v-if="currentDetection == 'Fire'"
                 :title="currentDetection"
                 :detections="fireDetections"
+                :spbu="spbu"
             />
             <DetectionEdit
                 v-if="currentDetection == 'Fraud'"
                 :title="currentDetection"
                 :detections="fraudDetections"
+                :spbu="spbu"
             />
             <DetectionEdit
                 v-if="currentDetection == 'Object'"
                 :title="currentDetection"
                 :detections="objectDetections"
+                :spbu="spbu"
             />
         </div>
     </div>
