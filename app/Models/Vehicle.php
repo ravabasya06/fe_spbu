@@ -4,19 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
 
 class Vehicle extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory;
 
     protected $table = 'vehicles';
     protected $primaryKey = 'vehicle_id';
-    public $incrementing = false;
-    protected $keyType = 'string';
-    public $timestamps = true;
 
     protected $fillable = [
         'spbu_id',
