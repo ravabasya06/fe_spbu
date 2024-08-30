@@ -10,7 +10,13 @@ const updateVehicle = (layout) => {
     currentVehicle.value = layout;
 };
 
-defineProps(["motorVehicles", "carVehicles", "busVehicles", "truckVehicles"]);
+defineProps([
+    "spbu",
+    "motorVehicles",
+    "carVehicles",
+    "busVehicles",
+    "truckVehicles",
+]);
 </script>
 
 <template>
@@ -19,18 +25,22 @@ defineProps(["motorVehicles", "carVehicles", "busVehicles", "truckVehicles"]);
             <VehicleButton @update-vehicle="updateVehicle" />
             <CarEdit
                 v-if="currentVehicle == 'mobil'"
+                :spbu="spbu"
                 :carVehicles="carVehicles"
             />
             <MotorEdit
                 v-if="currentVehicle == 'motor'"
+                :spbu="spbu"
                 :motorVehicles="motorVehicles"
             />
             <BusEdit
                 v-if="currentVehicle == 'bus'"
+                :spbu="spbu"
                 :busVehicles="busVehicles"
             />
             <TruckEdit
                 v-if="currentVehicle == 'truck'"
+                :spbu="spbu"
                 :truckVehicles="truckVehicles"
             />
         </div>
