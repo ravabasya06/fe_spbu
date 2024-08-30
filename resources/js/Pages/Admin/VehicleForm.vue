@@ -12,7 +12,7 @@ const props = defineProps({
     spbu_id: {
         type: String,
     },
-    type_vehicle_id: {
+    type_vehicles: {
         type: Object,
     },
 });
@@ -64,34 +64,17 @@ const handleSubmit = () => {
                             v-model="form.spbu_id"
                             disabled
                         />
-                        <label for="CCTV">Pilih CCTV:</label>
-                        <select
-                            name="CCTV"
-                            id="CCTV"
-                            required
-                            style="width: 100px"
-                            v-model="form.cctv_id"
-                        >
-                            <option disabled selected>CCTV</option>
-                            <option
-                                v-for="cctv in cctvs"
-                                :key="cctv.cctv_number"
-                                :value="cctv.cctv_id"
-                            >
-                                CCTV {{ cctv.cctv_number }}
-                            </option>
-                        </select>
 
-                        <label for="detection">Detection Type:</label>
+                        <label for="VehicleType">Vehicle Type:</label>
                         <select
-                            name="detection"
-                            id="detection"
+                            name="VehicleType"
+                            id="VehicleType"
                             required
                             v-model="form.type_vehicle_id"
                         >
                             <option disabled selected>Type</option>
                             <option
-                                v-for="type in type_vehicle"
+                                v-for="type in type_vehicles"
                                 :key="type.type_vehicle_id"
                                 :value="type.type_vehicle_id"
                             >

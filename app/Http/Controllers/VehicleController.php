@@ -25,9 +25,11 @@ class VehicleController extends Controller
 
     public function edit($vehicle_id){
         $vehicle = Vehicle::find($vehicle_id);
+        $type_vehicles = DB::table('type_vehicles')->get();
 
         return Inertia::render('Admin/VehicleForm', [
             'vehicle' => $vehicle,
+            'type_vehicles' => $type_vehicles,
         ]);
     }
     public function store(Request $request)
