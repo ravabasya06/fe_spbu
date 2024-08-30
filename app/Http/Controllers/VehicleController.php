@@ -36,7 +36,7 @@ class VehicleController extends Controller
     {
         $validated = $request->validate([
             'spbu_id' => 'required',
-            'vehicle_number' => 'required',
+            'type_vehicle_id' => 'required',
         ]);
 
         $vehicle = Vehicle::create($validated);
