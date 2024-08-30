@@ -1,9 +1,8 @@
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import Button from "../../Components/Main/Button.vue";
-const detectionOptions = ref(["Fire", "Fraud", "Object"]);
-const CCTVOptions = ref(["CCTV 1", "CCTV 2", "CCTV 3"]);
+import Layout from "../../Components/Main/Layout.vue";
 
 const props = defineProps({
     detection: {
@@ -11,22 +10,29 @@ const props = defineProps({
         default: null,
     },
     spbu_id: {
-        type: Number,
+        type: String,
+    },
+    cctvs: {
+        type: Object,
+    },
+    type_detections: {
+        type: Object,
     },
 });
 
 const form = useForm({
     detection_id: props.detection?.detection_id ?? "",
     spbu_id: props.detection?.spbu_id ?? props.spbu_id,
+    cctv_id: props.detection?.cctv_id ?? "",
+    type_detection_id: props.detection?.type_detection_id ?? "",
 });
 
 const isEditMode = computed(() => !!props.detection);
 
 const handleSubmit = () => {
     if (isEditMode.value) {
-        form.put(`/spbu/${form.spbu_id}`);
+        form.put(`/detection/${form.detection_id}`);
     } else {
-        // ini ubah sesuai storenya tapi kelihatannya udah bener?
         form.post(route("detection.store"), {
             preserveScroll: true,
             onSuccess: () => form.reset(),
@@ -36,73 +42,85 @@ const handleSubmit = () => {
 </script>
 
 <template>
-    <div class="Detection-Form">
-        <div class="container">
-            <h2>Detection Form</h2>
-            <form id="adminForm" @submit.prevent="handleSubmit">
-                <div class="form-group">
-                    <label for="idSpbu">ID SPBU:</label>
-                    <input
-                        type="text"
-                        id="idSpbu"
-                        name="idSpbu"
-                        placeholder="Masukkan ID"
-                        v-model="form.spbu_id"
-                        disabled
-                    />
-                    <fieldset v-if="isEditMode">
-                        <label for="idDetection">ID Detection:</label>
+    <Layout title="Detection Form">
+        <div class="Detection-Form">
+            <div class="container">
+                <h2>Detection Form</h2>
+                <form id="adminForm" @submit.prevent="handleSubmit">
+                    <div class="form-group">
+                        <fieldset v-if="isEditMode">
+                            <label for="idDetection">ID Detection:</label>
+                            <input
+                                type="text"
+                                id="idDetection"
+                                name="idDetection"
+                                placeholder="Detection ID"
+                                v-model="form.detection_id"
+                                disabled
+                            />
+                        </fieldset>
+                        <label for="idSpbu">ID SPBU:</label>
                         <input
                             type="text"
-                            id="idDetection"
-                            name="idDetection"
-                            placeholder="Detection ID"
-                            v-model="form.detection_id"
+                            id="idSpbu"
+                            name="idSpbu"
+                            placeholder="Masukkan ID"
+                            v-model="form.spbu_id"
                             disabled
                         />
-                    </fieldset>
-
-                    <label for="CCTV">Pilih CCTV:</label>
-                    <select name="CCTV" id="CCTV" required style="width: 100px">
-                        <option disabled selected>CCTV</option>
-                        <option
-                            v-for="cctv in CCTVOptions"
-                            :key="cctv"
-                            :value="cctv"
+                        <label for="CCTV">Pilih CCTV:</label>
+                        <select
+                            name="CCTV"
+                            id="CCTV"
+                            required
+                            style="width: 100px"
+                            v-model="form.cctv_id"
                         >
-                            {{ cctv }}
-                        </option>
-                    </select>
+                            <option disabled selected>CCTV</option>
+                            <option
+                                v-for="cctv in cctvs"
+                                :key="cctv.cctv_number"
+                                :value="cctv.cctv_id"
+                            >
+                                CCTV {{ cctv.cctv_number }}
+                            </option>
+                        </select>
 
-                    <label for="provinceSelect">Detection Type:</label>
-                    <select name="detection" id="detection" required>
-                        <option disabled selected>Type</option>
-                        <option
-                            v-for="detection in detectionOptions"
-                            :key="detection"
-                            :value="detection"
+                        <label for="provinceSelect">Detection Type:</label>
+                        <select
+                            name="detection"
+                            id="detection"
+                            required
+                            v-model="form.type_detection_id"
                         >
-                            {{ detection }}
-                        </option>
-                    </select>
-                </div>
-                <Button
-                    type="submit"
-                    :value="isEditMode ? 'Update' : 'Save'"
-                    color="blue"
-                />
-            </form>
+                            <option disabled selected>Type</option>
+                            <option
+                                v-for="type in type_detections"
+                                :key="type.type_detection_id"
+                                :value="type.type_detection_id"
+                            >
+                                {{ type.type }}
+                            </option>
+                        </select>
+                    </div>
+                    <Button
+                        type="submit"
+                        :value="isEditMode ? 'Update' : 'Save'"
+                        color="blue"
+                    />
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="back-button">
-        <!-- routingnya  -->
-        <Button
-            type="link"
-            :href="`/spbu/${dispenser?.spbu_id ?? props.spbu_id}/edit`"
-            value="Back"
-            color="blue"
-        />
-    </div>
+        <div class="back-button">
+            <!-- routingnya  -->
+            <Button
+                type="link"
+                :href="`/spbu/${detection?.spbu_id ?? props.spbu_id}/edit`"
+                value="Back"
+                color="blue"
+            />
+        </div>
+    </Layout>
 </template>
 <style scoped>
 .Detection-Form {

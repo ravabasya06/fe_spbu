@@ -40,7 +40,10 @@ const deleteDetection = (detection) => {
                                     @submit.prevent="deleteDetection(detection)"
                                     class="action-container"
                                 >
-                                    <Link href="">Edit</Link>
+                                    <Link
+                                        :href="`/detection/${detection.detection_id}/edit`"
+                                        >Edit</Link
+                                    >
                                     <button type="submit" class="delete-button">
                                         Delete
                                     </button>
