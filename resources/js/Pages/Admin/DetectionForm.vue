@@ -86,7 +86,7 @@ const handleSubmit = () => {
                             </option>
                         </select>
 
-                        <label for="provinceSelect">Detection Type:</label>
+                        <label for="detection">Detection Type:</label>
                         <select
                             name="detection"
                             id="detection"

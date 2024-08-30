@@ -66,7 +66,7 @@ const handleSubmit = () => {
                             />
                         </fieldset>
                         <fieldset>
-                            <label for="number">Dispenser Number:</label>
+                            <label for="no">Dispenser Number:</label>
                             <input
                                 type="number"
                                 id="no"

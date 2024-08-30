@@ -120,7 +120,7 @@ const handleSubmit = () => {
                         autocomplete="off"
                     />
 
-                    <label for="provinceSelect">Provinsi:</label>
+                    <label for="provinsi">Provinsi:</label>
                     <select
                         name="provinsi"
                         id="provinsi"
@@ -137,7 +137,7 @@ const handleSubmit = () => {
                         </option>
                     </select>
 
-                    <label for="island">Pulau:</label>
+                    <label for="pulau">Pulau:</label>
                     <select
                         name="pulau"
                         id="pulau"
