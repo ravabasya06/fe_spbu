@@ -1,11 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import VehicleButton from "../Button/VehicleButton.vue";
-import CarEdit from "./Vehicles/CarEdit.vue";
-import MotorEdit from "./Vehicles/MotorEdit.vue";
-import BusEdit from "./Vehicles/BusEdit.vue";
-import TruckEdit from "./Vehicles/TruckEdit.vue";
-const currentVehicle = ref("mobil");
+import CarEdit from "./VehicleEdit.vue";
+const currentVehicle = ref("Motor");
 const updateVehicle = (layout) => {
     currentVehicle.value = layout;
 };
@@ -24,24 +21,28 @@ defineProps([
         <div class="container">
             <VehicleButton @update-vehicle="updateVehicle" />
             <CarEdit
-                v-if="currentVehicle == 'mobil'"
+                v-if="currentVehicle == 'Motor'"
                 :spbu="spbu"
-                :carVehicles="carVehicles"
+                :title="currentVehicle"
+                :vehicles="motorVehicles"
             />
-            <MotorEdit
-                v-if="currentVehicle == 'motor'"
+            <CarEdit
+                v-if="currentVehicle == 'Mobil'"
                 :spbu="spbu"
-                :motorVehicles="motorVehicles"
+                :title="currentVehicle"
+                :vehicles="carVehicles"
             />
-            <BusEdit
-                v-if="currentVehicle == 'bus'"
+            <CarEdit
+                v-if="currentVehicle == 'Bis'"
                 :spbu="spbu"
-                :busVehicles="busVehicles"
+                :title="currentVehicle"
+                :vehicles="busVehicles"
             />
-            <TruckEdit
-                v-if="currentVehicle == 'truck'"
+            <CarEdit
+                v-if="currentVehicle == 'Truk'"
                 :spbu="spbu"
-                :truckVehicles="truckVehicles"
+                :title="currentVehicle"
+                :vehicles="truckVehicles"
             />
         </div>
     </div>
