@@ -25,3 +25,4 @@ require __DIR__.'/admin/spbu.php';
 require __DIR__.'/admin/dispenser.php';
 require __DIR__.'/admin/cctv.php';
 require __DIR__.'/admin/detection.php';
+require __DIR__.'/admin/vehicle.php';
