@@ -42,11 +42,15 @@ class VehicleController extends Controller
         return back()->with('message', 'Vehicle successfully created');
     }
 
-    // public function update(Request $request, $vehicle_id){
-    //     $vehicle = Vehicle::find($vehicle_id);
+    public function update(Request $request, $vehicle_id){
+        $vehicle = Vehicle::find($vehicle_id);
 
-    //     Vehicle::where('vehicle_id', $vehicle_id)->update($validated);
+        $validated = $request->validate([
+            'type_vehicle_id' => 'required',
+        ]);
 
-    //     return back()->with('message', 'Data updated successfully');
-    // }
+        Vehicle::where('vehicle_id', $vehicle_id)->update($validated);
+
+        return back()->with('message', 'Data updated successfully');
+    }
 }
