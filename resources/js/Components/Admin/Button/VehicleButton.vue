@@ -2,7 +2,7 @@
 import Button from "../../../Components/Main/Button.vue";
 import { ref } from "vue";
 const emit = defineEmits(["update-vehicle"]);
-const currentVehicle = ref("mobil");
+const currentVehicle = ref("Motor");
 const showVehicle = (layout) => {
     currentVehicle.value = layout;
     emit("update-vehicle", layout);
@@ -12,26 +12,26 @@ const showVehicle = (layout) => {
     <div class="buttons">
         <Button
             type="button"
-            @click="showVehicle('mobil')"
-            value="Mobil"
-            color="blue"
-        />
-        <Button
-            type="button"
-            @click="showVehicle('motor')"
+            @click="showVehicle('Motor')"
             value="Motor"
             color="blue"
         />
         <Button
             type="button"
-            @click="showVehicle('bus')"
-            value="Bus"
+            @click="showVehicle('Mobil')"
+            value="Mobil"
             color="blue"
         />
         <Button
             type="button"
-            @click="showVehicle('truck')"
-            value="Truck"
+            @click="showVehicle('Bis')"
+            value="Bis"
+            color="blue"
+        />
+        <Button
+            type="button"
+            @click="showVehicle('Truk')"
+            value="Truk"
             color="blue"
         />
     </div>
