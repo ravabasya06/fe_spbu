@@ -7,5 +7,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/vehicle/{id}', [VehicleController::class, 'update']);
     Route::delete('/vehicle/{id}', [VehicleController::class, 'destroy']);
     Route::post('/vehicle', [VehicleController::class, 'store'])->name('vehicle.store');
-    Route::get('/create', [VehicleController::class, 'create'])->name('vehicle.create');
+    Route::get('/spbu/{id}/vehicle', [VehicleController::class, 'create'])->name('vehicle.create');
 });
