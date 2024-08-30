@@ -49,6 +49,7 @@ defineProps([
         />
         <VehicleList
             v-if="currentLayout == 'vehicle'"
+            :spbu="spbu"
             :motorVehicles="motorVehicles"
             :carVehicles="carVehicles"
             :busVehicles="busVehicles"
