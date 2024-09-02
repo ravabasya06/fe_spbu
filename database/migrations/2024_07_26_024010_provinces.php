@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $table->id('province_id')->primary();
-        $table->string('name');
-        $table->unsignedBigInteger('island_id');
-        $table->timestamps();
+        Schema::create('provinces', function (Blueprint $table) {
+            $table->id('province_id')->primary();
+            $table->string('name');
+            $table->unsignedBigInteger('island_id');
+            $table->timestamps();
 
-        $table->foreign('island_id')->references('island_id')->on('islands')->onDelete('cascade');
+            $table->foreign('island_id')->references('island_id')->on('islands')->onDelete('cascade');
+        });
     }
 
     /**

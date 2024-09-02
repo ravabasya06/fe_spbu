@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $table->id('island_id')->primary();
-        $table->string('name');
-        $table->timestamps();
+        Schema::create('islands', function (Blueprint $table) {
+            $table->id('island_id')->primary();
+            $table->string('name');
+            $table->timestamps();
+        });
     }
 
     /**
