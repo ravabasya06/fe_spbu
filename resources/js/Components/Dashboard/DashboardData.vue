@@ -1,11 +1,14 @@
+<script setup>
+defineProps(["islands", "provinces"]);
+</script>
 <template>
     <section class="list-spbu">
         <div class="list-column">
             <table>
                 <thead>
                     <tr>
-                        <th>JAWA</th>
-                        <th>10</th>
+                        <th>Jawa</th>
+                        <th>0</th>
                     </tr>
                 </thead>
                 <tbody>

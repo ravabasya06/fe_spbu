@@ -2,6 +2,7 @@
 import Layout from "../Components/Main/Layout.vue";
 import DashboardData from "../Components/Dashboard/DashboardData.vue";
 import Button from "../Components/Main/Button.vue";
+defineProps(["islands", "provinces"]);
 </script>
 
 <template>
@@ -16,7 +17,7 @@ import Button from "../Components/Main/Button.vue";
         <div class="navigation">
             <Button type="link" href="/" value="Back" color="blue" />
         </div>
-        <DashboardData />
+        <DashboardData :islands="islands" :provinces="provinces" />
     </Layout>
 </template>
 
