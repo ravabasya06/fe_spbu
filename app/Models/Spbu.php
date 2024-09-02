@@ -20,9 +20,19 @@ class Spbu extends Model
         'name',
         'road',
         'city',
-        'province',
-        'island',
+        'province_id',
+        'island_id',
     ];
+
+    public function islands()
+    {
+        return $this->belongsTo(Island::class, 'island_id', 'island_id');
+    }
+
+    public function provinces()
+    {
+        return $this->belongsTo(Province::class, 'province_id', 'province_id');
+    }
 
     public function dispensers()
     {
