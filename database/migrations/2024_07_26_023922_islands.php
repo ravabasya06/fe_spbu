@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('islands', function (Blueprint $table) {
             $table->id('island_id')->primary();
             $table->string('name');
+            $table->bigInteger('count')->default(0);
             $table->timestamps();
         });
     }

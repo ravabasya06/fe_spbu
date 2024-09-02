@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('province_id')->primary();
             $table->string('name');
             $table->unsignedBigInteger('island_id');
+            $table->bigInteger('count')->default(0);
             $table->timestamps();
 
             $table->foreign('island_id')->references('island_id')->on('islands')->onDelete('cascade');

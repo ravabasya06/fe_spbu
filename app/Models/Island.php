@@ -9,6 +9,10 @@ class Island extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'count',
+    ];
+
     public function provinces()
     {
         return $this->hasMany(Province::class, 'island_id', 'island_id');
