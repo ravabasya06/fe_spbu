@@ -165,7 +165,6 @@
 
 <style scoped>
 .list-spbu {
-    font-family: "Lexend Deca", "sans-serif";
     display: flex;
     justify-content: space-around;
     background-color: #000000;
@@ -173,10 +172,6 @@
     font-size: 0.75em;
     border-top: 1px solid #ff0000;
     z-index: 1;
-    top: 90%;
-    left: 0;
-    right: 0;
-    color: white;
 }
 .list-column {
     width: 14%;
@@ -184,19 +179,15 @@
 
 table {
     width: 100%;
-    border-collapse: collapse;
 }
 
 th {
     text-align: left;
     padding-bottom: 5px;
+    border-bottom: 1px solid #ffffff;
 }
 
 td {
     padding: 5px 0;
-}
-
-thead th {
-    border-bottom: 1px solid #ffffff;
 }
 </style>
