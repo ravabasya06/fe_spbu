@@ -16,9 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('road');
             $table->string('city');
-            $table->string('province');
-            $table->string('island');
+            $table->unsignedBigInteger('province_id');
+            $table->unsignedBigInteger('island_id');
             $table->timestamps();
+
+            $table->foreign('island_id')->references('island_id')->on('islands')->onDelete('cascade');
+            $table->foreign('province_id')->references('province_id')->on('provinces')->onDelete('cascade');
         });
     }
 
