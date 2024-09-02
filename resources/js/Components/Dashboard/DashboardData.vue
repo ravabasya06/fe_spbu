@@ -1,60 +1,171 @@
 <template>
     <section class="list-spbu">
         <div class="list-column">
-            <div class="list-column-title">JAWA</div>
-            <ul>
-                <li>Banten</li>
-                <li>DKI Jakarta</li>
-                <li>Jawa Barat</li>
-                <li>Jawa Tengah</li>
-                <li>Jawa Timur</li>
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>JAWA</th>
+                        <th>10</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Banten</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>DKI Jakarta</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Jawa Barat</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Jawa Tengah</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Jawa Timur</td>
+                        <td>4</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="list-column">
-            <div class="list-column-title">KALIMANTAN</div>
-            <ul>
-                <li>Kalimantan Tengah</li>
-                <li>Kalimantan Timur</li>
-                <li>Kalimantan Utara</li>
-                <li>Kalimantan Selatan</li>
-                <li>Kalimantan Barat</li>
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>KALIMANTAN</th>
+                        <th>1</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kalimantan Tengah</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Kalimantan Timur</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>Kalimantan Utara</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>Kalimantan Selatan</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>Kalimantan Barat</td>
+                        <td>9</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="list-column">
-            <div class="list-column-title">SUMATERA</div>
-            <ul>
-                <li>Lampung</li>
-                <li>Sumatera Selatan</li>
-                <li>Sumatera Barat</li>
-                <li>Sumatera Utara</li>
-                <li>Riau</li>
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>SUMATERA</th>
+                        <th>2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lampung</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>Sumatera Selatan</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>Sumatera Barat</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>Sumatera Utara</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>Riau</td>
+                        <td>15</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="list-column">
-            <div class="list-column-title">SULAWESI</div>
-            <ul>
-                <li>Sulawesi Barat</li>
-                <li>Sulawesi Utara</li>
-                <li>Sulawesi Tengah</li>
-                <li>Sulawesi Selatan</li>
-                <li>Gorontalo</li>
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>SULAWESI</th>
+                        <th>4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sulawesi Barat</td>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <td>Sulawesi Utara</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>Sulawesi Tengah</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>Sulawesi Selatan</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>Gorontalo</td>
+                        <td>20</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="list-column">
-            <div class="list-column-title">PAPUA</div>
-            <ul>
-                <li>Papua Barat</li>
-                <li>Papua Selatan</li>
-                <li>Papua Tengah</li>
-                <li>Papua Pegunungan</li>
-                <li>Papua Barat Daya</li>
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>PAPUA</th>
+                        <th>9</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Papua Barat</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td>Papua Selatan</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>Papua Tengah</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>Papua Pegunungan</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>Papua Barat Daya</td>
+                        <td>25</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 </template>
+
 <style scoped>
 .list-spbu {
-    font-family: "Lexend Deca", "sans-seif";
+    font-family: "Lexend Deca", "sans-serif";
     display: flex;
     justify-content: space-around;
     background-color: #000000;
@@ -71,20 +182,21 @@
     width: 14%;
 }
 
-.list-column ul {
-    list-style-type: none;
-    padding: 0;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.list-column ul li {
+th {
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+td {
     padding: 5px 0;
 }
-.list-column-title {
-    display: flex;
-    justify-content: space-between;
-}
-.list-column-provinsi {
-    display: flex;
-    justify-content: space-between;
+
+thead th {
+    border-bottom: 1px solid #ffffff;
 }
 </style>
