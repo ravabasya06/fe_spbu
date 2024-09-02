@@ -15,6 +15,9 @@ const updateLayout = (layout) => {
 };
 
 defineProps([
+    "islands",
+    "provinces",
+
     "spbu",
     "dispensers",
     "cctvs",
@@ -33,7 +36,12 @@ defineProps([
 <template>
     <Layout title="Edit SPBU">
         <FormLayoutButton @update-layout="updateLayout" />
-        <SpbuForm v-if="currentLayout == 'spbu'" :spbu="spbu" />
+        <SpbuForm
+            v-if="currentLayout == 'spbu'"
+            :spbu="spbu"
+            :islands="islands"
+            :provinces="provinces"
+        />
         <DispenserList
             v-if="currentLayout == 'dispenser'"
             :spbu="spbu"

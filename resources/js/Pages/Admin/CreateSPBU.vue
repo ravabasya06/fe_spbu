@@ -3,12 +3,12 @@ import Layout from "../../Components/Main/Layout.vue";
 import Button from "../../Components/Main/Button.vue";
 import SpbuForm from "../../Components/Admin/Form/SpbuForm.vue";
 
-defineProps(["spbu"]);
+defineProps(["spbu", "islands", "provinces"]);
 </script>
 
 <template>
     <Layout title="Create SPBU">
-        <SpbuForm />
+        <SpbuForm :islands="islands" :provinces="provinces" />
         <div class="back-button">
             <Button type="link" href="/" value="Back" color="blue" />
         </div>

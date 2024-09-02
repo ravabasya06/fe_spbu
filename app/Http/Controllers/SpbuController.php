@@ -54,11 +54,18 @@ class SpbuController extends Controller
     }
 
     public function create(){
+        $islands = DB::table('islands')->get();
+        $provinces = DB::table('provinces')->get();
         return Inertia::render('Admin/CreateSPBU', [
+            'islands' => $islands,
+            'provinces' => $provinces,
         ]);
     }
 
     public function edit($spbu_id){
+        $islands = DB::table('islands')->get();
+        $provinces = DB::table('provinces')->get();
+
         $spbu = Spbu::findOrFail($spbu_id);
         $dispensers = $this->fetchModel('dispensers', $spbu_id)->orderBy("dispenser_number")->get();
         $cctvs = $this->fetchModel('cctvs', $spbu_id)->orderBy("cctv_number")->get();
@@ -76,6 +83,9 @@ class SpbuController extends Controller
         $busVehicles = $this->fetchModel('vehicles', $spbu_id)->where('type_vehicle_id', 3)->get();
         $truckVehicles = $this->fetchModel('vehicles', $spbu_id)->where('type_vehicle_id', 4)->get();
         return Inertia::render('Admin/Edit', [
+            'islands' => $islands,
+            'provinces' => $provinces,
+
             'spbu' => $spbu,
             'dispensers' => $dispensers,
             'cctvs' => $cctvs,
@@ -97,8 +107,8 @@ class SpbuController extends Controller
             'name' => 'required|unique:spbus',
             'road' => 'required',
             'city' => 'required',
-            'province' => 'required',
-            'island' => 'required',
+            'province_id' => 'required',
+            'island_id' => 'required',
         ]);
 
         $spbu = Spbu::create($validated);
@@ -113,8 +123,8 @@ class SpbuController extends Controller
             'name' => 'required|unique:spbus,name,' . $spbu_id . ',spbu_id',
             'road' => 'required',
             'city' => 'required',
-            'province' => 'required',
-            'island' => 'required',
+            'province_id' => 'required',
+            'island_id' => 'required',
         ]);
 
         Spbu::where('spbu_id', $spbu_id)->update($validated);

@@ -1,47 +1,18 @@
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import Button from "../../../Components/Main/Button.vue";
-
-const pulauOptions = ref([
-    "Jawa",
-    "Papua",
-    "Kalimantan",
-    "Sulawesi",
-    "Sumatera",
-]);
-const provinsiOptions = ref([
-    "Jawa Barat",
-    "Jawa Timur",
-    "Jawa Tengah",
-    "DKI Jakarta",
-    "Banten",
-    "Papua Barat",
-    "Papua Selatan",
-    "Papua Tengah",
-    "Papua Pegunungan",
-    "Papua Barat Daya",
-    "Kalimantan Tengah",
-    "Kalimantan Timur",
-    "Kalimantan Utara",
-    "Kalimantan Selatan",
-    "Kalimantan Barat",
-    "Sulawesi Barat",
-    "Sulawesi Utara",
-    "Sulawesi Tengah",
-    "Sulawesi Selatan",
-    "Gorontalo",
-    "Lampung",
-    "Sumatera Selatan",
-    "Sumatera Barat",
-    "Sumatera Utara",
-    "Riau",
-]);
 
 const props = defineProps({
     spbu: {
         type: Object,
         default: null,
+    },
+    islands: {
+        type: Object,
+    },
+    provinces: {
+        type: Object,
     },
 });
 
@@ -50,8 +21,8 @@ const form = useForm({
     name: props.spbu?.name ?? "",
     road: props.spbu?.road ?? "",
     city: props.spbu?.city ?? "",
-    province: props.spbu?.province ?? "",
-    island: props.spbu?.island ?? "",
+    province_id: props.spbu?.province_id ?? "",
+    island_id: props.spbu?.island_id ?? "",
 });
 
 const isEditMode = computed(() => !!props.spbu);
@@ -124,16 +95,16 @@ const handleSubmit = () => {
                     <select
                         name="provinsi"
                         id="provinsi"
-                        v-model="form.province"
+                        v-model="form.province_id"
                         required
                     >
                         <option disabled>Nama Provinsi</option>
                         <option
-                            v-for="provinsi in provinsiOptions"
-                            :key="provinsi"
-                            :value="provinsi"
+                            v-for="province in provinces"
+                            :key="province.province_id"
+                            :value="province.province_id"
                         >
-                            {{ provinsi }}
+                            {{ province.name }}
                         </option>
                     </select>
 
@@ -141,16 +112,16 @@ const handleSubmit = () => {
                     <select
                         name="pulau"
                         id="pulau"
-                        v-model="form.island"
+                        v-model="form.island_id"
                         required
                     >
                         <option disabled>Pulau</option>
                         <option
-                            v-for="pulau in pulauOptions"
-                            :key="pulau"
-                            :value="pulau"
+                            v-for="island in islands"
+                            :key="island.island_id"
+                            :value="island.island_id"
                         >
-                            {{ pulau }}
+                            {{ island.name }}
                         </option>
                     </select>
                 </div>
