@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(Island::class);
-        $this->call(Province::class);
+        $this->call(IslandSeeder::class);
+        $this->call(ProvinceSeeder::class);
         $this->call(TypeDetectionSeeder::class);
         $this->call(TypeVehicleSeeder::class);
         
