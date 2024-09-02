@@ -190,4 +190,8 @@ th {
 td {
     padding: 5px 0;
 }
+td:not(:first-child),
+th:not(:first-child) {
+    text-align: right;
+}
 </style>
