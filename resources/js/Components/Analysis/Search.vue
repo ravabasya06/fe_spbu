@@ -47,4 +47,26 @@ const search = () => {
 .search-container input:focus {
     outline: none;
 }
+@media only screen and (max-width: 500px) {
+    .search-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-container input {
+        width: 150px;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .search-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-container input {
+        width: 100px;
+    }
+}
 </style>

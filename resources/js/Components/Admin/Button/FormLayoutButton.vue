@@ -51,4 +51,10 @@ const showLayout = (layout) => {
     justify-content: center;
     margin-top: 10px;
 }
+@media only screen and (max-width: 600px) {
+    .buttons {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+}
 </style>

@@ -125,4 +125,11 @@ form {
 .delete-button:hover {
     text-decoration: underline;
 }
+@media only screen and (max-width: 600px) {
+    .action-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
 </style>

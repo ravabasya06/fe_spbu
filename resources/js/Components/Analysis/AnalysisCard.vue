@@ -34,4 +34,11 @@ defineProps(["spbus", "results"]);
 a {
     text-decoration: none;
 }
+@media only screen and (max-width: 600px) {
+    .container-cards {
+        display: flex;
+        flex-direction: column;
+        margin: 50px;
+    }
+}
 </style>

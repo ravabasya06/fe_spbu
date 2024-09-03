@@ -161,4 +161,16 @@ form {
 .delete-button:hover {
     text-decoration: underline;
 }
+@media only screen and (max-width: 600px) {
+    .action-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .table-container th,
+    .table-container td {
+        padding: 7px;
+        border: 1px solid white;
+    }
+}
 </style>

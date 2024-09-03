@@ -190,4 +190,22 @@ function closeSidebar() {
     left: 20px;
     text-align: left;
 }
+@media only screen and (max-width: 600px) {
+    .logo {
+        display: none;
+    }
+    .navbar {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+
+    .left-group {
+        width: 100%;
+        margin: 10px;
+    }
+    .right-group {
+        width: 100%;
+        margin: 1px;
+    }
+}
 </style>

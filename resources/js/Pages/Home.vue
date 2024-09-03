@@ -69,4 +69,10 @@ a {
 .card img {
     width: 200px;
 }
+@media only screen and (max-width: 600px) {
+    .card-container {
+        display: flex;
+        flex-direction: column;
+    }
+}
 </style>
