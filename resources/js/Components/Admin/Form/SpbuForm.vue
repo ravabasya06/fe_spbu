@@ -23,6 +23,8 @@ const form = useForm({
     city: props.spbu?.city ?? "",
     province_id: props.spbu?.province_id ?? "",
     island_id: props.spbu?.island_id ?? "",
+    latitude: props.spbu?.latitude ?? "",
+    longitude: props.spbu?.longitude ?? "",
 });
 
 const isEditMode = computed(() => !!props.spbu);
@@ -124,6 +126,22 @@ const handleSubmit = () => {
                             {{ island.name }}
                         </option>
                     </select>
+                    <label for="latitude">Latitude:</label>
+                    <input
+                        type="number"
+                        id="latitude"
+                        name="latitude"
+                        v-model="form.latitude"
+                        autocomplete="off"
+                    />
+                    <label for="longitude">Longitude:</label>
+                    <input
+                        type="number"
+                        id="longitude"
+                        name="longitude"
+                        v-model="form.longitude"
+                        autocomplete="off"
+                    />
                 </div>
                 <Button
                     type="submit"

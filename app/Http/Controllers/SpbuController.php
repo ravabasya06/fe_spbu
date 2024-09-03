@@ -104,11 +104,13 @@ class SpbuController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|unique:spbus',
+            'name' => 'required|unique:spbus,name,' . $spbu_id . ',spbu_id',
             'road' => 'required',
             'city' => 'required',
             'province_id' => 'required',
             'island_id' => 'required',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable',
         ]);
 
         $spbu = Spbu::create($validated);
@@ -125,6 +127,8 @@ class SpbuController extends Controller
             'city' => 'required',
             'province_id' => 'required',
             'island_id' => 'required',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable',
         ]);
 
         Spbu::where('spbu_id', $spbu_id)->update($validated);

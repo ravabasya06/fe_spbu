@@ -22,6 +22,8 @@ class Spbu extends Model
         'city',
         'province_id',
         'island_id',
+        'latitude',
+        'longitude',
     ];
 
     public function islands()
