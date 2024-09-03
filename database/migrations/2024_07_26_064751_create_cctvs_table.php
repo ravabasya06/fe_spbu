@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('link');
             $table->timestamps();
 
+            $table->unique(['spbu_id', 'cctv_number']);
             $table->foreign('spbu_id')->references('spbu_id')->on('spbus')->onDelete('cascade');
         });
     }

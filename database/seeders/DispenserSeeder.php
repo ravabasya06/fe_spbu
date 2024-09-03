@@ -14,12 +14,13 @@ class DispenserSeeder extends Seeder
      */
     public function run(): void
     {
-        $spbus = Spbu::all(); // Fetch all SPBUs
+        $spbus = Spbu::all();
 
         foreach ($spbus as $spbu) {
-            $numberOfDispensers = rand(3, 8); // Random number of CCTVs for each SPBU
+            $lastlength = Dispenser::where('spbu_id', $spbu->spbu_id)->count() + 1;
+            $totaldispenser = $lastlength + rand(3, 5);
 
-            for ($i = 1; $i <= $numberOfDispensers; $i++) {
+            for ($i = $lastlength; $i <= $totaldispenser; $i++) {
                 Dispenser::factory()->create([
                     'spbu_id' => $spbu->spbu_id,
                     'dispenser_number' => $i,
