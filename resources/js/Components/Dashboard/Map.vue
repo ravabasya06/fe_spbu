@@ -1,21 +1,25 @@
 <script setup>
-import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
+import { router } from "@inertiajs/vue3";
+import { LMap, LTileLayer, LMarker, LPopup } from "@vue-leaflet/vue-leaflet";
 import { ref } from "vue";
 import "leaflet/dist/leaflet.css";
+
+defineProps(["spbus"]);
+
 const zoom = ref(5);
 const center = ref([-0.5, 120.7]);
-const markerLatLng = ref({
-    Kalimantan1: [-1, 110],
-    Kalimantan2: [4.3, 117],
-    Sumatera1: [5.6, 95.4],
-    Sumatera2: [-5.4, 105.3],
-    Jawa1: [-8, 114.3],
-    Jawa2: [-6.8, 105.3],
-    Sulawesi1: [-1, 120],
-    Sulawesi2: [-5.3, 119.4],
-    Papua1: [-2, 137.5],
-    Papua2: [-9, 140.9],
-});
+// const markerLatLng = ref({
+//     Kalimantan1: [-1, 110],
+//     Kalimantan2: [4.3, 117],
+//     Sumatera1: [5.6, 95.4],
+//     Sumatera2: [-5.4, 105.3],
+//     Jawa1: [-8, 114.3],
+//     Jawa2: [-6.8, 105.3],
+//     Sulawesi1: [-1, 120],
+//     Sulawesi2: [-5.3, 119.4],
+//     Papua1: [-2, 137.5],
+//     Papua2: [-9, 140.9],
+// });
 </script>
 
 <template>
@@ -31,7 +35,16 @@ const markerLatLng = ref({
                 layer-type="base"
                 name="Stadia Maps Basemap"
             ></l-tile-layer>
-            <l-marker v-for="lat in markerLatLng" :lat-lng="lat"></l-marker>
+            <l-marker
+                v-for="spbu in spbus"
+                :lat-lng="[spbu.latitude, spbu.longitude]"
+            >
+                <l-popup>
+                    <Link :href="`/spbu/${spbu.spbu_id}`">
+                        {{ spbu.name }}
+                    </Link>
+                </l-popup>
+            </l-marker>
         </l-map>
     </div>
 </template>
