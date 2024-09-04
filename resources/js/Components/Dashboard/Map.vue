@@ -17,9 +17,9 @@ const center = ref([-0.5, 120.7]);
 
 const iconOptions = {
     iconUrl: "/images/dispenser.png",
-    iconSize: [20, 25], // size of the icon
-    iconAnchor: [19, 38], // point of the icon which will correspond to marker's location
-    popupAnchor: [-10, -35], // point from which the popup should open relative to the iconAnchor
+    iconSize: [20, 25],
+    iconAnchor: [19, 38],
+    popupAnchor: [-10, -35],
 };
 </script>
 
@@ -47,12 +47,12 @@ const iconOptions = {
                     :icon-anchor="iconOptions.iconAnchor"
                     :popup-anchor="iconOptions.popupAnchor"
                 ></l-icon>
-                <l-popup :options="{ maxWidth: auto, minWidth: auto }">
-                    <p>{{ spbu.name }}</p>
+                <l-popup :options="{ maxWidth: 'auto', minWidth: 'auto' }">
+                    <p class="spbu-title">{{ spbu.name }}</p>
                     <p class="volume">VOLUME KENDARAAN</p>
                     <div class="detection-items">
                         <div class="full-day">
-                            <p class="atas">00.00 - saat ini</p>
+                            <p class="atas">00:00 - saat ini</p>
                             <p class="bawah">4000</p>
                             <div class="detection-vehicle-left">
                                 <div class="vehicle-item">
@@ -157,6 +157,8 @@ const iconOptions = {
     margin: 0;
     color: white;
     font-weight: bold;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 .atas {
     margin: 0;
@@ -174,11 +176,15 @@ const iconOptions = {
     text-align: center;
     color: white;
 }
-
+.spbu-title {
+    font-weight: bold;
+}
 .detection-items {
     display: flex;
     flex-direction: row;
-    background-color: #ededed;
+    background-color: #edededc5;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .detection-vehicle-left,
@@ -188,7 +194,10 @@ const iconOptions = {
     gap: 30px;
 }
 .detection-vehicle-right {
-    border-left: 2px dashed lightgray;
+    border-left: 1px dashed lightgray;
+}
+.detection-vehicle-left {
+    border-right: 1px dashed lightgray;
 }
 
 .vehicle-item {
