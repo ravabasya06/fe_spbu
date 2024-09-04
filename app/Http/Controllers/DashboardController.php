@@ -15,6 +15,7 @@ class DashboardController extends Controller
     public function index(){
         $islands = Island::select('island_id', 'name', 'count')->get();
         $provinces = Province::select('province_id', 'name', 'island_id', 'count')->get();
+        $spbus = Spbu::all();
 
         foreach ($islands as $island) {
             $count = Spbu::where('island_id', $island->island_id)->count();
@@ -29,6 +30,7 @@ class DashboardController extends Controller
         return Inertia::render('Dashboard', [
             'islands' => $islands,
             'provinces' => $provinces,
+            'spbus' => $spbus,
         ]);
     }
 }
