@@ -3,13 +3,13 @@ import Layout from "../Components/Main/Layout.vue";
 import DashboardData from "../Components/Dashboard/DashboardData.vue";
 import Button from "../Components/Main/Button.vue";
 import Map from "../Components/Dashboard/Map.vue";
-defineProps(["islands", "provinces"]);
+defineProps(["islands", "provinces", "spbus"]);
 </script>
 
 <template>
     <Layout title="Dashboard">
         <div class="map-container">
-            <Map />
+            <Map :spbus="spbus" />
         </div>
         <div class="navigation">
             <Button type="link" href="/" value="Back" color="blue" />
