@@ -54,16 +54,4 @@ class DashboardController extends Controller
             'spbus' => $spbus,
         ]);
     }
-    public function showspbu($id){
-        $spbu = Spbu::find($id);
-        $totalMotorToday = DB::table('vehicles')
-        ->where('spbu_id', $id)
-        ->whereDate('created_at', now()->today())
-        ->where('type_vehicle_id', 1)
-        ->count();
-        return Inertia::render('Dashboard', [
-            'spbu' => $spbu,
-            'totalMotorToday' => $totalMotorToday,
-        ]);
-    }
 }
