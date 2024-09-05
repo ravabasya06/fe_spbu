@@ -53,7 +53,7 @@ const iconOptions = {
                     <div class="detection-items">
                         <div class="full-day">
                             <p class="atas">00:00 - saat ini</p>
-                            <p class="bawah">4000</p>
+                            <p class="bawah">{{ spbu.today_vehicle_count }}</p>
                             <div class="detection-vehicle-left">
                                 <div class="vehicle-item">
                                     <font-awesome-icon
@@ -61,7 +61,7 @@ const iconOptions = {
                                         class="fa-xl"
                                         style="color: #000"
                                     />
-                                    <p>2</p>
+                                    <p>{{ spbu.today_motor_count }}</p>
                                 </div>
                                 <div class="vehicle-item">
                                     <font-awesome-icon
@@ -69,7 +69,7 @@ const iconOptions = {
                                         class="fa-xl"
                                         style="color: #000"
                                     />
-                                    <p>2</p>
+                                    <p>{{ spbu.today_car_count }}</p>
                                 </div>
                                 <div class="vehicle-item">
                                     <font-awesome-icon
@@ -77,7 +77,7 @@ const iconOptions = {
                                         class="fa-xl"
                                         style="color: #000"
                                     />
-                                    <p>2</p>
+                                    <p>{{ spbu.today_bus_count }}</p>
                                 </div>
                                 <div class="vehicle-item">
                                     <font-awesome-icon
@@ -85,13 +85,13 @@ const iconOptions = {
                                         class="fa-xl"
                                         style="color: #000"
                                     />
-                                    <p>2</p>
+                                    <p>{{ spbu.today_truck_count }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="half-day">
                             <p class="atas">30 menit terakhir</p>
-                            <p class="bawah">50</p>
+                            <p class="bawah">{{ spbu.recent_vehicle_count }}</p>
                             <div class="detection-vehicle-right">
                                 <div class="vehicle-item">
                                     <font-awesome-icon
@@ -99,7 +99,7 @@ const iconOptions = {
                                         class="fa-xl"
                                         style="color: #000"
                                     />
-                                    <p>2</p>
+                                    <p>{{ spbu.recent_motor_count }}</p>
                                 </div>
                                 <div class="vehicle-item">
                                     <font-awesome-icon
@@ -107,7 +107,7 @@ const iconOptions = {
                                         class="fa-xl"
                                         style="color: #000"
                                     />
-                                    <p>2</p>
+                                    <p>{{ spbu.recent_car_count }}</p>
                                 </div>
                                 <div class="vehicle-item">
                                     <font-awesome-icon
@@ -115,7 +115,7 @@ const iconOptions = {
                                         class="fa-xl"
                                         style="color: #000"
                                     />
-                                    <p>2</p>
+                                    <p>{{ spbu.recent_bus_count }}</p>
                                 </div>
                                 <div class="vehicle-item">
                                     <font-awesome-icon
@@ -123,7 +123,7 @@ const iconOptions = {
                                         class="fa-xl"
                                         style="color: #000"
                                     />
-                                    <p>2</p>
+                                    <p>{{ spbu.recent_truck_count }}</p>
                                 </div>
                             </div>
                         </div>
