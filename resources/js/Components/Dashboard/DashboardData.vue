@@ -18,7 +18,7 @@ const filteredProvinces = (island) => {
                 <thead>
                     <tr>
                         <th>{{ island.name }}</th>
-                        <th>{{ island.count }}</th>
+                        <th>{{ island.spbu_count }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +27,7 @@ const filteredProvinces = (island) => {
                         :key="province.province_id"
                     >
                         <td>{{ province.name }}</td>
-                        <td>{{ province.count }}</td>
+                        <td>{{ province.spbu_count }}</td>
                     </tr>
                 </tbody>
             </table>
