@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Island extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'count',
-    ];
+    public $timestamps = false;
 
     public function provinces()
     {
