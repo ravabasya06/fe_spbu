@@ -100,24 +100,6 @@ function toggle() {
                         required
                         autocomplete="off"
                     />
-
-                    <label for="provinsi">Provinsi:</label>
-                    <select
-                        name="provinsi"
-                        id="provinsi"
-                        v-model="form.province_id"
-                        required
-                    >
-                        <option disabled>Nama Provinsi</option>
-                        <option
-                            v-for="province in provinces"
-                            :key="province.province_id"
-                            :value="province.province_id"
-                        >
-                            {{ province.name }}
-                        </option>
-                    </select>
-
                     <label for="pulau">Pulau:</label>
                     <select
                         name="pulau"
@@ -134,7 +116,22 @@ function toggle() {
                             {{ island.name }}
                         </option>
                     </select>
-
+                    <label for="provinsi">Provinsi:</label>
+                    <select
+                        name="provinsi"
+                        id="provinsi"
+                        v-model="form.province_id"
+                        required
+                    >
+                        <option disabled>Nama Provinsi</option>
+                        <option
+                            v-for="province in provinces"
+                            :key="province.province_id"
+                            :value="province.province_id"
+                        >
+                            {{ province.name }}
+                        </option>
+                    </select>
                     <div class="dropdown" @click="toggle">
                         <span>Advanced Options</span>
                         <font-awesome-icon
@@ -233,7 +230,9 @@ input[type="number"] {
 }
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-    transition: opacity 0.5s, transform 0.5s;
+    transition:
+        opacity 0.5s,
+        transform 0.5s;
 }
 
 .slide-fade-enter-from,
