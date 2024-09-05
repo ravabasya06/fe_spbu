@@ -10,6 +10,8 @@ import {
     faTruck,
     faCircleInfo,
     faPlus,
+    faCaretUp,
+    faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -22,6 +24,8 @@ library.add(
     faTruck,
     faCircleInfo,
     faPlus,
+    faCaretUp,
+    faCaretDown
 );
 
 export { FontAwesomeIcon };

@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import Button from "../../../Components/Main/Button.vue";
 
@@ -29,6 +29,9 @@ const form = useForm({
 
 const isEditMode = computed(() => !!props.spbu);
 
+// State for showing/hiding advance options
+const advance = ref(false);
+
 const handleSubmit = () => {
     if (isEditMode.value) {
         form.put(`/spbu/${form.spbu_id}`);
@@ -39,6 +42,11 @@ const handleSubmit = () => {
         });
     }
 };
+
+// Toggle function for advance options
+function toggle() {
+    advance.value = !advance.value;
+}
 </script>
 
 <template>
@@ -126,22 +134,34 @@ const handleSubmit = () => {
                             {{ island.name }}
                         </option>
                     </select>
-                    <label for="latitude">Latitude:</label>
-                    <input
-                        type="number"
-                        id="latitude"
-                        name="latitude"
-                        v-model="form.latitude"
-                        autocomplete="off"
-                    />
-                    <label for="longitude">Longitude:</label>
-                    <input
-                        type="number"
-                        id="longitude"
-                        name="longitude"
-                        v-model="form.longitude"
-                        autocomplete="off"
-                    />
+
+                    <div class="dropdown" @click="toggle">
+                        <span>Advanced Options</span>
+                        <font-awesome-icon
+                            :icon="advance ? 'caret-up' : 'caret-down'"
+                        />
+                    </div>
+
+                    <transition name="slide-fade">
+                        <fieldset v-show="advance">
+                            <label for="latitude">Latitude:</label>
+                            <input
+                                type="number"
+                                id="latitude"
+                                name="latitude"
+                                v-model="form.latitude"
+                                autocomplete="off"
+                            />
+                            <label for="longitude">Longitude:</label>
+                            <input
+                                type="number"
+                                id="longitude"
+                                name="longitude"
+                                v-model="form.longitude"
+                                autocomplete="off"
+                            />
+                        </fieldset>
+                    </transition>
                 </div>
                 <Button
                     type="submit"
@@ -170,29 +190,55 @@ const handleSubmit = () => {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     color: #fff;
 }
+
 h2 {
     text-align: center;
     color: #ffffff;
     margin-bottom: 20px;
 }
+
 form {
     display: flex;
     flex-direction: column;
 }
+
 .form-group {
     margin-bottom: 30px;
 }
+
 label {
     display: block;
     margin-bottom: 10px;
     font-size: 1.2em;
 }
-input[type="text"] {
+
+input[type="text"],
+input[type="number"] {
     width: 100%;
     padding: 12px;
     box-sizing: border-box;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1.1em;
+}
+.dropdown {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-top: 20px;
+    color: white;
+    width: fit-content;
+}
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    opacity: 0;
+    transform: translateY(-10px);
 }
 </style>
