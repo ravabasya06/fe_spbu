@@ -28,20 +28,27 @@ const search = () => {
                 placeholder="Telusuri"
                 autocomplete="off"
             />
-            <Button type="submit" value="Cari" color="blue" />
+            <Button class="thebutton" type="submit" color="#333">
+                <font-awesome-icon icon="magnifying-glass" />
+            </Button>
         </form>
     </div>
 </template>
 
 <style scoped>
+.thebutton {
+    border-radius: 0;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
 .search-form {
     display: flex;
-    gap: 10px;
 }
 .search-container input {
     padding: 10px;
-    border-radius: 7px;
     border: none;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
     width: 300px;
 }
 .search-container input:focus {
