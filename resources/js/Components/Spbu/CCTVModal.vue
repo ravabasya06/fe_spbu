@@ -17,15 +17,22 @@ defineProps(["cctv"]);
                     <h1 class="modal-title fs-5" id="exampleModalLabel">
                         CCTV {{ cctv.cctv_number }}
                     </h1>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                    ></button>
+                    <div class="modal-header-right">
+                        <span
+                            :style="{ color: cctv.status ? 'green' : 'black' }"
+                            class="fs-5 fw-bold"
+                        >
+                            {{ cctv.status ? "ONLINE" : "OFFLINE" }}
+                        </span>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
                 </div>
                 <div class="modal-body">
-                    <h2>Status : {{ cctv.status ? "Active" : "Inactive" }}</h2>
                     <img
                         :src="cctv.status ? cctv.link : null"
                         alt=""
@@ -42,7 +49,15 @@ defineProps(["cctv"]);
     width: 100%;
 }
 .modal-header {
+    display: flex;
+    justify-content: space-between;
     background-color: #c32130;
+}
+.modal-header-right {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .btn-close:focus {
