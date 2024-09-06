@@ -9,6 +9,7 @@ defineProps(["type", "link", "value", "color"]);
         class="button"
         :style="{ backgroundColor: color }"
     >
+        <slot />
         {{ value }}
     </Link>
     <button
@@ -17,6 +18,7 @@ defineProps(["type", "link", "value", "color"]);
         class="button"
         :style="{ backgroundColor: color }"
     >
+        <slot />
         {{ value }}
     </button>
     <button
@@ -25,6 +27,7 @@ defineProps(["type", "link", "value", "color"]);
         class="button"
         :style="{ backgroundColor: color }"
     >
+        <slot />
         {{ value }}
     </button>
 </template>
