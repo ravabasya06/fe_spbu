@@ -12,6 +12,7 @@ import {
     faPlus,
     faCaretUp,
     faCaretDown,
+    faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -25,7 +26,8 @@ library.add(
     faCircleInfo,
     faPlus,
     faCaretUp,
-    faCaretDown
+    faCaretDown,
+    faMagnifyingGlass,
 );
 
 export { FontAwesomeIcon };
