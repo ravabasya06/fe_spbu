@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('city');
             $table->unsignedBigInteger('province_id');
             $table->unsignedBigInteger('island_id');
-            $table->decimal('latitude')->nullable();
-            $table->decimal('longitude')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->timestamps();
 
             $table->foreign('island_id')->references('island_id')->on('islands')->onDelete('cascade');
