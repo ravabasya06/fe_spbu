@@ -11,7 +11,6 @@ Route::middleware('auth')->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/analysis', [AnalysisController::class, 'index'])->name('analysis.index');
-    Route::get('/analysis/search', [AnalysisController::class, 'search'])->name('analysis.search');
     Route::get('/spbu/{id}', [SpbuController::class, 'index'])->name('spbu.index');
 });
 

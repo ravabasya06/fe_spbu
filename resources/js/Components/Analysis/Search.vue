@@ -11,7 +11,7 @@ const search = () => {
     });
 
     if (query.value) {
-        form.get(route("analysis.search"));
+        form.get(route("analysis.index"));
     } else {
         router.visit("/analysis");
     }
