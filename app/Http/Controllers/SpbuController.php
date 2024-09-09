@@ -122,7 +122,7 @@ class SpbuController extends Controller
         $spbu = Spbu::findOrFail($spbu_id);
 
         $validated = $request->validate([
-            'name' => 'required|unique:spbus',
+            'name' => 'required|unique:spbus,name,' . $spbu_id . ',spbu_id',
             'road' => 'required',
             'city' => 'required',
             'province_id' => 'required',
