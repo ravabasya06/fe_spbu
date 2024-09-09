@@ -4,7 +4,17 @@ defineProps(["spbus", "results"]);
 </script>
 <template>
     <div class="container-cards">
-        <Link v-for="spbu in results" :href="`/spbu/${spbu.spbu_id}`">
+        <Link
+            v-if="results.data"
+            v-for="spbu in results.data"
+            :href="`/spbu/${spbu.spbu_id}`"
+        >
+            <div class="card">
+                <h3>{{ spbu.name }}</h3>
+                <p>{{ spbu.road }}</p>
+            </div>
+        </Link>
+        <Link v-else v-for="spbu in results" :href="`/spbu/${spbu.spbu_id}`">
             <div class="card">
                 <h3>{{ spbu.name }}</h3>
                 <p>{{ spbu.road }}</p>
