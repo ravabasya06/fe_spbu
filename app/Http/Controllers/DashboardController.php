@@ -31,7 +31,7 @@ class DashboardController extends Controller
         ->get();
 
         $spbus = DB::table('spbus')
-            ->join('vehicles', 'spbus.spbu_id', '=', 'vehicles.spbu_id')
+            ->leftJoin('vehicles', 'spbus.spbu_id', '=', 'vehicles.spbu_id')
             ->select(
                 'spbus.spbu_id', 
                 'spbus.name',
