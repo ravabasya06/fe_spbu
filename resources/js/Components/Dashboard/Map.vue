@@ -17,9 +17,9 @@ const center = ref([-0.5, 120.7]);
 
 const iconOptions = {
     iconUrl: "/images/dispenser.png",
-    iconSize: [20, 25],
-    iconAnchor: [19, 38],
-    popupAnchor: [-10, -35],
+    iconSize: [18, 23],
+    iconAnchor: [0, 0],
+    popupAnchor: [9, 0],
 };
 </script>
 
