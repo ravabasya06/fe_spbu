@@ -16,9 +16,9 @@ Route::middleware('auth')->group(function(){
 });
 
 // User
-require __DIR__.'/usermanager.php';
 require __DIR__.'/auth.php';
 require __DIR__.'/profile.php';
+require __DIR__.'/admin/usermanager.php';
 
 // SPBU
 require __DIR__.'/admin/spbu.php';
