@@ -16,6 +16,9 @@ const props = defineProps({
     },
 });
 
+const advance = ref(false);
+const isEditMode = computed(() => !!props.spbu);
+
 const form = useForm({
     spbu_id: props.spbu?.spbu_id ?? "",
     name: props.spbu?.name ?? "",
@@ -26,11 +29,6 @@ const form = useForm({
     latitude: props.spbu?.latitude ?? "",
     longitude: props.spbu?.longitude ?? "",
 });
-
-const isEditMode = computed(() => !!props.spbu);
-
-// State for showing/hiding advance options
-const advance = ref(false);
 
 const handleSubmit = () => {
     if (isEditMode.value) {
@@ -43,10 +41,13 @@ const handleSubmit = () => {
     }
 };
 
-// Toggle function for advance options
-function toggle() {
+const toggle = () => {
     advance.value = !advance.value;
-}
+};
+
+const filteredProvinces = (id) => {
+    return props.provinces.filter((province) => province.island_id == id);
+};
 </script>
 
 <template>
@@ -125,7 +126,9 @@ function toggle() {
                     >
                         <option disabled>Nama Provinsi</option>
                         <option
-                            v-for="province in provinces"
+                            v-for="province in filteredProvinces(
+                                form.island_id,
+                            )"
                             :key="province.province_id"
                             :value="province.province_id"
                         >
@@ -148,6 +151,7 @@ function toggle() {
                                 name="latitude"
                                 v-model="form.latitude"
                                 autocomplete="off"
+                                step="any"
                             />
                             <label for="longitude">Longitude:</label>
                             <input
@@ -156,6 +160,7 @@ function toggle() {
                                 name="longitude"
                                 v-model="form.longitude"
                                 autocomplete="off"
+                                step="any"
                             />
                         </fieldset>
                     </transition>
