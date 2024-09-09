@@ -9,10 +9,10 @@ use App\Models\Spbu;
 class AnalysisController extends Controller
 {
     public function index(){
-        $spbus = Spbu::orderByRaw('updated_at - created_at DESC')->get();
+        $spbus = Spbu::orderByRaw('updated_at - created_at DESC')->paginate(16);
         return Inertia::render('Analysis', [
             'spbus' => $spbus,
-            'results' => [], 
+            'results' => $spbus, 
             'query' => null,
         ]);
     }
