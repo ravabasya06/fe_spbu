@@ -64,6 +64,3 @@ in a new terminal.
 By default there will be one account upon seeding, \
 username : admin\
 password : admin
-
-## To-do
-Filter province based on islands
