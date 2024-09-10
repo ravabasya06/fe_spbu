@@ -115,7 +115,7 @@ class SpbuController extends Controller
 
         $spbu = Spbu::create($validated);
 
-        return Redirect::route('analysis.search')->with('message', 'Spbu successfully created');
+        return Redirect::route('analysis.index')->with('message', 'Spbu successfully created');
     }
 
     public function update(Request $request, $spbu_id){
@@ -140,7 +140,7 @@ class SpbuController extends Controller
         $spbu = Spbu::findOrFail($spbu_id);
         Spbu::destroy($spbu_id);
         $msg =  $spbu['name'] . ' deleted';
-        return Redirect::route('analysis.search')->with('message', $msg);
+        return Redirect::route('analysis.index')->with('message', $msg);
     }
     
     public function fetchModel($model, $spbu_id)
