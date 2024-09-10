@@ -22,7 +22,7 @@ class AnalysisController extends Controller
             ->orWhere('spbus.city', 'LIKE', "%{$query}%")
             ->orWhere('provinces.name', 'LIKE', "%{$query}%")
             ->orWhere('islands.name', 'LIKE', "%{$query}%")
-            ->paginate(16)->withQueryString();
+            ->paginate(16)->withQueryString()->onEachSide(1);
         
         return Inertia::render('Analysis', [
             'results' => $results,
