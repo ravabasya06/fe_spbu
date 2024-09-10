@@ -21,28 +21,31 @@ class SpbuFactory extends Factory
     public function definition(): array
     {  
         $faker = FakerFactory::create('id_ID');
+        $spbu_code = rand(10, 99).'.'.rand(100, 999).'.'.rand(10, 999);
         $street = $faker->street();
+        $city = $faker->city();
+        $island = Island::inRandomOrder()->first();
         $province = Province::inRandomOrder()->first();
         switch($province->island_id){
             case 1:
-                $latitude = rand(-6.8*10, -8*10) / 10;
-                $longitude = rand(105.3*10, 114.3*10) / 10;
+                $latitude = rand(-6.8*1000, -8*1000) / 1000;
+                $longitude = rand(105.3*1000, 114.3*1000) / 1000;
                 break;
             case 2:
-                $latitude = rand(-1*10, 4.3*10) / 10;
-                $longitude = rand(110*10, 117*10) / 10;
+                $latitude = rand(-1*1000, 4.3*1000) / 1000;
+                $longitude = rand(110*1000, 117*1000) / 1000;
                 break;
             case 3:
-                $latitude = rand(-5.4*10, 5.6*10) / 10;
-                $longitude = rand(95.4*10, 105.3*10) / 10; 
+                $latitude = rand(-5.4*1000, 5.6*1000) / 1000;
+                $longitude = rand(95.4*1000, 105.3*1000) / 1000; 
                 break;
             case 4:
-                $latitude = rand(-1*10, -5.3*10) / 10;
-                $longitude = rand(119.4*10, 120*10) / 10;
+                $latitude = rand(-1*1000, -5.3*1000) / 1000;
+                $longitude = rand(119.4*1000, 120*1000) / 1000;
                 break;
             case 5:
-                $latitude = rand(-2*10, -9*10) / 10;
-                $longitude = rand(137.5*10, 140.9*10) / 10;
+                $latitude = rand(-2*1000, -9*1000) / 1000;
+                $longitude = rand(137.5*1000, 140.9*1000) / 1000;
                 break;
             default:
                 $latitude = null;
@@ -50,9 +53,10 @@ class SpbuFactory extends Factory
                 break;
         }
         return [
-            'name' => 'Pertamina ' . $street,
-            'road' => 'Jl. ' . $street . ' No. ' . $faker->numberBetween(1, 80),
-            'city' => $faker->city(),
+            'name' => 'SPBU Pertamina ' . $spbu_code,
+            'road' => 'Jl. ' . $street . ' No.' . $faker->numberBetween(1, 80)
+            .', RT.00'.rand(1, 9).'/RW.00'.rand(1, 9).', Kota '.$city.', '.$island->name.' 17'.rand(100, 999), 
+            'city' => $city,
             'province_id' => $province->province_id,
             'island_id' => $province->island_id,
             'latitude' => $latitude,
