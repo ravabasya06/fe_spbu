@@ -209,4 +209,9 @@ const iconOptions = {
 .vehicle-item p {
     margin: 0;
 }
+@media (max-width: 500px) {
+    .map-container {
+        height: 50vh;
+    }
+}
 </style>

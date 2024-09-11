@@ -45,4 +45,13 @@ defineProps(["islands", "provinces", "spbus"]);
     width: 100%;
     height: auto;
 }
+@media (max-width: 500px) {
+    .map-container {
+        width: auto;
+        height: 50vh;
+    }
+    .navigation {
+        display: none;
+    }
+}
 </style>

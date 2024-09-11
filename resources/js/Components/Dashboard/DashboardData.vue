@@ -7,6 +7,7 @@ const filteredProvinces = (island) => {
     );
 };
 </script>
+
 <template>
     <section class="list-spbu">
         <div
@@ -45,6 +46,7 @@ const filteredProvinces = (island) => {
     border-top: 1px solid #ff0000;
     z-index: 1;
 }
+
 .list-column {
     width: 14%;
 }
@@ -62,8 +64,48 @@ th {
 td {
     padding: 5px 0;
 }
+
 td:not(:first-child),
 th:not(:first-child) {
     text-align: right;
+}
+
+/* Mobile View */
+@media (max-width: 500px) {
+    .list-spbu {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+    .list-column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    table {
+        display: block;
+        width: 100%;
+    }
+
+    tbody {
+        display: block;
+    }
+    th {
+        padding: 10px;
+    }
+    tr {
+        display: flex;
+        flex-direction: row;
+    }
+
+    td {
+        padding: 5px;
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+    }
+    td:not(:first-child) {
+        text-align: right;
+    }
 }
 </style>
