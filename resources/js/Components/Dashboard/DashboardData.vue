@@ -104,8 +104,5 @@ th:not(:first-child) {
         flex-direction: row;
         text-align: left;
     }
-    td:not(:first-child) {
-        text-align: right;
-    }
 }
 </style>
