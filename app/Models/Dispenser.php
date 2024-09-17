@@ -15,12 +15,18 @@ class Dispenser extends Model
     protected $fillable = [
         'spbu_id',
         'dispenser_number',
+        'type_dispenser_id',
         'queue',
     ];
 
     public function spbu()
     {
         return $this->belongsTo(Spbu::class, 'spbu_id', 'spbu_id');
+    }
+
+    public function typeDispenser()
+    {
+        return $this->belongsTo(TypeDispenser::class, 'type_dispenser_id', 'type_dispenser_id');
     }
 }
 

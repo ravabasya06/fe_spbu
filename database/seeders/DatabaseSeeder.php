@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(IslandSeeder::class);
         $this->call(ProvinceSeeder::class);
+        $this->call(TypeDispenserSeeder::class);
         $this->call(TypeDetectionSeeder::class);
         $this->call(TypeVehicleSeeder::class);
         

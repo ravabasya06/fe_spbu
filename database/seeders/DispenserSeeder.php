@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Dispenser;
+use App\Models\TypeDispenser;
 use App\Models\Spbu;
 
 class DispenserSeeder extends Seeder
@@ -24,6 +25,7 @@ class DispenserSeeder extends Seeder
                 Dispenser::factory()->create([
                     'spbu_id' => $spbu->spbu_id,
                     'dispenser_number' => $i,
+                    'type_dispenser_id' => TypeDispenser::inRandomOrder()->first(),
                     'queue' => fake()->numberBetween(1, 15),
                 ]);
             }

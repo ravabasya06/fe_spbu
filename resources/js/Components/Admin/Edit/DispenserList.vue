@@ -20,7 +20,8 @@ const deleteDispenser = (dispenser) => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Jenis Dispenser</th>
+                                    <th>Nomor Dispenser</th>
+                                    <th>Tipe</th>
                                     <th>Jumlah Antrian</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -35,6 +36,9 @@ const deleteDispenser = (dispenser) => {
                                     <td>
                                         Dispenser
                                         {{ dispenser.dispenser_number }}
+                                    </td>
+                                    <td>
+                                        {{ dispenser.type }}
                                     </td>
                                     <td>{{ dispenser.queue }}</td>
                                     <td>

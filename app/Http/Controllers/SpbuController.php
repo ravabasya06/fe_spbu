@@ -67,7 +67,10 @@ class SpbuController extends Controller
         $provinces = DB::table('provinces')->get();
 
         $spbu = Spbu::findOrFail($spbu_id);
-        $dispensers = $this->fetchModel('dispensers', $spbu_id)->orderBy("dispenser_number")->get();
+        $dispensers = DB::table('dispensers')
+        ->join('type_dispensers', 'dispensers.type_dispenser_id', '=', 'type_dispensers.type_dispenser_id')
+        ->select('dispensers.dispenser_id', 'dispensers.spbu_id', 'dispensers.dispenser_number', 'type_dispensers.type', 'dispensers.queue')
+        ->where('dispensers.spbu_id', $spbu_id)->get();
         $cctvs = $this->fetchModel('cctvs', $spbu_id)->orderBy("cctv_number")->get();
 
         $detections = $this->fetchDetection($spbu_id)->get();

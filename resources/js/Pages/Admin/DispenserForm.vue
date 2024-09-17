@@ -12,11 +12,15 @@ const props = defineProps({
     spbu_id: {
         type: String,
     },
+    type_dispensers: {
+        type: Object,
+    },
 });
 
 const form = useForm({
     dispenser_id: props.dispenser?.dispenser_id ?? "",
     spbu_id: props.dispenser?.spbu_id ?? props.spbu_id,
+    type_dispenser_id: props.dispenser?.type_dispenser_id ?? "",
     dispenser_number: props.dispenser?.dispenser_number ?? "",
     queue: props.dispenser?.queue ?? "",
 });
@@ -77,6 +81,23 @@ const handleSubmit = () => {
                                 required
                                 :disabled="isEditMode"
                             />
+                        </fieldset>
+                        <fieldset>
+                            <label for="type">Tipe Dispenser:</label>
+                            <select
+                                name="type"
+                                id="type"
+                                v-model="form.type_dispenser_id"
+                                required
+                            >
+                                <option
+                                    v-for="type in type_dispensers"
+                                    :key="type.type_dispenser_id"
+                                    :value="type.type_dispenser_id"
+                                >
+                                    {{ type.type }}
+                                </option>
+                            </select>
                         </fieldset>
                         <fieldset>
                             <label for="queue">Queue:</label>
